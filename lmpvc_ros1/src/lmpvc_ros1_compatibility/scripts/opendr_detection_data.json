@@ -1,0 +1,64 @@
+{
+    "allen key":{
+        "id": 0,
+        "pickable": true,
+        "width": 0.005,
+        "force": 20.0
+    },
+    "screwdriver":{
+        "id": 1,
+        "pickable": true,
+        "width": 0.005,
+        "force": 30.0
+    },
+    "big bolt": {
+        "id": 2,
+        "pickable": true,
+        "width": 0.005,
+        "force": 20.0
+    },
+    "pipe": {
+        "id": 3,
+        "pickable": true,
+        "width": 0.01,
+        "force": 25.0
+    },
+    "medium bolt": {
+        "id": 4,
+        "pickable": true,
+        "width": 0.005,
+        "force": 20.0
+    },
+    "small bolt": {
+        "id": 5,
+        "pickable": true,
+        "width": 0.005,
+        "force": 20.0
+    },
+    "bolt hole": {
+        "id": 6,
+        "pickable": false
+    },
+    "cover": {
+        "id": 7,
+        "pickable": false
+    },
+    "elbow": {
+        "id": 8,
+        "pickable": true,
+        "width": 0.01,
+        "force": 30.0
+    },
+    "elbow target": {
+        "id": 9,
+        "pickable": false
+    },
+    "cover target": {
+        "id": 10,
+        "pickable": false
+    },
+    "metallic box": {
+        "id": 11,
+        "pickable": false
+    }
+}

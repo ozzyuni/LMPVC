@@ -1,0 +1,85 @@
+Install ROS2 if you don't have it. Developed on Humble and tested to work on Foxy, as far as I know. Robolab Franka and CV PCs have Foxy installed.
+
+python3 -m venv --system-site-packages venv
+
+If you don't use --system-site-packages, you have to install more packages manually to make
+ROS2 able to build the ws, and/or work at all. I don't remember all this by heart, but maybe
+I'll figure it out again later.
+
+The downside of doing this way is that non-ros packages will be included as well, and this may cause conflicts when installing from pip.
+On the CV PC, I had to manually install the newest absl-py and protobuf=3.20.2. You can read any warnings shown by pip to see potential issues,
+but note that stated conflicts aren't always a problem in practice. For instance, tensorflow is incorrectly listed as conflicting with 
+protobuf 3.20.2 due to some incorrect definitions.
+
+------
+
+ROS2 is badly designed for VENV situations, so you need to add
+
+export PYTHONPATH=$PYTHONPATH:"$VIRTUAL_ENV/lib/python3.8/site-packages"
+
+to venv/bin/activate, or do something equivalent elsewhere.
+
+We also recommend an alias for easier building:
+
+alias lmpvc_build='colcon build --symlink-install --cmake-args -DPython3_EXECUTABLE="$VIRTUAL_ENV/bin/python"'
+
+With this in your /bin/activate, you can simply use the command 'lmpvc_build' anytime after sourcing the venv to
+always call colcon build with the right arguments.
+
+------
+
+You can now build!
+
+Before first build:
+
+source /opt/ros/foxy/setup.bash
+
+To build:
+
+lmpvc_build
+
+Expect a ton of random warnings, that's just colcon for you.
+------
+
+Recommended for big packages like torch and transformers:
+
+pip install --no-cache-dir *package*
+
+especially in robolab where space is limited. Finally, to avoid downloading models
+to home directory for the same reason:
+
+TORCH_HOME="$VIRTUAL_ENV/torch"
+export TORCH_HOME
+
+HF_HOME="/media/opendr/My Passport/computer_vision_pc/user_files/ossi/llm/hf_cache/"
+export HF_HOME
+
+The above are just examples from the scripts I use. These can be added to /venv/bin/activate, or a dedicated startup script you run every
+time you source the venv.
+
+-----
+
+Package requirements (roughly):
+ROS2 python requirements:
+	- these should already exist if running on robolab franka and cv PCs and used --system-site-packages
+pytroch:
+	- visit pytorch.org to get the correct command to install for your hardware
+	- cv PC: pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+transformers:
+	- install pytorch first to avoid getting the wrong version here
+	- starcoder2 recommends installing from source (like below)
+	- pip install --no-cache-dir git+https://github.com/huggingface/transformers.git
+accelerate:
+	- pip install --no-cache-dir accelerate
+bitsandbytes
+	- pip install --no-cache-dir bitsandbytes
+astunparse:
+	- pip install astunparse
+pyaudio:
+	- pip install pyaudio
+pyttsx3:
+	- sudo apt install espeak ffmpeg, if necessary
+	- pip install pyttsx3
+
+You can also try to use the included requirements.txt with pip install -r requirements.txt, but this probably won't work if your system
+configuration is different from mine. It may be a useful reference as well.

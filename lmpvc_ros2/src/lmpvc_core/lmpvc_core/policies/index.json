@@ -1,0 +1,14 @@
+{
+    "handover": "src/handover.py",
+    "goodbye": "src/goodbye.py",
+    "hello": "src/hello.py",
+    "pick": "src/pick.py",
+    "place": "src/place.py",
+    "rotate": "src/rotate.py",
+    "jiggle_sequence": "src/jiggle_sequence.py",
+    "look_at": "src/lookat.py",
+    "serving_check": "src/serving_check.py",
+    "bolts_check": "src/bolts_check.py",
+    "parts_check": "src/parts_check.py",
+    "full_check": "src/full_check.py"
+}

@@ -1,0 +1,20 @@
+say hello
+do you like puppies
+tell me the first law of robotics
+can you find an apple
+move a little left
+move ten centimeters up
+go one hundred and fifty millimeters backwards
+move fifteen centimeters above the die
+look at the die
+pick up the die
+rotate 33 degrees clockwise
+tilt seventy degrees forwards
+go ten centimeters up and fifteen centimeters backwards
+draw an ellipse with radii five and four centimeters
+move point five meters up and then draw a small pentagon
+if you find a table and a fruit basket, say dinner found, otherwise tell me what's missing
+move a bit to the left at zero point one meters per second
+what's the cube root of three rounded to two decimal points
+draw a small circle
+place held item on the table

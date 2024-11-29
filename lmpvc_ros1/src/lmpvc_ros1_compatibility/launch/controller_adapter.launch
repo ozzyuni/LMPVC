@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="lmpvc_ros1_compatibility" type="controller_adapter.py" name="controller_adapter" output="screen" args="-ip 127.0.0.1"/>
+</launch>

@@ -1,0 +1,70 @@
+import numpy as np
+import math
+from scipy.spatial.transform import Rotation as R
+
+# x is forward and back
+# y is right and left
+# z is up and down
+
+# define function: say thank you
+def say_thank_you(robot):
+    robot.say("thank you")
+# end of function
+
+# define function: move a meter to the right
+def move_a_meter_to_the_right(robot):
+    waypoint = robot.get_pose()
+    waypoint.position.y += 1.0
+    robot.add_waypoint(waypoint)
+    robot.go()
+# end of function
+
+# define function: move half a meter up
+def move_half_a_meter_up(robot):
+    waypoint = robot.get_pose()
+    waypoint.position.z += 0.5
+    robot.add_waypoint(waypoint)
+    robot.go()
+# end of function
+
+# define function: move slightly forwards
+def move_slightly_forwards(robot):
+    waypoint = robot.get_pose()
+    waypoint.position.x += 0.05
+    robot.add_waypoint(waypoint)
+    robot.go()
+# end of function
+
+# define function: move left at 0.1 meters per second
+def move_left_at_01_meters_per_second(robot):
+    robot.set_speed(0.1)
+    waypoint = robot.get_pose()
+    waypoint.position.y -= 0.2
+    robot.add_waypoint(waypoint)
+    robot.go()
+# end of function
+
+# define function: draw a circle of radius ten centimeters in 25 waypoints
+def draw_a_circle_of_radius_ten_centimeters_in_25_waypoints(robot):
+    waypoints = 25
+
+    for i in range(waypoints + 1):
+        waypoint = robot.get_pose()
+        waypoint.position.x += 0.1 * math.cos(2 * math.pi * i / 25)
+        waypoint.position.y += 0.1 * math.sin(2 * math.pi * i / 25)
+        robot.add_waypoint(waypoint)
+
+    robot.go()
+# end of function
+
+# define function: move a little to the left and then move a meter backwards
+def move_a_little_to_the_left_and_then_move_a_meter_backwards(robot):
+    move_a_little_to_the_left(robot)
+    move_a_meter_backwards(robot)
+# end of function
+
+# define function: move five centimeters up and then draw a small square
+def move_five_centimeters_up_and_draw_a_small_square(robot):
+    move_five_centimeters_up(robot)
+    draw_a_small_square(robot)
+# end of function

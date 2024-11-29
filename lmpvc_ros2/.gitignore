@@ -1,0 +1,8 @@
+build/
+install/
+log/
+venv/
+.vscode/
+setup.sh
+ws.bash
+howto.txt

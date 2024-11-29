@@ -1,0 +1,5 @@
+string prompt
+string preamble
+string policies
+---
+string result

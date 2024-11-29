@@ -1,0 +1,39 @@
+{
+    "policy_bank": {
+        "blacklist": [
+            "hello",
+            "goodbye",
+            "serving_check",
+            "jiggle_sequence"
+        ],
+        "hint_tag": "# HINT",
+        "sub_directory": "policies"
+    },
+    "robot_api": {
+        "max_speed": 0.1,
+        "starting_speed": 0.05,
+        "safety_box": {
+            "min": [
+                0.0,
+                -0.3,
+                0.121
+            ],
+            "max": [
+                0.6,
+                0.3,
+                0.75
+            ]
+        },
+        "eef_rotation": [
+            180.0,
+            0.0,
+            0.0
+        ]
+    },
+    "voice_control": {
+        "text_only": false,
+        "preamble_file": "preamble.txt",
+        "manual_review": false,
+        "context_lenght": 1
+    }
+}

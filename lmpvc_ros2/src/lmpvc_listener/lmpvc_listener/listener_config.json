@@ -1,0 +1,21 @@
+{
+    "buffer_size": 128,
+    "timeout_length": 1.0,
+    "rms_threshold": 30.0,
+    "asr_engine": "remote",
+
+    "wav2vec":{
+
+    },
+    "whisper": {
+        "hf_url": "JunWorks/Quantized_4bit_WhisperSmallStd_zhTW",
+        "device": "cuda",
+        "multilingual": true,
+        "input_language": "en",
+        "translate": false,
+        "format": true
+    },
+    "remote":{
+        
+    }
+}
