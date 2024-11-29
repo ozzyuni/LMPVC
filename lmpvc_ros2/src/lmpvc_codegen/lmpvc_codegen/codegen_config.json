@@ -2,7 +2,7 @@
     "model": "gguf",
     "inference_api": {
         "hf_url": "bigcode/starcoder2-15b",
-        "hf_token": "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"
+        "hf_token": "your_token_here"
     },
     "bitsandbytes":{
         "hf_url": "bigcode/starcoder2-15b",
