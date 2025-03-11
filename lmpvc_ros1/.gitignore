@@ -1,6 +1,8 @@
 build/
 devel/
 logs/
+log/
 .catkin_tools/
 remote*
 venv/
+.vscode/

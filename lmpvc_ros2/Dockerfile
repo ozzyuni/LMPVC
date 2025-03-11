@@ -1,0 +1,81 @@
+FROM ubuntu:22.04
+
+# ROS2 Humble and a few audio requirements
+
+RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
+    curl \
+    software-properties-common \
+    locales \
+    wget
+
+RUN locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 
+
+ENV LANG=en_US.UTF-8
+
+RUN add-apt-repository universe
+
+RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
+    pulseaudio \
+    ros-humble-desktop \
+    ros-dev-tools \
+    python3-rosdep \
+    alsa-utils \
+    pulseaudio-utils \
+    espeak \
+    ffmpeg \
+    libespeak1 \
+    portaudio19-dev \
+    libasound2-plugins \
+    python3-pip
+
+# Make ALSA-only software use Pulseaudio
+RUN echo "pcm.default pulse" > ~/.asoundrc
+RUN echo "ctl.default pulse" >> ~/.asoundrc
+
+# General Python requirements
+RUN DEBIAN_FRONTEND="noninteractive" apt-get remove -y  python3-sympy
+
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --default-timeout=1000 \
+    # Older NumPy required for some PyTorch components
+    "numpy<2" \
+    pyaudio \
+    pyttsx3 \
+    sounddevice \
+    piper-tts \
+    astunparse
+
+ # PyTorch
+RUN pip install --no-cache-dir \
+    torch \
+    torchvision \
+    torchaudio \
+    --index-url https://download.pytorch.org/whl/cpu
+
+# Hugging Face
+RUN pip install --no-cache-dir \
+    git+https://github.com/huggingface/transformers.git \
+    accelerate \
+    bitsandbytes
+
+# Llama Cpp
+RUN pip install --no-cache-dir \
+    llama-cpp-python \
+    --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+
+# Workspace setup
+RUN mkdir -p /lmpvc_ros2_ws/src
+
+WORKDIR /lmpvc_ros2_ws
+
+# This is intended as a temporary copy for use with rosdep.
+# Typical usage is to override it with a bind mount later, as is done in docker_run.bash.
+COPY ./src /lmpvc_ros2_ws/src
+
+RUN rosdep init && rosdep update
+
+RUN rosdep install --from-paths src -y --ignore-src --rosdistro humble

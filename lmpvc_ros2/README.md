@@ -38,7 +38,39 @@ These can run without the core application.
 
 Each module can be further configure in the module_config.json files found in each individual ROS2 package under ./src/module_name/module_name. You should at least know what's in core_config.json. Usage of the config files is explained in a separate README.md in each individual directory.
 
+## Docker setup
+
+Helper scripts in *./docker_scripts/* can be used to build, run and stop the container, as well as run bash terminals while it is running. Building and running use different scripts depending on wheter you're interested in the *cpu* or *cuda* version of the container. It is recommended to use *cuda* for full functionality, which currently assumes at least a 3000-series NVIDIA GPU and a Docker installation configured to use NVIDIA Container Toolkit:
+
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+
+Additionally, to build the *cuda* image, add *"default-runtime": "nvidia"* to */etc/docker/daemon.json* (assuming default location):
+
+```
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+         } 
+    },
+    "default-runtime": "nvidia" 
+}
+```
+
+Then restart the docker service:
+
+```
+sudo systemctl restart docker
+```
+
+Now, it should be possible to use the provided script to start the building process.
+
+Co-workers: Contact me for pre-built images!
+
 ## Requirements and venv setup
+
+TO BE UPDATED! In the meantime, Dockerfile and Dockerfile-cuda are good additional references for building a system.
 
 This section is most likely not a complete set of requirements, but it tries to list the main ones. There's also some additional advice for if you want to use a virtual environment, which is unfortunately a little convoluted.
 
