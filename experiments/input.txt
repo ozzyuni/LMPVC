@@ -1,0 +1,50 @@
+say hello
+do you like ice cream
+tell me the first law of robotics
+can you find an apple
+move a little left
+move ten centimeters up
+go one hundred and fifty millimeters backwards
+move fifteen centimeters above the die
+look at the die
+pick up the die
+rotate 33 degrees clockwise
+tilt seventy degrees forwards
+go ten centimeters up and fifteen centimeters backwards
+draw an ellipse with radii five and four centimeters
+move point five meters up and then draw a small pentagon
+if you find a hammer and nails, say tools found, otherwise tell me what's missing
+five centimeters up and four down
+move point five meters up
+point four centimeters down
+what's the cube root of three rounded to two decimal points
+draw a small circle
+place held item on the table
+move a little backwards
+a bit back the other way
+move a little forwards and then to the left
+wait five seconds, then move a little up
+if you can't find a banana, wait a little and try one more time
+if you see a screw, move ten centimeters above item
+move 1.5 centimeters up
+go 3.1 meters to the left
+move a little to the left and then right, repeat three times
+a little forwards
+a bit more
+say cheese
+do you like puppies
+why do you like them
+what's your favourite book
+who's the author
+rotate a quarter turn anticlockwise
+rotate back the other way
+move a random amount to the left, but less than a meters
+again but half the distance
+half that again
+do you like to work with humans
+good job
+build a house
+push the red button
+pick up the battery and place it on the base plate
+what tool should i use to tighten screws
+what tool should i use to tighten bolts to correct torque
