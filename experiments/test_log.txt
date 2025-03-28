@@ -1,24 +1,24 @@
-[1740574932.371191]: Starting tests!
-[1740574932.371311]: Test #0
-[1740574933.7817883]: 0 --- say hello
+[1743161241.1129496]: Starting tests!
+[1743161241.1130586]: Test #0
+[1743161241.7668312]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740574934.8792143]: 1 --- do you like ice cream
+[1743161242.8599386]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740574936.384641]: 2 --- tell me the first law of robotics
+[1743161244.365533]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740574938.1461136]: 3 --- can you find an apple
+[1743161246.1461926]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -28,7 +28,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740574939.6614954]: 4 --- move a little left
+[1743161247.6631575]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -37,7 +37,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740574941.1988447]: 5 --- move ten centimeters up
+[1743161249.2038193]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -46,7 +46,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740574942.8877676]: 6 --- go one hundred and fifty millimeters backwards
+[1743161250.8962042]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -55,7 +55,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740574944.5397885]: 7 --- move fifteen centimeters above the die
+[1743161252.5515041]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -64,31 +64,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740574945.549242]: 8 --- look at the die
+[1743161253.5609415]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740574946.5221426]: 9 --- pick up the die
+[1743161254.5348597]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740574947.6130476]: 10 --- rotate 33 degrees clockwise
+[1743161255.6297023]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740574948.7426317]: 11 --- tilt seventy degrees forwards
+[1743161256.7615318]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740574950.7568471]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743161258.779888]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -98,7 +98,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740574953.7723668]: 13 --- draw an ellipse with radii five and four centimeters
+[1743161261.8017914]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -110,7 +110,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740574957.4184954]: 14 --- move point five meters up and then draw a small pentagon
+[1743161265.5135355]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -126,7 +126,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740574962.0196702]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743161270.1387184]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -141,7 +141,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740574964.253338]: 16 --- five centimeters up and four down
+[1743161272.3900156]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -153,7 +153,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740574965.7941055]: 17 --- move point five meters up
+[1743161273.941298]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -162,7 +162,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740574967.3531475]: 18 --- point four centimeters down
+[1743161275.514479]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -171,13 +171,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740574968.8566487]: 19 --- what's the cube root of three rounded to two decimal points
+[1743161277.0284896]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740574971.6138823]: 20 --- draw a small circle
+[1743161279.8094196]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -189,13 +189,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740574972.6684866]: 21 --- place held item on the table
+[1743161280.8700213]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740574974.2044733]: 22 --- move a little backwards
+[1743161282.4179053]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -204,7 +204,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740574975.8052552]: 23 --- a bit back the other way
+[1743161284.0288706]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -213,7 +213,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740574979.03538]: 24 --- move a little forwards and then to the left
+[1743161287.3530147]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -236,7 +236,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740574981.201355]: 25 --- wait five seconds, then move a little up
+[1743161289.5296369]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -247,17 +247,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740574985.2188475]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743161293.4969244]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -267,7 +267,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740574988.947517]: 27 --- if you see a screw, move ten centimeters above item
+[1743161297.2504942]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -282,7 +282,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740574990.608102]: 28 --- move 1.5 centimeters up
+[1743161298.923771]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -291,7 +291,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740574992.2717235]: 29 --- go 3.1 meters to the left
+[1743161300.597684]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -300,7 +300,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740574995.8247447]: 30 --- move a little to the left and then right, repeat three times
+[1743161304.1781633]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -324,7 +324,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740574997.333586]: 31 --- a little forwards
+[1743161305.6966128]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -333,7 +333,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740574998.817615]: 32 --- a bit more
+[1743161307.247415]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -342,49 +342,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740574999.737938]: 33 --- say cheese
+[1743161308.1726527]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575000.8352122]: 34 --- do you like puppies
+[1743161309.2761614]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575001.9114046]: 35 --- why do you like them
+[1743161310.3573308]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575003.0850015]: 36 --- what's your favourite book
+[1743161311.5349233]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575004.080998]: 37 --- who's the author
+[1743161312.5362682]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575005.2155347]: 38 --- rotate a quarter turn anticlockwise
+[1743161313.674387]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575006.3066707]: 39 --- rotate back the other way
+[1743161314.769416]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575008.1220315]: 40 --- move a random amount to the left, but less than a meters
+[1743161316.596482]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -393,94 +393,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575009.6915913]: 41 --- again but half the distance
+[1743161317.8507888]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575010.783531]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575011.9789095]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743161328.105966]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743161329.3049223]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575012.8798223]: 44 --- good job
+[1743161330.208304]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575016.8451014]: 45 --- build a house
+[1743161341.0707111]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575017.8436847]: 46 --- push the red button
+[1743161342.571873]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575019.2626472]: 47 --- pick up the battery and place it on the base plate
+[1743161343.9993567]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575020.624268]: 48 --- what tool should i use to tighten screws
+[1743161345.3659976]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575022.2366862]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743161346.9865663]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575022.7397923]: Test #1
-[1740575023.1203449]: 0 --- say hello
+[1743161347.4896317]: Test #1
+[1743161347.891256]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575024.21843]: 1 --- do you like ice cream
+[1743161348.994129]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575025.7342763]: 2 --- tell me the first law of robotics
+[1743161350.5160198]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575027.5158925]: 3 --- can you find an apple
+[1743161352.306585]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -490,7 +576,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575029.0451539]: 4 --- move a little left
+[1743161353.843777]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -499,7 +585,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575030.5996308]: 5 --- move ten centimeters up
+[1743161355.4054263]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -508,7 +594,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575032.3068075]: 6 --- go one hundred and fifty millimeters backwards
+[1743161357.1197438]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -517,7 +603,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575033.9768667]: 7 --- move fifteen centimeters above the die
+[1743161358.7971725]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -526,31 +612,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575034.9923575]: 8 --- look at the die
+[1743161359.8164785]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575035.9674644]: 9 --- pick up the die
+[1743161360.7982807]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575037.0675623]: 10 --- rotate 33 degrees clockwise
+[1743161361.9018636]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575038.2050495]: 11 --- tilt seventy degrees forwards
+[1743161363.0456204]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575040.2394059]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743161365.0840433]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -560,7 +646,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575043.286663]: 13 --- draw an ellipse with radii five and four centimeters
+[1743161368.1389234]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -572,7 +658,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575046.9825444]: 14 --- move point five meters up and then draw a small pentagon
+[1743161371.893917]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -588,7 +674,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575051.6495738]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743161376.5635903]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -603,7 +689,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575053.9158552]: 16 --- five centimeters up and four down
+[1743161378.831474]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -615,7 +701,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575055.4760113]: 17 --- move point five meters up
+[1743161380.3927646]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -624,7 +710,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575057.0575442]: 18 --- point four centimeters down
+[1743161381.9742966]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -633,13 +719,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575058.5807462]: 19 --- what's the cube root of three rounded to two decimal points
+[1743161383.498577]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575061.3802526]: 20 --- draw a small circle
+[1743161386.2998874]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -651,13 +737,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575062.4447455]: 21 --- place held item on the table
+[1743161387.3636112]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575064.000937]: 22 --- move a little backwards
+[1743161388.9195464]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -666,7 +752,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575065.6215963]: 23 --- a bit back the other way
+[1743161390.539766]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -675,7 +761,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575068.9006882]: 24 --- move a little forwards and then to the left
+[1743161393.8852396]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -698,7 +784,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575071.0890133]: 25 --- wait five seconds, then move a little up
+[1743161396.074975]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -709,17 +795,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575075.155012]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743161400.0640438]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -729,7 +815,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575078.9257305]: 27 --- if you see a screw, move ten centimeters above item
+[1743161403.8373535]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -744,7 +830,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575080.6043456]: 28 --- move 1.5 centimeters up
+[1743161405.5159817]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -753,7 +839,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575082.2815256]: 29 --- go 3.1 meters to the left
+[1743161407.1933055]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -762,7 +848,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575085.8723361]: 30 --- move a little to the left and then right, repeat three times
+[1743161410.7858748]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -786,7 +872,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575087.3918943]: 31 --- a little forwards
+[1743161412.3036036]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -795,7 +881,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575088.888981]: 32 --- a bit more
+[1743161413.8571784]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -804,49 +890,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575089.814161]: 33 --- say cheese
+[1743161414.7828338]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575090.919608]: 34 --- do you like puppies
+[1743161415.8869498]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575092.0012157]: 35 --- why do you like them
+[1743161416.9695265]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575093.1806266]: 36 --- what's your favourite book
+[1743161418.147692]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575094.1823132]: 37 --- who's the author
+[1743161419.1495216]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575095.3212337]: 38 --- rotate a quarter turn anticlockwise
+[1743161420.2890332]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575096.4179037]: 39 --- rotate back the other way
+[1743161421.3846133]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575098.246307]: 40 --- move a random amount to the left, but less than a meters
+[1743161423.214428]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -855,94 +941,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575099.8252401]: 41 --- again but half the distance
+[1743161424.4684825]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575100.9213908]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575102.1209123]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743161434.7417269]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743161435.9417794]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575103.0245204]: 44 --- good job
+[1743161436.845677]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575107.0134106]: 45 --- build a house
+[1743161447.729386]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575108.0149283]: 46 --- push the red button
+[1743161449.2316232]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575109.4418695]: 47 --- pick up the battery and place it on the base plate
+[1743161450.6595478]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575110.8096404]: 48 --- what tool should i use to tighten screws
+[1743161452.0285463]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575112.4276183]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743161453.6507924]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575112.9305844]: Test #2
-[1740575113.3149023]: 0 --- say hello
+[1743161454.1538935]: Test #2
+[1743161454.5609384]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575114.4163673]: 1 --- do you like ice cream
+[1743161455.6605463]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575115.9381127]: 2 --- tell me the first law of robotics
+[1743161457.184032]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575117.7274923]: 3 --- can you find an apple
+[1743161458.976115]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -952,7 +1124,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575119.2628338]: 4 --- move a little left
+[1743161460.5146217]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -961,7 +1133,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575120.822606]: 5 --- move ten centimeters up
+[1743161462.0769813]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -970,7 +1142,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575122.5360496]: 6 --- go one hundred and fifty millimeters backwards
+[1743161463.7919571]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -979,7 +1151,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575124.2085671]: 7 --- move fifteen centimeters above the die
+[1743161465.4700208]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -988,31 +1160,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575125.2290657]: 8 --- look at the die
+[1743161466.4913092]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575126.2112458]: 9 --- pick up the die
+[1743161467.4748175]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575127.3172045]: 10 --- rotate 33 degrees clockwise
+[1743161468.5799766]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575128.4598134]: 11 --- tilt seventy degrees forwards
+[1743161469.7232745]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575130.4979603]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743161471.761889]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -1022,7 +1194,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575133.5516016]: 13 --- draw an ellipse with radii five and four centimeters
+[1743161474.8170314]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -1034,7 +1206,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575137.241608]: 14 --- move point five meters up and then draw a small pentagon
+[1743161478.5663767]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -1050,7 +1222,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575141.910677]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743161483.2411265]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -1065,7 +1237,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575144.1787713]: 16 --- five centimeters up and four down
+[1743161485.5103319]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -1077,7 +1249,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575145.7393684]: 17 --- move point five meters up
+[1743161487.072326]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -1086,7 +1258,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575147.3201058]: 18 --- point four centimeters down
+[1743161488.6554186]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -1095,13 +1267,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575148.8450148]: 19 --- what's the cube root of three rounded to two decimal points
+[1743161490.1801393]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575151.647084]: 20 --- draw a small circle
+[1743161492.9844196]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -1113,13 +1285,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575152.7098696]: 21 --- place held item on the table
+[1743161494.047433]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575154.2656028]: 22 --- move a little backwards
+[1743161495.604627]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -1128,7 +1300,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575155.8869486]: 23 --- a bit back the other way
+[1743161497.2267637]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -1137,7 +1309,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575159.164676]: 24 --- move a little forwards and then to the left
+[1743161500.568196]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -1160,7 +1332,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575161.355425]: 25 --- wait five seconds, then move a little up
+[1743161502.7588778]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -1171,17 +1343,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575165.4233625]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743161506.7509298]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -1191,7 +1363,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575169.196159]: 27 --- if you see a screw, move ten centimeters above item
+[1743161510.532196]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -1206,7 +1378,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575170.8747795]: 28 --- move 1.5 centimeters up
+[1743161512.2132173]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -1215,7 +1387,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575172.5517237]: 29 --- go 3.1 meters to the left
+[1743161513.8928323]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -1224,7 +1396,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575176.141221]: 30 --- move a little to the left and then right, repeat three times
+[1743161517.4945517]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -1248,7 +1420,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575177.6602829]: 31 --- a little forwards
+[1743161519.0186808]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -1257,7 +1429,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575179.1590943]: 32 --- a bit more
+[1743161520.5639834]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -1266,49 +1438,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575180.0818732]: 33 --- say cheese
+[1743161521.4892633]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575181.1860366]: 34 --- do you like puppies
+[1743161522.5946743]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575182.2663102]: 35 --- why do you like them
+[1743161523.676392]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575183.4445786]: 36 --- what's your favourite book
+[1743161524.8542445]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575184.4448779]: 37 --- who's the author
+[1743161525.8563719]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575185.5834317]: 38 --- rotate a quarter turn anticlockwise
+[1743161526.9956567]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575186.6791568]: 39 --- rotate back the other way
+[1743161528.0896177]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575188.508179]: 40 --- move a random amount to the left, but less than a meters
+[1743161529.919892]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -1317,94 +1489,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575190.08829]: 41 --- again but half the distance
+[1743161531.1758897]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575191.1846306]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575192.3844352]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743161541.5117517]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743161542.7346132]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575193.285286]: 44 --- good job
+[1743161543.6750333]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575197.2803533]: 45 --- build a house
+[1743161554.6873221]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575198.2811494]: 46 --- push the red button
+[1743161556.1928174]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575199.7069392]: 47 --- pick up the battery and place it on the base plate
+[1743161557.6256359]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575201.0761764]: 48 --- what tool should i use to tighten screws
+[1743161558.9990668]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575202.693622]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743161560.6255136]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575203.196722]: Test #3
-[1740575203.581002]: 0 --- say hello
+[1743161561.1285062]: Test #3
+[1743161561.5144618]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575204.683536]: 1 --- do you like ice cream
+[1743161562.6195025]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575206.2055964]: 2 --- tell me the first law of robotics
+[1743161564.145827]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575207.995637]: 3 --- can you find an apple
+[1743161565.940221]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -1414,7 +1672,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575209.5318162]: 4 --- move a little left
+[1743161567.4811113]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -1423,7 +1681,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575211.0915954]: 5 --- move ten centimeters up
+[1743161569.0429063]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -1432,7 +1690,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575212.805169]: 6 --- go one hundred and fifty millimeters backwards
+[1743161570.7603188]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -1441,7 +1699,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575214.4815004]: 7 --- move fifteen centimeters above the die
+[1743161572.4396596]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -1450,31 +1708,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575215.502208]: 8 --- look at the die
+[1743161573.4596393]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575216.4838216]: 9 --- pick up the die
+[1743161574.4416595]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575217.5889652]: 10 --- rotate 33 degrees clockwise
+[1743161575.5461097]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575218.7319973]: 11 --- tilt seventy degrees forwards
+[1743161576.686842]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575220.7715192]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743161578.7273371]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -1484,7 +1742,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575223.8251605]: 13 --- draw an ellipse with radii five and four centimeters
+[1743161581.784128]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -1496,7 +1754,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575227.518372]: 14 --- move point five meters up and then draw a small pentagon
+[1743161585.4803953]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -1512,7 +1770,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575232.1939754]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743161590.1644838]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -1527,7 +1785,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575234.4615955]: 16 --- five centimeters up and four down
+[1743161592.4383178]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -1539,7 +1797,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575236.0229394]: 17 --- move point five meters up
+[1743161594.002691]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -1548,7 +1806,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575237.6038888]: 18 --- point four centimeters down
+[1743161595.5871267]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -1557,13 +1815,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575239.1271222]: 19 --- what's the cube root of three rounded to two decimal points
+[1743161597.1120665]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575241.9295158]: 20 --- draw a small circle
+[1743161599.918548]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -1575,13 +1833,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575242.99478]: 21 --- place held item on the table
+[1743161600.9826677]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575244.5516372]: 22 --- move a little backwards
+[1743161602.5402458]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -1590,7 +1848,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575246.1725175]: 23 --- a bit back the other way
+[1743161604.1618721]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -1599,7 +1857,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575249.453235]: 24 --- move a little forwards and then to the left
+[1743161607.4471571]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -1622,7 +1880,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575251.6457157]: 25 --- wait five seconds, then move a little up
+[1743161609.639171]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -1633,17 +1891,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575255.716618]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743161613.6398604]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -1653,7 +1911,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575259.493091]: 27 --- if you see a screw, move ten centimeters above item
+[1743161617.4201605]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -1668,7 +1926,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575261.1712315]: 28 --- move 1.5 centimeters up
+[1743161619.1015573]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -1677,7 +1935,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575262.8494334]: 29 --- go 3.1 meters to the left
+[1743161620.7813706]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -1686,7 +1944,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575266.4513412]: 30 --- move a little to the left and then right, repeat three times
+[1743161624.379955]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -1710,7 +1968,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575267.9716825]: 31 --- a little forwards
+[1743161625.9025302]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -1719,7 +1977,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575269.4706855]: 32 --- a bit more
+[1743161627.4011595]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -1728,49 +1986,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575270.397381]: 33 --- say cheese
+[1743161628.3245187]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575271.5010738]: 34 --- do you like puppies
+[1743161629.4291368]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575272.5826724]: 35 --- why do you like them
+[1743161630.5093045]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575273.7613893]: 36 --- what's your favourite book
+[1743161631.6868274]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575274.7624304]: 37 --- who's the author
+[1743161632.6870475]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575275.9011664]: 38 --- rotate a quarter turn anticlockwise
+[1743161633.8246763]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575276.997102]: 39 --- rotate back the other way
+[1743161634.9199154]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575278.826379]: 40 --- move a random amount to the left, but less than a meters
+[1743161636.7502816]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -1779,94 +2037,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575280.4082258]: 41 --- again but half the distance
+[1743161638.0045745]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575281.5020034]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575282.7027411]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743161648.2945204]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743161649.4978707]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575283.6072621]: 44 --- good job
+[1743161650.4026523]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575287.604328]: 45 --- build a house
+[1743161661.2404587]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575288.604019]: 46 --- push the red button
+[1743161662.7450058]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575290.0318418]: 47 --- pick up the battery and place it on the base plate
+[1743161664.1765497]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575291.398266]: 48 --- what tool should i use to tighten screws
+[1743161665.5501912]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575293.019205]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743161667.1727884]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575293.5206106]: Test #4
-[1740575293.9053462]: 0 --- say hello
+[1743161667.6759067]: Test #4
+[1743161668.0629673]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575295.00714]: 1 --- do you like ice cream
+[1743161669.1656938]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575296.5291202]: 2 --- tell me the first law of robotics
+[1743161670.6899564]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575298.319524]: 3 --- can you find an apple
+[1743161672.4844725]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -1876,7 +2220,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575299.856519]: 4 --- move a little left
+[1743161674.024208]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -1885,7 +2229,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575301.4172635]: 5 --- move ten centimeters up
+[1743161675.5855958]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -1894,7 +2238,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575303.1327038]: 6 --- go one hundred and fifty millimeters backwards
+[1743161677.3021138]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -1903,7 +2247,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575304.8082128]: 7 --- move fifteen centimeters above the die
+[1743161678.9810321]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -1912,31 +2256,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575305.8284268]: 8 --- look at the die
+[1743161680.0019352]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575306.8099253]: 9 --- pick up the die
+[1743161680.9858537]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575307.915122]: 10 --- rotate 33 degrees clockwise
+[1743161682.0902083]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575309.0569394]: 11 --- tilt seventy degrees forwards
+[1743161683.234079]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575311.0970595]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743161685.2734182]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -1946,7 +2290,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575314.152588]: 13 --- draw an ellipse with radii five and four centimeters
+[1743161688.3298554]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -1958,7 +2302,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575317.8442001]: 14 --- move point five meters up and then draw a small pentagon
+[1743161692.0261228]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -1974,7 +2318,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575322.519781]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743161696.7084813]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -1989,7 +2333,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575324.7889812]: 16 --- five centimeters up and four down
+[1743161698.9831657]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -2001,7 +2345,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575326.3514414]: 17 --- move point five meters up
+[1743161700.551866]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -2010,7 +2354,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575327.9361937]: 18 --- point four centimeters down
+[1743161702.1360893]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -2019,13 +2363,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575329.4594204]: 19 --- what's the cube root of three rounded to two decimal points
+[1743161703.6619668]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575332.2632768]: 20 --- draw a small circle
+[1743161706.468784]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -2037,13 +2381,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575333.3297718]: 21 --- place held item on the table
+[1743161707.5343003]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575334.8869143]: 22 --- move a little backwards
+[1743161709.0921845]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -2052,7 +2396,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575336.5087621]: 23 --- a bit back the other way
+[1743161710.7129447]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -2061,7 +2405,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575339.79007]: 24 --- move a little forwards and then to the left
+[1743161714.0030048]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -2084,7 +2428,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575341.9782512]: 25 --- wait five seconds, then move a little up
+[1743161716.2000237]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -2095,17 +2439,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575346.0477333]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743161720.1995153]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -2115,7 +2459,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575349.8222384]: 27 --- if you see a screw, move ten centimeters above item
+[1743161723.9842293]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -2130,7 +2474,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575351.5009127]: 28 --- move 1.5 centimeters up
+[1743161725.6655343]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -2139,7 +2483,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575353.1781044]: 29 --- go 3.1 meters to the left
+[1743161727.3475006]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -2148,7 +2492,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575356.7715502]: 30 --- move a little to the left and then right, repeat three times
+[1743161730.9479053]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -2172,7 +2516,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575358.291153]: 31 --- a little forwards
+[1743161732.470489]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -2181,7 +2525,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575359.7882679]: 32 --- a bit more
+[1743161733.9710464]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -2190,49 +2534,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575360.7139976]: 33 --- say cheese
+[1743161734.8969233]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575361.8190837]: 34 --- do you like puppies
+[1743161736.0016139]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575362.9006495]: 35 --- why do you like them
+[1743161737.084133]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575364.0796068]: 36 --- what's your favourite book
+[1743161738.264037]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575365.079846]: 37 --- who's the author
+[1743161739.2654517]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575366.219624]: 38 --- rotate a quarter turn anticlockwise
+[1743161740.404983]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575367.3138137]: 39 --- rotate back the other way
+[1743161741.5026321]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575369.143847]: 40 --- move a random amount to the left, but less than a meters
+[1743161743.3326275]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -2241,94 +2585,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575370.724573]: 41 --- again but half the distance
+[1743161744.5874116]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575371.8218186]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575373.0205166]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743161754.8784485]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743161756.0813594]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575373.9243357]: 44 --- good job
+[1743161756.9869974]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575377.916022]: 45 --- build a house
+[1743161767.8276267]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575378.9169064]: 46 --- push the red button
+[1743161769.3320801]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575380.3444922]: 47 --- pick up the battery and place it on the base plate
+[1743161770.7630317]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575381.7123814]: 48 --- what tool should i use to tighten screws
+[1743161772.135631]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575383.3324344]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743161773.759136]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575383.8356113]: Test #5
-[1740575384.2210345]: 0 --- say hello
+[1743161774.262167]: Test #5
+[1743161774.6486633]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575385.3239753]: 1 --- do you like ice cream
+[1743161775.7537189]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575386.8468924]: 2 --- tell me the first law of robotics
+[1743161777.279648]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575388.6371386]: 3 --- can you find an apple
+[1743161779.073983]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -2338,7 +2768,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575390.173399]: 4 --- move a little left
+[1743161780.614955]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -2347,7 +2777,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575391.7345345]: 5 --- move ten centimeters up
+[1743161782.1779304]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -2356,7 +2786,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575393.4493775]: 6 --- go one hundred and fifty millimeters backwards
+[1743161783.8955066]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -2365,7 +2795,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575395.1252878]: 7 --- move fifteen centimeters above the die
+[1743161785.5758412]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -2374,31 +2804,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575396.14637]: 8 --- look at the die
+[1743161786.5973299]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575397.1287255]: 9 --- pick up the die
+[1743161787.5801175]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575398.2335975]: 10 --- rotate 33 degrees clockwise
+[1743161788.6847289]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575399.3761265]: 11 --- tilt seventy degrees forwards
+[1743161789.828656]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575401.4122007]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743161791.869298]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -2408,7 +2838,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575404.4666722]: 13 --- draw an ellipse with radii five and four centimeters
+[1743161794.9278343]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -2420,7 +2850,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575408.1605992]: 14 --- move point five meters up and then draw a small pentagon
+[1743161798.6295526]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -2436,7 +2866,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575412.8360918]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743161803.311783]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -2451,7 +2881,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575415.1038651]: 16 --- five centimeters up and four down
+[1743161805.5860984]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -2463,7 +2893,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575416.6655815]: 17 --- move point five meters up
+[1743161807.1509566]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -2472,7 +2902,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575418.2480674]: 18 --- point four centimeters down
+[1743161808.736767]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -2481,13 +2911,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575419.7727687]: 19 --- what's the cube root of three rounded to two decimal points
+[1743161810.2636232]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575422.5761545]: 20 --- draw a small circle
+[1743161813.0725734]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -2499,13 +2929,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575423.6393068]: 21 --- place held item on the table
+[1743161814.1393638]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575425.1949878]: 22 --- move a little backwards
+[1743161815.6994581]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -2514,7 +2944,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575426.8177593]: 23 --- a bit back the other way
+[1743161817.3247495]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -2523,7 +2953,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575430.0989501]: 24 --- move a little forwards and then to the left
+[1743161820.616077]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -2546,7 +2976,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575432.2908134]: 25 --- wait five seconds, then move a little up
+[1743161822.813405]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -2557,17 +2987,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575436.3614473]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743161826.8148243]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -2577,7 +3007,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575440.1361055]: 27 --- if you see a screw, move ten centimeters above item
+[1743161830.596732]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -2592,7 +3022,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575441.8153307]: 28 --- move 1.5 centimeters up
+[1743161832.2767246]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -2601,7 +3031,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575443.4937062]: 29 --- go 3.1 meters to the left
+[1743161833.9576688]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -2610,7 +3040,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575447.087143]: 30 --- move a little to the left and then right, repeat three times
+[1743161837.5576422]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -2634,7 +3064,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575448.6071184]: 31 --- a little forwards
+[1743161839.080142]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -2643,7 +3073,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575450.1062129]: 32 --- a bit more
+[1743161840.5816922]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -2652,49 +3082,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575451.0298135]: 33 --- say cheese
+[1743161841.5083852]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575452.1349227]: 34 --- do you like puppies
+[1743161842.615706]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575453.215625]: 35 --- why do you like them
+[1743161843.7000837]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575454.3937783]: 36 --- what's your favourite book
+[1743161844.880401]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575455.3935196]: 37 --- who's the author
+[1743161845.8805592]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575456.5335534]: 38 --- rotate a quarter turn anticlockwise
+[1743161847.020523]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575457.629177]: 39 --- rotate back the other way
+[1743161848.1188662]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575459.459297]: 40 --- move a random amount to the left, but less than a meters
+[1743161849.94932]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -2703,94 +3133,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575461.0403068]: 41 --- again but half the distance
+[1743161851.2059183]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575462.1372554]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575463.337725]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743161861.5143492]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743161862.7179663]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575464.2418134]: 44 --- good job
+[1743161863.6239603]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575468.2380192]: 45 --- build a house
+[1743161874.4727962]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575469.23892]: 46 --- push the red button
+[1743161875.9740644]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575470.6662416]: 47 --- pick up the battery and place it on the base plate
+[1743161877.4043944]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575472.034434]: 48 --- what tool should i use to tighten screws
+[1743161878.777944]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575473.6533525]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743161880.403712]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575474.1565197]: Test #6
-[1740575474.5413957]: 0 --- say hello
+[1743161880.9065516]: Test #6
+[1743161881.2934334]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575475.644922]: 1 --- do you like ice cream
+[1743161882.39853]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575477.1683488]: 2 --- tell me the first law of robotics
+[1743161883.9234529]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575478.9591463]: 3 --- can you find an apple
+[1743161885.7187903]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -2800,7 +3316,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575480.4983723]: 4 --- move a little left
+[1743161887.261178]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -2809,7 +3325,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575482.0599403]: 5 --- move ten centimeters up
+[1743161888.8268042]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -2818,7 +3334,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575483.7759073]: 6 --- go one hundred and fifty millimeters backwards
+[1743161890.543687]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -2827,7 +3343,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575485.4534452]: 7 --- move fifteen centimeters above the die
+[1743161892.2252662]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -2836,31 +3352,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575486.4744592]: 8 --- look at the die
+[1743161893.2471018]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575487.4554174]: 9 --- pick up the die
+[1743161894.231145]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575488.5612042]: 10 --- rotate 33 degrees clockwise
+[1743161895.3363652]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575489.7039526]: 11 --- tilt seventy degrees forwards
+[1743161896.4805171]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575491.7437878]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743161898.524376]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -2870,7 +3386,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575494.7992392]: 13 --- draw an ellipse with radii five and four centimeters
+[1743161901.586356]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -2882,7 +3398,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575498.4998887]: 14 --- move point five meters up and then draw a small pentagon
+[1743161905.2894049]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -2898,7 +3414,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575503.1748242]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743161909.972511]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -2913,7 +3429,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575505.44491]: 16 --- five centimeters up and four down
+[1743161912.2444847]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -2925,7 +3441,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575507.0070636]: 17 --- move point five meters up
+[1743161913.809827]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -2934,7 +3450,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575508.5923724]: 18 --- point four centimeters down
+[1743161915.395546]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -2943,13 +3459,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575510.116467]: 19 --- what's the cube root of three rounded to two decimal points
+[1743161916.9234498]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575512.9199586]: 20 --- draw a small circle
+[1743161919.7309797]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -2961,13 +3477,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575513.9846578]: 21 --- place held item on the table
+[1743161920.7972984]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575515.5404801]: 22 --- move a little backwards
+[1743161922.3563006]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -2976,7 +3492,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575517.1629424]: 23 --- a bit back the other way
+[1743161923.9804733]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -2985,7 +3501,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575520.4440205]: 24 --- move a little forwards and then to the left
+[1743161927.2707036]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -3008,7 +3524,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575522.639876]: 25 --- wait five seconds, then move a little up
+[1743161929.467667]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -3019,17 +3535,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575526.7111504]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743161933.4668949]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -3039,7 +3555,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575530.4860654]: 27 --- if you see a screw, move ten centimeters above item
+[1743161937.2505202]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -3054,7 +3570,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575532.1657045]: 28 --- move 1.5 centimeters up
+[1743161938.9308994]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -3063,7 +3579,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575533.8448381]: 29 --- go 3.1 meters to the left
+[1743161940.6114936]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -3072,7 +3588,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575537.444876]: 30 --- move a little to the left and then right, repeat three times
+[1743161944.2104378]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -3096,7 +3612,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575538.9649022]: 31 --- a little forwards
+[1743161945.7316]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -3105,7 +3621,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575540.4636164]: 32 --- a bit more
+[1743161947.232557]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -3114,49 +3630,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575541.3900304]: 33 --- say cheese
+[1743161948.1587932]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575542.494555]: 34 --- do you like puppies
+[1743161949.2653866]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575543.5762591]: 35 --- why do you like them
+[1743161950.348386]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575544.756513]: 36 --- what's your favourite book
+[1743161951.527215]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575545.7582006]: 37 --- who's the author
+[1743161952.5280313]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575546.8991086]: 38 --- rotate a quarter turn anticlockwise
+[1743161953.667242]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575547.994857]: 39 --- rotate back the other way
+[1743161954.7636776]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575549.8252375]: 40 --- move a random amount to the left, but less than a meters
+[1743161956.5930405]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -3165,94 +3681,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575551.406653]: 41 --- again but half the distance
+[1743161957.849198]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575552.5029366]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575553.7029974]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743161968.147846]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743161969.3514595]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575554.6072206]: 44 --- good job
+[1743161970.2573366]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575558.6068354]: 45 --- build a house
+[1743161981.1007302]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575559.6073692]: 46 --- push the red button
+[1743161982.604454]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575561.0356712]: 47 --- pick up the battery and place it on the base plate
+[1743161984.0355525]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575562.4036782]: 48 --- what tool should i use to tighten screws
+[1743161985.4089448]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575564.0232089]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743161987.0332923]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575564.5262904]: Test #7
-[1740575564.9106104]: 0 --- say hello
+[1743161987.5363584]: Test #7
+[1743161987.9228966]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575566.0128024]: 1 --- do you like ice cream
+[1743161989.0285974]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575567.533148]: 2 --- tell me the first law of robotics
+[1743161990.5539494]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575569.3246608]: 3 --- can you find an apple
+[1743161992.3481755]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -3262,7 +3864,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575570.8622043]: 4 --- move a little left
+[1743161993.8891327]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -3271,7 +3873,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575572.4228199]: 5 --- move ten centimeters up
+[1743161995.4534612]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -3280,7 +3882,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575574.1374276]: 6 --- go one hundred and fifty millimeters backwards
+[1743161997.1699252]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -3289,7 +3891,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575575.8136923]: 7 --- move fifteen centimeters above the die
+[1743161998.8495085]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -3298,31 +3900,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575576.8334503]: 8 --- look at the die
+[1743161999.8712351]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575577.814892]: 9 --- pick up the die
+[1743162000.8542051]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575578.9206614]: 10 --- rotate 33 degrees clockwise
+[1743162001.9589324]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575580.062954]: 11 --- tilt seventy degrees forwards
+[1743162003.1021237]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575582.103191]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743162005.1420815]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -3332,7 +3934,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575585.1592226]: 13 --- draw an ellipse with radii five and four centimeters
+[1743162008.203003]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -3344,7 +3946,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575588.8525767]: 14 --- move point five meters up and then draw a small pentagon
+[1743162011.902744]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -3360,7 +3962,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575593.5325704]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743162016.5847561]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -3375,7 +3977,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575595.8035023]: 16 --- five centimeters up and four down
+[1743162018.8592272]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -3387,7 +3989,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575597.3646462]: 17 --- move point five meters up
+[1743162020.4230723]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -3396,7 +3998,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575598.9481907]: 18 --- point four centimeters down
+[1743162022.0063322]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -3405,13 +4007,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575600.4726446]: 19 --- what's the cube root of three rounded to two decimal points
+[1743162023.5334566]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575603.2771153]: 20 --- draw a small circle
+[1743162026.3422208]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -3423,13 +4025,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575604.342172]: 21 --- place held item on the table
+[1743162027.4086695]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575605.8993914]: 22 --- move a little backwards
+[1743162028.9678562]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -3438,7 +4040,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575607.520114]: 23 --- a bit back the other way
+[1743162030.592633]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -3447,7 +4049,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575610.803199]: 24 --- move a little forwards and then to the left
+[1743162033.8822806]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -3470,7 +4072,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575612.992539]: 25 --- wait five seconds, then move a little up
+[1743162036.0781136]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -3481,17 +4083,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575617.0644426]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743162040.0764976]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -3501,7 +4103,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575620.8387284]: 27 --- if you see a screw, move ten centimeters above item
+[1743162043.8585308]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -3516,7 +4118,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575622.5176635]: 28 --- move 1.5 centimeters up
+[1743162045.5389326]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -3525,7 +4127,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575624.196063]: 29 --- go 3.1 meters to the left
+[1743162047.2192104]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -3534,7 +4136,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575627.790554]: 30 --- move a little to the left and then right, repeat three times
+[1743162050.8199542]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -3558,7 +4160,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575629.3104827]: 31 --- a little forwards
+[1743162052.3419485]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -3567,7 +4169,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575630.8086772]: 32 --- a bit more
+[1743162053.8436959]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -3576,49 +4178,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575631.7345135]: 33 --- say cheese
+[1743162054.7695446]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575632.8395956]: 34 --- do you like puppies
+[1743162055.8764367]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575633.9196155]: 35 --- why do you like them
+[1743162056.9593725]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575635.0978057]: 36 --- what's your favourite book
+[1743162058.1407347]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575636.097743]: 37 --- who's the author
+[1743162059.143096]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575637.2367895]: 38 --- rotate a quarter turn anticlockwise
+[1743162060.2839844]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575638.3329241]: 39 --- rotate back the other way
+[1743162061.3808715]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575640.1650355]: 40 --- move a random amount to the left, but less than a meters
+[1743162063.2117534]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -3627,94 +4229,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575641.7456958]: 41 --- again but half the distance
+[1743162064.46693]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575642.8416612]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575644.0413249]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743162074.7701063]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743162075.973726]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575644.9429994]: 44 --- good job
+[1743162076.878837]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575648.9414263]: 45 --- build a house
+[1743162087.7223532]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575649.9427722]: 46 --- push the red button
+[1743162089.2263625]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575651.370233]: 47 --- pick up the battery and place it on the base plate
+[1743162090.657533]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575652.7377226]: 48 --- what tool should i use to tighten screws
+[1743162092.03075]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575654.3590624]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743162093.6543317]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575654.8621843]: Test #8
-[1740575655.2474096]: 0 --- say hello
+[1743162094.1574304]: Test #8
+[1743162094.5439327]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575656.3490586]: 1 --- do you like ice cream
+[1743162095.6493845]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575657.8721614]: 2 --- tell me the first law of robotics
+[1743162097.1752079]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575659.663251]: 3 --- can you find an apple
+[1743162098.9705684]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -3724,7 +4412,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575661.2004323]: 4 --- move a little left
+[1743162100.5116684]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -3733,7 +4421,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575662.761672]: 5 --- move ten centimeters up
+[1743162102.0775661]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -3742,7 +4430,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575664.4778433]: 6 --- go one hundred and fifty millimeters backwards
+[1743162103.795741]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -3751,7 +4439,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575666.1558764]: 7 --- move fifteen centimeters above the die
+[1743162105.4760137]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -3760,31 +4448,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575667.1755333]: 8 --- look at the die
+[1743162106.497383]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575668.1565218]: 9 --- pick up the die
+[1743162107.480705]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575669.261739]: 10 --- rotate 33 degrees clockwise
+[1743162108.5861301]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575670.4040837]: 11 --- tilt seventy degrees forwards
+[1743162109.730508]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575672.443267]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743162111.773889]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -3794,7 +4482,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575675.5002055]: 13 --- draw an ellipse with radii five and four centimeters
+[1743162114.8365943]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -3806,7 +4494,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575679.1934936]: 14 --- move point five meters up and then draw a small pentagon
+[1743162118.541392]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -3822,7 +4510,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575683.8723214]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743162123.2264533]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -3837,7 +4525,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575686.1394722]: 16 --- five centimeters up and four down
+[1743162125.5013585]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -3849,7 +4537,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575687.7014866]: 17 --- move point five meters up
+[1743162127.0663457]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -3858,7 +4546,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575689.2842824]: 18 --- point four centimeters down
+[1743162128.6511302]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -3867,13 +4555,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575690.8080945]: 19 --- what's the cube root of three rounded to two decimal points
+[1743162130.1790054]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575693.6122634]: 20 --- draw a small circle
+[1743162132.9879699]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -3885,13 +4573,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575694.6769087]: 21 --- place held item on the table
+[1743162134.0552497]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575696.233612]: 22 --- move a little backwards
+[1743162135.616484]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -3900,7 +4588,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575697.8559425]: 23 --- a bit back the other way
+[1743162137.2403889]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -3909,7 +4597,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575701.137216]: 24 --- move a little forwards and then to the left
+[1743162140.530188]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -3932,7 +4620,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575703.3266733]: 25 --- wait five seconds, then move a little up
+[1743162142.726484]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -3943,17 +4631,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575707.4001653]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743162146.7289634]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -3963,7 +4651,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575711.1792922]: 27 --- if you see a screw, move ten centimeters above item
+[1743162150.513625]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -3978,7 +4666,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575712.8609304]: 28 --- move 1.5 centimeters up
+[1743162152.1948287]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -3987,7 +4675,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575714.5422413]: 29 --- go 3.1 meters to the left
+[1743162153.8757615]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -3996,7 +4684,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575718.1455317]: 30 --- move a little to the left and then right, repeat three times
+[1743162157.4757707]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -4020,7 +4708,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575719.6703036]: 31 --- a little forwards
+[1743162158.9981973]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -4029,7 +4717,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575721.1702757]: 32 --- a bit more
+[1743162160.499624]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -4038,49 +4726,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575722.095674]: 33 --- say cheese
+[1743162161.4249148]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575723.2007058]: 34 --- do you like puppies
+[1743162162.5330052]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575724.2830544]: 35 --- why do you like them
+[1743162163.617069]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575725.459295]: 36 --- what's your favourite book
+[1743162164.797605]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575726.458692]: 37 --- who's the author
+[1743162165.7992263]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575727.6000097]: 38 --- rotate a quarter turn anticlockwise
+[1743162166.9383667]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575728.6970978]: 39 --- rotate back the other way
+[1743162168.034789]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575730.527646]: 40 --- move a random amount to the left, but less than a meters
+[1743162169.8656604]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -4089,94 +4777,180 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575732.1087403]: 41 --- again but half the distance
+[1743162171.122245]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575733.204612]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575734.4042299]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743162181.4239948]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743162182.626869]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575735.3084693]: 44 --- good job
+[1743162183.5328853]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575739.3027382]: 45 --- build a house
+[1743162194.371609]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575740.30395]: 46 --- push the red button
+[1743162195.8756487]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575741.7315264]: 47 --- pick up the battery and place it on the base plate
+[1743162197.3063]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575743.0995405]: 48 --- what tool should i use to tighten screws
+[1743162198.679351]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575744.7188783]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743162200.3034945]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575745.2219994]: Test #9
-[1740575745.6063626]: 0 --- say hello
+[1743162200.8066022]: Test #9
+[1743162201.193061]: 0 --- say hello
 
 def say_hello(robot):
     robot.say('hello')
 
 say_hello(robot)
-[1740575746.7091491]: 1 --- do you like ice cream
+[1743162202.2994215]: 1 --- do you like ice cream
 
 def do_you_like_ice_cream(robot):
     robot.say('I like ice cream')
 
 do_you_like_ice_cream(robot)
-[1740575748.2331908]: 2 --- tell me the first law of robotics
+[1743162203.8242302]: 2 --- tell me the first law of robotics
 
 def tell_me_the_first_law_of_robotics(robot):
     robot.say('A robot may not injure a human being or, through inaction, allow a human being to come to harm.')
 
 tell_me_the_first_law_of_robotics(robot)
-[1740575750.0250044]: 3 --- can you find an apple
+[1743162205.6179264]: 3 --- can you find an apple
 
 def can_you_find_an_apple(robot):
     (apple_pose, apple_found) = robot.find('apple')
@@ -4186,7 +4960,7 @@ def can_you_find_an_apple(robot):
         robot.say("I couldn't find an apple!")
 
 can_you_find_an_apple(robot)
-[1740575751.5626292]: 4 --- move a little left
+[1743162207.1586401]: 4 --- move a little left
 
 def move_a_little_left(robot):
     waypoint = robot.get_pose()
@@ -4195,7 +4969,7 @@ def move_a_little_left(robot):
     robot.go()
 
 move_a_little_left(robot)
-[1740575753.1221156]: 5 --- move ten centimeters up
+[1743162208.7225282]: 5 --- move ten centimeters up
 
 def move_ten_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -4204,7 +4978,7 @@ def move_ten_centimeters_up(robot):
     robot.go()
 
 move_ten_centimeters_up(robot)
-[1740575754.8377206]: 6 --- go one hundred and fifty millimeters backwards
+[1743162210.4391046]: 6 --- go one hundred and fifty millimeters backwards
 
 def go_one_hundred_and_fifty_millimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -4213,7 +4987,7 @@ def go_one_hundred_and_fifty_millimeters_backwards(robot):
     robot.go()
 
 go_one_hundred_and_fifty_millimeters_backwards(robot)
-[1740575756.5140085]: 7 --- move fifteen centimeters above the die
+[1743162212.1192586]: 7 --- move fifteen centimeters above the die
 
 def move_fifteen_centimeters_above_the_die(robot):
     waypoint = robot.get_pose()
@@ -4222,31 +4996,31 @@ def move_fifteen_centimeters_above_the_die(robot):
     robot.go()
 
 move_fifteen_centimeters_above_the_die(robot)
-[1740575757.5341706]: 8 --- look at the die
+[1743162213.1404247]: 8 --- look at the die
 
 def look_at_the_die(robot):
     look_at(robot, 'die')
 
 look_at_the_die(robot)
-[1740575758.5166128]: 9 --- pick up the die
+[1743162214.1230886]: 9 --- pick up the die
 
 def pick_up_the_die(robot):
     pick(robot, 'die')
 
 pick_up_the_die(robot)
-[1740575759.621353]: 10 --- rotate 33 degrees clockwise
+[1743162215.2289176]: 10 --- rotate 33 degrees clockwise
 
 def rotate_33_degrees_clockwise(robot):
     rotate(robot, 'z', 33)
 
 rotate_33_degrees_clockwise(robot)
-[1740575760.763937]: 11 --- tilt seventy degrees forwards
+[1743162216.37282]: 11 --- tilt seventy degrees forwards
 
 def tilt_seventy_degrees_forwards(robot):
     rotate(robot, 'x', 70)
 
 tilt_seventy_degrees_forwards(robot)
-[1740575762.8037992]: 12 --- go ten centimeters up and fifteen centimeters backwards
+[1743162218.4161003]: 12 --- go ten centimeters up and fifteen centimeters backwards
 
 def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     waypoint = robot.get_pose()
@@ -4256,7 +5030,7 @@ def go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot):
     robot.go()
 
 go_ten_centimeters_up_and_fifteen_centimeters_backwards(robot)
-[1740575765.8607059]: 13 --- draw an ellipse with radii five and four centimeters
+[1743162221.4771523]: 13 --- draw an ellipse with radii five and four centimeters
 
 def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     waypoints = 25
@@ -4268,7 +5042,7 @@ def draw_an_ellipse_with_radii_five_and_four_centimeters(robot):
     robot.go()
 
 draw_an_ellipse_with_radii_five_and_four_centimeters(robot)
-[1740575769.5547001]: 14 --- move point five meters up and then draw a small pentagon
+[1743162225.1792684]: 14 --- move point five meters up and then draw a small pentagon
 
 def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     waypoint = robot.get_pose()
@@ -4284,7 +5058,7 @@ def move_point_five_meters_up_and_then_draw_a_small_pentagon(robot):
     robot.go()
 
 move_point_five_meters_up_and_then_draw_a_small_pentagon(robot)
-[1740575774.2317972]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
+[1743162229.8619785]: 15 --- if you find a hammer and nails, say tools found, otherwise tell me what's missing
 
 def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot):
     (hammer_pose, hammer_found) = robot.find('hammer')
@@ -4299,7 +5073,7 @@ def if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missi
         robot.say('Nothing found!')
 
 if_you_find_a_hammer_and_nails_say_tools_found_otherwise_tell_me_whats_missing(robot)
-[1740575776.5022702]: 16 --- five centimeters up and four down
+[1743162232.1364348]: 16 --- five centimeters up and four down
 
 def five_centimeters_up_and_four_down(robot):
     waypoint = robot.get_pose()
@@ -4311,7 +5085,7 @@ def five_centimeters_up_and_four_down(robot):
     robot.go()
 
 five_centimeters_up_and_four_down(robot)
-[1740575778.064914]: 17 --- move point five meters up
+[1743162233.701159]: 17 --- move point five meters up
 
 def move_point_five_meters_up(robot):
     waypoint = robot.get_pose()
@@ -4320,7 +5094,7 @@ def move_point_five_meters_up(robot):
     robot.go()
 
 move_point_five_meters_up(robot)
-[1740575779.6453507]: 18 --- point four centimeters down
+[1743162235.286202]: 18 --- point four centimeters down
 
 def point_four_centimeters_down(robot):
     waypoint = robot.get_pose()
@@ -4329,13 +5103,13 @@ def point_four_centimeters_down(robot):
     robot.go()
 
 point_four_centimeters_down(robot)
-[1740575781.1709561]: 19 --- what's the cube root of three rounded to two decimal points
+[1743162236.8138227]: 19 --- what's the cube root of three rounded to two decimal points
 
 def whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot):
     robot.say(round(math.pow(3, (1 / 3)), 2))
 
 whats_the_cube_root_of_three_rounded_to_two_decimal_points(robot)
-[1740575783.9727883]: 20 --- draw a small circle
+[1743162239.6219804]: 20 --- draw a small circle
 
 def draw_a_small_circle(robot):
     waypoints = 25
@@ -4347,13 +5121,13 @@ def draw_a_small_circle(robot):
     robot.go()
 
 draw_a_small_circle(robot)
-[1740575785.0351973]: 21 --- place held item on the table
+[1743162240.6900246]: 21 --- place held item on the table
 
 def place_held_item_on_the_table(robot):
     place(robot, 'table')
 
 place_held_item_on_the_table(robot)
-[1740575786.59226]: 22 --- move a little backwards
+[1743162242.2488506]: 22 --- move a little backwards
 
 def move_a_little_backwards(robot):
     waypoint = robot.get_pose()
@@ -4362,7 +5136,7 @@ def move_a_little_backwards(robot):
     robot.go()
 
 move_a_little_backwards(robot)
-[1740575788.2135649]: 23 --- a bit back the other way
+[1743162243.8721018]: 23 --- a bit back the other way
 
 def a_bit_back_the_other_way(robot):
     waypoint = robot.get_pose()
@@ -4371,7 +5145,7 @@ def a_bit_back_the_other_way(robot):
     robot.go()
 
 a_bit_back_the_other_way(robot)
-[1740575791.496084]: 24 --- move a little forwards and then to the left
+[1743162247.162674]: 24 --- move a little forwards and then to the left
 
 def move_a_little_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -4394,7 +5168,7 @@ def move_a_little_forwards_and_then_to_the_left(robot):
     move_a_little_to_the_left(robot)
 
 move_a_little_forwards_and_then_to_the_left(robot)
-[1740575793.689608]: 25 --- wait five seconds, then move a little up
+[1743162249.359702]: 25 --- wait five seconds, then move a little up
 
 def move_a_little_up(robot):
     waypoint = robot.get_pose()
@@ -4405,17 +5179,17 @@ def move_a_little_up(robot):
 
 
 def wait_five_seconds_then_move_a_little_up(robot):
-    robot.wait(5)
+    time.sleep(5)
     move_a_little_up(robot)
 
 wait_five_seconds_then_move_a_little_up(robot)
-[1740575797.767541]: 26 --- if you can't find a banana, wait a little and try one more time
+[1743162253.3600397]: 26 --- if you can't find a banana, wait a little and try one more time
 
 def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
     (banana_pose, banana_found) = robot.find('banana')
     if (not banana_found):
         robot.say("Can't find the banana!")
-        robot.wait(1)
+        time.sleep(1)
         (banana_pose, banana_found) = robot.find('banana')
         if (not banana_found):
             robot.say("Can't find the banana!")
@@ -4425,7 +5199,7 @@ def if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot):
         robot.say('Found the banana!')
 
 if_you_cant_find_a_banana_wait_a_little_and_try_one_more_time(robot)
-[1740575801.5541856]: 27 --- if you see a screw, move ten centimeters above item
+[1743162257.1424072]: 27 --- if you see a screw, move ten centimeters above item
 
 def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
     (screw_pose, screw_found) = robot.find('screw')
@@ -4440,7 +5214,7 @@ def if_you_see_a_screw_move_ten_centimeters_above_item(robot):
         robot.go()
 
 if_you_see_a_screw_move_ten_centimeters_above_item(robot)
-[1740575803.2386026]: 28 --- move 1.5 centimeters up
+[1743162258.8228314]: 28 --- move 1.5 centimeters up
 
 def move_1_point_5_centimeters_up(robot):
     waypoint = robot.get_pose()
@@ -4449,7 +5223,7 @@ def move_1_point_5_centimeters_up(robot):
     robot.go()
 
 move_1_point_5_centimeters_up(robot)
-[1740575804.9202683]: 29 --- go 3.1 meters to the left
+[1743162260.5034118]: 29 --- go 3.1 meters to the left
 
 def go_3_point_1_meters_to_the_left(robot):
     waypoint = robot.get_pose()
@@ -4458,7 +5232,7 @@ def go_3_point_1_meters_to_the_left(robot):
     robot.go()
 
 go_3_point_1_meters_to_the_left(robot)
-[1740575808.5265312]: 30 --- move a little to the left and then right, repeat three times
+[1743162264.1019828]: 30 --- move a little to the left and then right, repeat three times
 
 def move_a_little_to_the_right(robot):
     waypoint = robot.get_pose()
@@ -4482,7 +5256,7 @@ def move_a_little_to_the_left_and_then_right_repeat_three_times(robot):
         move_a_little_to_the_right(robot)
 
 move_a_little_to_the_left_and_then_right_repeat_three_times(robot)
-[1740575810.0489957]: 31 --- a little forwards
+[1743162265.6241653]: 31 --- a little forwards
 
 def a_little_forwards(robot):
     waypoint = robot.get_pose()
@@ -4491,7 +5265,7 @@ def a_little_forwards(robot):
     robot.go()
 
 a_little_forwards(robot)
-[1740575811.552791]: 32 --- a bit more
+[1743162267.1249046]: 32 --- a bit more
 
 def a_bit_more(robot):
     waypoint = robot.get_pose()
@@ -4500,49 +5274,49 @@ def a_bit_more(robot):
     robot.go()
 
 a_bit_more(robot)
-[1740575812.479271]: 33 --- say cheese
+[1743162268.0516498]: 33 --- say cheese
 
 def say_cheese(robot):
     robot.say('cheese')
 
 say_cheese(robot)
-[1740575813.5837505]: 34 --- do you like puppies
+[1743162269.1603677]: 34 --- do you like puppies
 
 def do_you_like_puppies(robot):
     robot.say('I like puppies')
 
 do_you_like_puppies(robot)
-[1740575814.665359]: 35 --- why do you like them
+[1743162270.2443879]: 35 --- why do you like them
 
 def why_do_you_like_them(robot):
     robot.say('Why do you like them?')
 
 why_do_you_like_them(robot)
-[1740575815.8438547]: 36 --- what's your favourite book
+[1743162271.4256532]: 36 --- what's your favourite book
 
 def whats_your_favourite_book(robot):
     robot.say('My favourite book is The Hobbit')
 
 whats_your_favourite_book(robot)
-[1740575816.8440363]: 37 --- who's the author
+[1743162272.4273431]: 37 --- who's the author
 
 def whos_the_author(robot):
     robot.say('I am ')
 
 whos_the_author(robot)
-[1740575817.9828565]: 38 --- rotate a quarter turn anticlockwise
+[1743162273.569646]: 38 --- rotate a quarter turn anticlockwise
 
 def rotate_a_quarter_turn_anticlockwise(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_a_quarter_turn_anticlockwise(robot)
-[1740575819.0771446]: 39 --- rotate back the other way
+[1743162274.669318]: 39 --- rotate back the other way
 
 def rotate_back_the_other_way(robot):
     rotate(robot, 'z', (- 90))
 
 rotate_back_the_other_way(robot)
-[1740575820.9072046]: 40 --- move a random amount to the left, but less than a meters
+[1743162276.50202]: 40 --- move a random amount to the left, but less than a meter
 
 def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     waypoint = robot.get_pose()
@@ -4551,72 +5325,158 @@ def move_a_random_amount_to_the_left_but_less_than_a_meter(robot):
     robot.go()
 
 move_a_random_amount_to_the_left_but_less_than_a_meter(robot)
-[1740575822.4884322]: 41 --- again but half the distance
+[1743162277.7611158]: 41 --- again but half the maximum distance
 
-def again_but_half_the_distance(robot):
-    waypoint = robot.get_pose()
-    waypoint.position.x += 0.05
-    robot.add_waypoint(waypoint)
+def again_but_half_the_maximum_distance(robot):
+    robot.set_max_distance(0.5)
     robot.go()
 
-again_but_half_the_distance(robot)
-[1740575823.5850897]: 42 --- half that again
-
-def half_that_again(robot):
-    robot.set_speed(0.5)
-    robot.go()
-
-half_that_again(robot)
-[1740575824.786192]: 43 --- do you like to work with humans
+again_but_half_the_maximum_distance(robot)
+[1743162288.0621262]: 42 --- check if you can see the cover, try again up to three times, waiting 3 seconds in between
+[1743162289.2659078]: 43 --- do you like to work with humans
 
 def do_you_like_to_work_with_humans(robot):
     robot.say('I like to work with humans')
 
 do_you_like_to_work_with_humans(robot)
-[1740575825.6897805]: 44 --- good job
+[1743162290.1719801]: 44 --- good job
 
 def good_job(robot):
     robot.say('good job')
 
 good_job(robot)
-[1740575829.6907952]: 45 --- build a house
+[1743162301.014278]: 45 --- build a house
+
+def place_floor(robot):
+    place(robot, 'floor')
+
+
+
+def pick_up_floor(robot):
+    pick(robot, 'floor')
+
+
+
+def place_wall(robot):
+    place(robot, 'wall')
+
+
+
+def pick_up_wall(robot):
+    pick(robot, 'wall')
+
+
+
+def place_foundation(robot):
+    place(robot, 'foundation')
+
+
+
+def pick_up_foundation(robot):
+    pick(robot, 'foundation')
+
+
+
+def place_chimney(robot):
+    place(robot, 'chimney')
+
+
+
+def pick_up_chimney(robot):
+    pick(robot, 'chimney')
+
+
+
+def place_window(robot):
+    place(robot, 'window')
+
+
+
+def pick_up_window(robot):
+    pick(robot, 'window')
+
+
+
+def place_door(robot):
+    place(robot, 'door')
+
+
+
+def pick_up_door(robot):
+    pick(robot, 'door')
+
+
+
+def place_roof(robot):
+    place(robot, 'roof')
+
+
+
+def pick_up_roof(robot):
+    pick(robot, 'roof')
+
+
+
+def place_bricks(robot):
+    place(robot, 'bricks')
+
+
+
+def pick_up_bricks(robot):
+    pick(robot, 'bricks')
+
+
+
+def place_on_the_table(robot):
+    place(robot, 'table')
+
+
 
 def build_a_house(robot):
-    (small_bin_pose, small_bin_found) = robot.find('small bin')
-    if (not small_bin_found):
-        robot.say("Can't find the small bin!")
-    else:
-        waypoint = robot.get_pose()
-        waypoint.position.x = small_bin_pose.position.x
-        waypoint.position.y = (small_bin_pose.position.y - 0.05)
-        waypoint.position.z = (small_bin_pose.position.z + 0.1)
-        robot.add_waypoint(waypoint)
-        robot.go()
+    place_on_the_table(robot)
+    pick_up_bricks(robot)
+    place_bricks(robot)
+    pick_up_roof(robot)
+    place_roof(robot)
+    pick_up_door(robot)
+    place_door(robot)
+    pick_up_window(robot)
+    place_window(robot)
+    pick_up_chimney(robot)
+    place_chimney(robot)
+    pick_up_foundation(robot)
+    place_foundation(robot)
+    pick_up_wall(robot)
+    place_wall(robot)
+    pick_up_floor(robot)
+    place_floor(robot)
 
 build_a_house(robot)
-[1740575830.692691]: 46 --- push the red button
+[1743162302.5176342]: 46 --- push the red button
 
 def push_the_red_button(robot):
-    robot.push_button('red')
+    robot.set_digital_output(0, True)
+    time.sleep(0.5)
+    robot.set_digital_output(0, False)
 
 push_the_red_button(robot)
-[1740575832.1195846]: 47 --- pick up the battery and place it on the base plate
+[1743162303.9483964]: 47 --- pick up the battery and place it on the base plate
 
 def pick_up_the_battery_and_place_it_on_the_base_plate(robot):
     pick(robot, 'battery')
     place(robot, 'base plate')
 
 pick_up_the_battery_and_place_it_on_the_base_plate(robot)
-[1740575833.4846094]: 48 --- what tool should i use to tighten screws
+[1743162305.3222988]: 48 --- what tool should i use to tighten screws
 
 def what_tool_should_i_use_to_tighten_screws(robot):
     robot.say('I should use a screwdriver to tighten screws')
 
 what_tool_should_i_use_to_tighten_screws(robot)
-[1740575835.105864]: 49 --- what tool should i use to tighten bolts to correct torque
+[1743162306.943583]: 49 --- what tool should i use to tighten bolts to correct torque
 
 def what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot):
     robot.say('I would use a torque wrench to tighten bolts to the correct torque.')
 
 what_tool_should_i_use_to_tighten_bolts_to_correct_torque(robot)
-[1740575835.6088455]: Writing outputs!
+[1743162307.4466474]: Writing outputs!

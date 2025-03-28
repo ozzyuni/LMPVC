@@ -63,7 +63,7 @@ def plot_data_compact_overlay(mean, std):
     plt.bar(mean_index, mean, color = "#4CAF50", width=0.8)
     plt.bar(mean_index, std, width=0.8)
     plt.ylabel("latency (seconds)", fontsize = 13)
-    plt.text(29, 3.8, "std: mean = " + str(std_mean) + ", max = " + str(std_max), fontsize=13)
+    plt.text(1, 9, "std: mean = " + str(std_mean) + ", max = " + str(std_max), fontsize=13)
     plt.gcf().set_size_inches(10, 2)
     ax = plt.gca()
     ax.get_xaxis().set_visible(False)

@@ -38,9 +38,9 @@ what's your favourite book
 who's the author
 rotate a quarter turn anticlockwise
 rotate back the other way
-move a random amount to the left, but less than a meters
-again but half the distance
-half that again
+move a random amount to the left, but less than a meter
+again but half the maximum distance
+check if you can see the cover, try again up to three times, waiting 3 seconds in between
 do you like to work with humans
 good job
 build a house

@@ -1,6 +1,7 @@
 import math
 import numpy
-import robot
+import time
+import random
 
 # x is forward and back
 # y is right and left
