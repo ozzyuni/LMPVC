@@ -7,6 +7,7 @@ Language Model Program Voice Control (LMPVC) is a voice control framework for ro
 Videos about the complete assembly task and teaching of the associated Policies can be found in the links below:
 
 https://youtu.be/SqL07pA2dIA
+
 https://youtu.be/vfTIiDHBQ-4
 
 Other experiment materials are collected in the *experiments* directory.
