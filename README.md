@@ -13,7 +13,13 @@ https://youtu.be/vfTIiDHBQ-4
 Other experiment materials are collected in the *experiments* directory.
 
 ## lmpvc_ros2
-This is the main component of LMPVC, targeting ROS2. However, it is currently missing components MoveIt 2 and gripper control, because the hardware used for development only works in ROS1.
+This is the main component of LMPVC, targeting ROS2. However, it is currently missing components MoveIt 2 and gripper control, because the hardware used for development only works in ROS1. ROS2 versions exist, and will be integrated shortly.
+
+Currently, some of the modules only work with a symlink install, as certain configuration files are not properly installed in the setup.py/CMakeLists.txt. Work to fix this is ongoing.
+
+  ```
+  colcon build --symlink-install
+  ```
 
 ## lmpvc_ros1
-This workspace contains resources for operating robots which only have support for ROS1, primarily Franka Emika Panda. This is where robot control is currently done.
+This workspace contains resources for operating robots which only have support for ROS1, primarily Franka Emika Panda, for our experiments. This setup is relatively crude, and only works in a Devel environment.
