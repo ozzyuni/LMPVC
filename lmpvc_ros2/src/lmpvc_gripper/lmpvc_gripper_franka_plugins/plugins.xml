@@ -1,0 +1,5 @@
+<library path="franka_hand">
+  <class type="lmpvc_gripper_franka_plugins::FrankaHand" base_class_type="lmpvc_gripper::BasicGripper">
+    <description>Interfaces with the franka_ros2 action interface to control a Franka Hand gripper.</description>
+  </class>
+</library>

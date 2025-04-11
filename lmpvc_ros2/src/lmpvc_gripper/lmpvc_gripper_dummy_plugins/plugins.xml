@@ -1,0 +1,5 @@
+<library path="dummy_gripper">
+  <class type="lmpvc_gripper_dummy_plugins::DummyGripper" base_class_type="lmpvc_gripper::BasicGripper">
+    <description>This is an example plugin for testing without a functioning gripper.</description>
+  </class>
+</library>

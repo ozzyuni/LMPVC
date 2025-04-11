@@ -7,7 +7,7 @@ from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.executors import MultiThreadedExecutor
 
 from lmpvc_interfaces.srv import ControllerExec, ControllerGetPose, ControllerPlan, ControllerSetSpeed, ControllerStop, ControllerCloseHand, ControllerOpenHand
-from lmpvc_controller.ros2_web_bridge import ControllerROS2Bridge
+from lmpvc_controller_bridge.ros2_web_bridge import ControllerROS2Bridge
 
 class ControllerService(Node):
     

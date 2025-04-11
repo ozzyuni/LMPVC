@@ -4,7 +4,7 @@ import pickle
 import copy
 import argparse
 import geometry_msgs.msg
-from lmpvc_controller.comms import Server, Client
+from lmpvc_controller_bridge.comms import Server, Client
 
 def pose_to_list(pose):
     """Helper function to convert pose msg to a list representation for compatibility"""
