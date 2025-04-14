@@ -4,6 +4,7 @@ import ast
 import astunparse
 import inspect
 import json
+import os
 from pathlib import Path
 
 class PolicyBank:
@@ -12,7 +13,18 @@ class PolicyBank:
     """
     def __init__(self):
         """Read configuration and load the bank to memory"""
-        config_path = Path(__file__).with_name('core_config.json')
+        config_path = ""
+            
+        try:
+            from ament_index_python.packages import get_package_share_directory
+
+            config_path = os.path.join(
+                get_package_share_directory('lmpvc_core'),
+                'core_config.json'
+            )
+        except:
+            config_path = Path(__file__).with_name('core_config.json')
+
         config = {}
 
         with open(config_path, 'r') as config_file:

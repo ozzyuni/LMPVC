@@ -1,4 +1,4 @@
-def i_am_the_assembly_and_move_thirty_centimeters_above_it(robot):
+def find_the_assembly_and_move_thirty_centimeters_above_it(robot):
     (assembly_pose, assembly_found) = robot.find('assembly')
     if (not assembly_found):
         robot.say("Can't find the assembly!")
@@ -17,7 +17,7 @@ def check_bolts(robot):
     bolts_check(robot)
 
 def full_check(robot):
-    i_am_the_assembly_and_move_thirty_centimeters_above_it(robot)
+    find_the_assembly_and_move_thirty_centimeters_above_it(robot)
     check_parts(robot)
     check_bolts(robot)
 # HINT

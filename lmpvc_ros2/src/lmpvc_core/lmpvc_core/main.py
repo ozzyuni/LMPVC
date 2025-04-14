@@ -13,7 +13,7 @@ from lmpvc_core.voice_control import VoiceControl
 
 def main():
     """Acts as a ROS2 wrapper for voice_control, the main LMPVC application.
-        Sets up client nodes and the executor used to run them. This makes
+        Sets up node, messaging and the executor used to run everything. This makes
         it possible to pass multiple independent clients to the main
         application.
     """

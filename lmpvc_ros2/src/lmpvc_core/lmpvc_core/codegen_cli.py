@@ -5,6 +5,7 @@ import json
 import threading
 import time
 import rclpy
+import os
 
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
@@ -67,14 +68,35 @@ def create_context(prompt, code):
 
 def test(codegen):
     """Replicates the basic behaviour of voice_control.py for testing."""
-    config_path = Path(__file__).with_name('core_config.json')
+    config_path = ""
+            
+    try:
+        from ament_index_python.packages import get_package_share_directory
+
+        config_path = os.path.join(
+            get_package_share_directory('lmpvc_core'),
+            'core_config.json'
+        )
+    except:
+        config_path = Path(__file__).with_name('core_config.json')
     config = {}
 
     with open(config_path, 'r') as config_file:
         config = json.load(config_file)['voice_control']
 
+    # Get the preamble text containing hints for the generator
     preamble = ""
-    preamble_path = Path(__file__).with_name(config['preamble_file'])
+    preamble_path = ""
+    
+    try:
+        from ament_index_python.packages import get_package_share_directory
+
+        preamble_path = os.path.join(
+            get_package_share_directory('lmpvc_core'),
+            'preamble.py'
+        )
+    except:
+        preamble_path = Path(__file__).with_name('preamble.py')
 
     with open(preamble_path, 'r') as preamble_file:
         preamble = preamble_file.read()

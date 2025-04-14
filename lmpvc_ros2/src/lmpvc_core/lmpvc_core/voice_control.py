@@ -8,6 +8,7 @@ import json
 import threading
 import traceback
 import sys
+import os
 from pathlib import Path
 
 from lmpvc_core.policy_bank import PolicyBank
@@ -121,7 +122,17 @@ class VoiceControl:
             self.policy_bank = PolicyBank()
             self._exec_thread = ExecThread(self.robot, self.policy_bank)
 
-            config_path = Path(__file__).with_name('core_config.json')
+            config_path = ""
+            
+            try:
+                from ament_index_python.packages import get_package_share_directory
+
+                config_path = os.path.join(
+                    get_package_share_directory('lmpvc_core'),
+                    'core_config.json'
+                )
+            except:
+                config_path = Path(__file__).with_name('core_config.json')
             config = {}
 
             with open(config_path, 'r') as config_file:
@@ -131,7 +142,17 @@ class VoiceControl:
 
             # Get the preamble text containing hints for the generator
             self.preamble = ""
-            preamble_path = Path(__file__).with_name(config['preamble_file'])
+            preamble_path = ""
+            
+            try:
+                from ament_index_python.packages import get_package_share_directory
+
+                preamble_path = os.path.join(
+                    get_package_share_directory('lmpvc_core'),
+                    'preamble.py'
+                )
+            except:
+                preamble_path = Path(__file__).with_name('preamble.py')
 
             with open(preamble_path, 'r') as preamble_file:
                 self.preamble = preamble_file.read()

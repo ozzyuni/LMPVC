@@ -9,6 +9,7 @@ def pick(robot, target):
 
         robot_pose = robot.get_pose(correct=False)
 
+        # Define path to the object
         approach_pose = copy.deepcopy(target_pose)
         approach_pose.position.z += 0.15
         approach_pose.orientation = copy.deepcopy(robot_pose.orientation)
@@ -16,22 +17,22 @@ def pick(robot, target):
         grasp_pose = copy.deepcopy(target_pose)
         grasp_pose.orientation = copy.deepcopy(robot_pose.orientation)
 
+        # Approach
         robot.add_waypoint(approach_pose, correct=False)
-
         robot.add_waypoint(grasp_pose, correct=False)
-
         robot.go()
 
+        # Grasp
         robot.close_hand()
 
+        # Define escape pose
         robot_pose = robot.get_pose(correct=False)
-
         escape_pose = copy.deepcopy(target_pose)
         escape_pose.position.z += 0.15
         escape_pose.orientation = copy.deepcopy(robot_pose.orientation)
 
+        # Escape
         robot.add_waypoint(escape_pose, correct=False)
-
         robot.go()
 
     elif success:
