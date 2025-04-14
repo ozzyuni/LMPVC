@@ -23,6 +23,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
     ros-humble-desktop \
     ros-dev-tools \
     python3-rosdep \
+    ros-humble-moveit \
     alsa-utils \
     pulseaudio-utils \
     espeak \
@@ -67,15 +68,22 @@ RUN pip install --no-cache-dir \
     llama-cpp-python \
     --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
 
+RUN rosdep init
+
 # Workspace setup
 RUN mkdir -p /lmpvc_ros2_ws/src
-
-WORKDIR /lmpvc_ros2_ws
 
 # This is intended as a temporary copy for use with rosdep.
 # Typical usage is to override it with a bind mount later, as is done in docker_run.bash.
 COPY ./src /lmpvc_ros2_ws/src
 
-RUN rosdep init && rosdep update
+# User setup
+RUN chmod 777 /lmpvc_ros2_ws
 
-RUN rosdep install --from-paths src -y --ignore-src --rosdistro humble
+RUN adduser --disabled-password lmpvc_ros2
+
+USER lmpvc_ros2
+
+WORKDIR /lmpvc_ros2_ws
+
+RUN rosdep update && rosdep install --from-paths src -y --ignore-src --rosdistro humble

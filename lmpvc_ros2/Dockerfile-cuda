@@ -23,6 +23,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
     ros-humble-desktop \
     ros-dev-tools \
     python3-rosdep \
+    ros-humble-moveit \
     alsa-utils \
     pulseaudio-utils \
     espeak \
@@ -42,7 +43,7 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get remove -y  python3-sympy
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir --default-timeout=1000 \
     # Older NumPy required for some PyTorch components
-    "numpy<2" \
+    numpy==1.24.1  \
     pyaudio \
     pyttsx3 \
     sounddevice \
@@ -63,7 +64,9 @@ RUN pip install flash-attn --no-cache-dir --no-build-isolation
 RUN pip install --no-cache-dir \
     git+https://github.com/huggingface/transformers.git \
     accelerate \
-    bitsandbytes
+    bitsandbytes \
+    # Older numpy again, because it refuses to stay installed for some bloody reason
+    numpy==1.24.1
 
 # Llama Cpp
 # The extra symlink gets around some weird library locations in the Nvidia base image:
@@ -74,15 +77,22 @@ RUN export LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs:$LD_LIBRARY_PATH && \
     CMAKE_ARGS="-DGGML_CUDA=on" pip install --no-cache-dir llama-cpp-python && \
     rm /usr/local/cuda/lib64/stubs/libcuda.so.1
 
+RUN rosdep init
+
 # Workspace setup
 RUN mkdir -p /lmpvc_ros2_ws/src
-
-WORKDIR /lmpvc_ros2_ws
 
 # This is intended as a temporary copy for use with rosdep.
 # Typical usage is to override it with a bind mount later, as is done in docker_run.bash.
 COPY ./src /lmpvc_ros2_ws/src
 
-RUN rosdep init && rosdep update
+# User setup
+RUN chmod 777 /lmpvc_ros2_ws
 
-RUN rosdep install --from-paths src -y --ignore-src --rosdistro humble
+RUN adduser --disabled-password lmpvc_ros2
+
+USER lmpvc_ros2
+
+WORKDIR /lmpvc_ros2_ws
+
+RUN rosdep update && rosdep install --from-paths src -y --ignore-src --rosdistro humble
