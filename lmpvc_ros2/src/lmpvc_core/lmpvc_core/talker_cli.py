@@ -6,32 +6,33 @@ from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
 from rclpy.node import Node
 from lmpvc_interfaces.srv import Talker
 
-class TalkerClient(Node):
+class TalkerClient:
     """ROS2 action client for calling lmpvc_listener"""
 
-    def __init__(self):
-        super().__init__('talker_client')
+    def __init__(self, node):
+        self.node = node
         self.group = MutuallyExclusiveCallbackGroup()
-        self.cli = self.create_client(Talker, 'talker', callback_group=self.group)
+        self.cli = self.node.create_client(Talker, 'talker', callback_group=self.group)
         self.req = Talker.Request()
-        self.get_logger().info("Client ready!")
+        self.node.get_logger().info("Client ready!")
     
     def say(self, utterance: str):
         self.req.utterance = utterance
 
         while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self.node.get_logger().info("Service not available, trying again...")
 
         result = self.cli.call(self.req)
 
         if not result.success:
-            self.get_logger().info("Something went wrong, check talker!")
+            self.node.get_logger().info("Something went wrong, check talker!")
 
 def main():
     rclpy.init()
     executor = MultiThreadedExecutor()
-    voice = TalkerClient()
-    executor.add_node(voice)
+    node = Node('talker_client')
+    voice = TalkerClient(node)
+    executor.add_node(node)
 
     et = threading.Thread(target=executor.spin)
     et.start()
@@ -41,3 +42,7 @@ def main():
         if cmd == 'q':
             break
         voice.say(cmd)
+
+    executor.shutdown()
+    node.destroy_node()
+    rclpy.shutdown()

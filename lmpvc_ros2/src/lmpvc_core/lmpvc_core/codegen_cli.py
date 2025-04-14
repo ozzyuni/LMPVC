@@ -15,15 +15,15 @@ from lmpvc_interfaces.srv import CodeGen
 
 from lmpvc_core.policy_bank import PolicyBank
 
-class CodeGenClient(Node):
+class CodeGenClient:
     """ROS2 client node for calling lmpvc_codegen."""
 
-    def __init__(self):
-        super().__init__('code_gen_client')
+    def __init__(self, node):
+        self.node = node
         self.group = MutuallyExclusiveCallbackGroup()
-        self.cli = self.create_client(CodeGen, 'code_gen', callback_group=self.group)
+        self.cli = self.node.create_client(CodeGen, 'code_gen', callback_group=self.group)
         self.req = CodeGen.Request()
-        self.get_logger().info("Client ready!")
+        self.node.get_logger().info("Client ready!")
     
     def generate_inference(self, prompt: str, preamble = "", policies=""):
         """Service to call the LLM. Cut down but compatible client version of the
@@ -34,14 +34,14 @@ class CodeGenClient(Node):
         self.req.policies = policies
 
         while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self.node.get_logger().info("Service not available, trying again...")
 
-        self.get_logger().info("Sending request...")
+        self.node.get_logger().info("Sending request...")
         start = time.time()
         result = self.cli.call(self.req)
         end = time.time()
 
-        self.get_logger().info("Response received in " + str(end - start) + " seconds!")
+        self.node.get_logger().info("Response received in " + str(end - start) + " seconds!")
         return result.result
 
 
@@ -124,15 +124,17 @@ def test(codegen):
 def main():
     rclpy.init()
     executor = MultiThreadedExecutor()
-    codegen = CodeGenClient()
-    executor.add_node(codegen)
+    node = Node('codegen_client')
+    codegen = CodeGenClient(node)
+    
+    executor.add_node(node)
     et = threading.Thread(target=executor.spin)
     et.start()
 
     test(codegen)
 
     executor.shutdown()
-    codegen.destroy_node()
+    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

@@ -3,6 +3,7 @@
 # This module implements StarCoder2 with Hugging Face Inference API
 
 import json
+import os
 import requests
 from pathlib import Path
 
@@ -10,7 +11,17 @@ class Model:
     """Inference API implementation of the StarCoder2 code generating LLM"""
      
     def __init__(self):
-        config_path = Path(__file__).with_name('codegen_config.json')
+        config_path = "" 
+        try:
+            from ament_index_python.packages import get_package_share_directory
+
+            config_path = os.path.join(
+                get_package_share_directory('lmpvc_codegen'),
+                'codegen_config.json'
+            )
+        except:
+            config_path = Path(__file__).with_name('codegen_config.json')
+
         config = {}
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)["inference_api"]

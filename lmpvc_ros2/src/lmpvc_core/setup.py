@@ -1,6 +1,31 @@
+import json
 from setuptools import find_packages, setup
 
 package_name = 'lmpvc_core'
+
+def policy_files():
+    """Loads the index file and corresponding sources from disk"""
+    data_files = []
+
+    # Read index
+    dir = package_name + '/policies'
+    index_path = dir + '/index.json'
+    index = {}
+    with open(index_path, 'r') as index_file:
+        index = json.load(index_file)
+
+    # Install index file
+    data_files.append(('share/' + package_name + '/policies', [index_path]))
+
+    src_paths = []
+
+    for policy, src_path in index.items():
+        src_paths.append(dir + '/' + src_path)
+
+    data_files.append(('share/' + package_name + '/policies/src', src_paths))
+
+    return data_files
+            
 
 setup(
     name=package_name,
@@ -12,7 +37,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name, ['config/core_config.json']),
         ('share/' + package_name, ['config/preamble.py']),
-    ],
+    ] + policy_files(),
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='parikkao',

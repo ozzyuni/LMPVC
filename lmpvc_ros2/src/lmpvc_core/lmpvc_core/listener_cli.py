@@ -8,16 +8,16 @@ from rclpy.node import Node
 from rclpy.action import ActionClient
 from lmpvc_interfaces.action import Listen
 
-class ListenerActionClient(Node):
+class ListenerActionClient:
     """ROS2 action client for calling lmpvc_listener"""
 
-    def __init__(self):
-        super().__init__('listen_action_client')
+    def __init__(self, node):
+        self.node = node
         self.group = MutuallyExclusiveCallbackGroup()
-        self.cli = ActionClient(self, Listen, 'listen_action', callback_group=self.group)
+        self.cli = ActionClient(self.node, Listen, 'listen_action', callback_group=self.group)
         self.done = threading.Event()
         self.transcript = ""
-        self.get_logger().info("Client ready!")
+        self.node.get_logger().info("Client ready!")
     
     def listen(self, timeout = 30.0):
         """Listens to audio for 'timeout' seconds and attempts to transcribe any detected speech.
@@ -41,12 +41,12 @@ class ListenerActionClient(Node):
         # Check that the goal has been accepted by the ActionServer
         goal_handle = future.result()
         if not goal_handle.accepted:
-            self.get_logger().info('Goal rejected :(')
+            self.node.get_logger().info('Goal rejected :(')
             self.transcript = ""
             self.done.set()
             return
 
-        self.get_logger().info('Goal accepted :)')
+        self.node.get_logger().info('Goal accepted :)')
 
         self._get_result_future = goal_handle.get_result_async()
         self._get_result_future.add_done_callback(self.get_result_callback)
@@ -58,14 +58,15 @@ class ListenerActionClient(Node):
     
     def feedback_cb(self, feedback_msg):
         feedback = feedback_msg.feedback
-        self.get_logger().info('Listener: {0}'.format(feedback.state))
+        self.node.get_logger().info('Listener: {0}'.format(feedback.state))
 
 
 def main():
     rclpy.init()
     executor = MultiThreadedExecutor()
-    listener = ListenerActionClient()
-    executor.add_node(listener)
+    node = Node('listener_client')
+    listener = ListenerActionClient(node)
+    executor.add_node(node)
 
     et = threading.Thread(target=executor.spin)
     et.start()
@@ -75,7 +76,7 @@ def main():
     print(result)
 
     executor.shutdown()
-    listener.destroy_node()
+    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

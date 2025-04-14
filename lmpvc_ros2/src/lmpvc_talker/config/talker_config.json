@@ -1,3 +1,6 @@
 {
-    "engine": "simple"
+    "engine": "piper",
+    "piper": {
+        "model": "/lmpvc_ros2_ws/models/voices/en_GB-northern_english_male-medium.onnx"
+    }
 }

@@ -9,28 +9,28 @@ from rclpy.callback_groups import MutuallyExclusiveCallbackGroup, ReentrantCallb
 from rclpy.node import Node
 from lmpvc_interfaces.srv import ControllerExec, ControllerGetPose, ControllerPlan, ControllerSetSpeed, ControllerStop, ControllerCloseHand, ControllerOpenHand
 
-class ControllerClient(Node):
+class ControllerClient:
     """ROS2 client node implementing services to call the functionality of lmpvc_controller."""
 
-    def __init__(self):
-        super().__init__('controller_client')
+    def __init__(self, node):
+        self._node = node
         self._group = ReentrantCallbackGroup()
 
-        self._close_hand_cli = self.create_client(ControllerCloseHand, 'controller_close_hand', callback_group=self._group)
-        self._open_hand_cli = self.create_client(ControllerOpenHand, 'controller_open_hand', callback_group=self._group)
-        self._exec_cli = self.create_client(ControllerExec, 'controller_exec', callback_group=self._group)
-        self._get_pose_cli = self.create_client(ControllerGetPose, 'controller_get_pose', callback_group=self._group)
-        self._plan_cli = self.create_client(ControllerPlan, 'controller_plan', callback_group=self._group)
-        self._set_speed_cli = self.create_client(ControllerSetSpeed, 'controller_set_speed', callback_group=self._group)
-        self._stop_cli = self.create_client(ControllerStop, 'controller_stop', callback_group=self._group)
+        self._close_hand_cli = self._node.create_client(ControllerCloseHand, 'controller_close_hand', callback_group=self._group)
+        self._open_hand_cli = self._node.create_client(ControllerOpenHand, 'controller_open_hand', callback_group=self._group)
+        self._exec_cli = self._node.create_client(ControllerExec, 'controller_exec', callback_group=self._group)
+        self._get_pose_cli = self._node.create_client(ControllerGetPose, 'controller_get_pose', callback_group=self._group)
+        self._plan_cli = self._node.create_client(ControllerPlan, 'controller_plan', callback_group=self._group)
+        self._set_speed_cli = self._node.create_client(ControllerSetSpeed, 'controller_set_speed', callback_group=self._group)
+        self._stop_cli = self._node.create_client(ControllerStop, 'controller_stop', callback_group=self._group)
 
-        self.get_logger().info("Client ready!")
+        self._node.get_logger().info("Client ready!")
     
     def execute_plan(self):
         req = ControllerExec.Request()
 
         while not self._exec_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("Service not available, trying again...")
 
         result = self._exec_cli.call(req)
         
@@ -40,7 +40,7 @@ class ControllerClient(Node):
         req = ControllerGetPose.Request()
 
         while not self._get_pose_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("Service not available, trying again...")
         
         result = self._get_pose_cli.call(req)
 
@@ -51,7 +51,7 @@ class ControllerClient(Node):
         req.waypoints = waypoints
 
         while not self._plan_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("Service not available, trying again...")
         
         result = self._plan_cli.call(req)
 
@@ -62,7 +62,7 @@ class ControllerClient(Node):
         req.speed = speed
 
         while not self._set_speed_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("Service not available, trying again...")
         
         result = self._set_speed_cli.call(req)
 
@@ -72,7 +72,7 @@ class ControllerClient(Node):
         req = ControllerStop.Request()
 
         while not self._stop_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("Service not available, trying again...")
         
         result = self._stop_cli.call(req)
 
@@ -82,7 +82,7 @@ class ControllerClient(Node):
         req = ControllerCloseHand.Request()
 
         while not self._close_hand_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("Service not available, trying again...")
         
         result = self._close_hand_cli.call(req)
 
@@ -92,7 +92,7 @@ class ControllerClient(Node):
         req = ControllerOpenHand.Request()
 
         while not self._open_hand_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("Service not available, trying again...")
         
         result = self._open_hand_cli.call(req)
 
@@ -106,9 +106,10 @@ class ControllerClient(Node):
 def main():
     rclpy.init()
     executor = MultiThreadedExecutor()
-    controller = ControllerClient()
+    node = Node('controller_client')
+    controller = ControllerClient(node)
 
-    executor.add_node(controller)
+    executor.add_node(node)
     et = threading.Thread(target=executor.spin)
     et.start()
 
@@ -145,7 +146,7 @@ def main():
     controller.stop()
     t.join()
     executor.shutdown()
-    controller.destroy_node()
+    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

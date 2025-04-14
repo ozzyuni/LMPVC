@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import json
+import os
 import numpy as np
 import sounddevice as sd
 from piper.voice import PiperVoice
@@ -6,7 +8,21 @@ from pathlib import Path
 
 class Talker:
     def __init__(self):
-        modelpath = str(Path(__file__).parent / "voices/en_GB-northern_english_male-medium.onnx")
+        talker_config_path = ""
+        try:
+            from ament_index_python.packages import get_package_share_directory
+
+            talker_config_path = os.path.join(
+                get_package_share_directory('lmpvc_talker'),
+                'talker_config.json'
+            )
+        except:
+            talker_config_path = Path(__file__).with_name('talker_config.json')
+
+        modelpath = ""
+        with open(talker_config_path, 'r') as config_file:
+            modelpath = json.load(config_file)['piper']['model']
+        
         self.model = PiperVoice.load(modelpath)
     
     def say(self, utterance):

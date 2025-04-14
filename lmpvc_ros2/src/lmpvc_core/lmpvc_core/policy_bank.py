@@ -30,7 +30,19 @@ class PolicyBank:
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)['policy_bank']
         
-        self._dir = str(Path(__file__).with_name(config['sub_directory']))
+        
+        self._dir = ""
+            
+        try:
+            from ament_index_python.packages import get_package_share_directory
+
+            self._dir = os.path.join(
+                get_package_share_directory('lmpvc_core'),
+                'policies'
+            )
+        except:
+            self._dir = Path(__file__).with_name('policies')
+        
         self._blacklist = config['blacklist']
         self._hint_tag = config['hint_tag']
 
