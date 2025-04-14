@@ -67,6 +67,10 @@ Each module can be further configure in the module_config.json files found in ea
 
 ## Docker setup
 
+**IMPORTANT**
+
+The docker scripts we provide use sudo when required to execute docker commands!
+
 Helper scripts in *./docker_scripts/* can be used to build, run and stop the container, as well as run bash terminals while it is running. Building and running use different scripts depending on wheter you're interested in the *cpu* or *cuda* version of the container. It is recommended to use *cuda* for full functionality, which currently assumes at least a 3000-series NVIDIA GPU and a Docker installation configured to use NVIDIA Container Toolkit:
 
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
@@ -95,7 +99,35 @@ Now, it should be possible to use the provided script to start the building proc
 
 Co-workers: Contact me for pre-built images!
 
-## Requirements and venv setup
+**Build an image:**
+
+Choose the architecture you're building for, either cpu or cuda. By default these have different names, so if desired, you may build both.
+
+```
+./docker_scripts/docker_build_<cpu/cuda>.bash
+```
+
+**Run an image:**
+
+Start a container from either image with a dedicated script. Both scripts start a container named `lmpvc_ros2`, meaning they can't be used at the same time. For that, start the containers manually.
+
+```
+./docker_scripts/docker_run_<cpu/cuda>.bash
+```
+
+In addition to starting the container, this step attempts to launch a Pulseaudio server on the host OS to support Text-To-Speech and Speech-To-Text from inside the container. This requires `pactl`.
+
+**Start a terminal inside the container:**
+
+The same script works for both image types, if the container was started with the default name. If this is not the case, perform this step manually.
+
+```
+./docker_scripts/docker_terminal.bash
+```
+
+Once in the terminal, proceed using the instructions above.
+
+## Manual setup
 
 This section is most likely not a complete set of requirements for all systems, but it tries to list the main ones. There's also some additional advice for if you want to use a virtual environment, which is unfortunately a little convoluted.
 
