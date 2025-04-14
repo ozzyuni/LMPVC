@@ -163,7 +163,7 @@ Humble installation:
 
 https://docs.ros.org/en/humble/Installation.html
 
-### Setup
+### VENV Setup
 
 These instructions assume you're using a venv environment, just disregard any venv-related instructions if installing directly.
 
@@ -200,7 +200,7 @@ anytime after sourcing the venv to always call colcon build with the right argum
 
 ### Requirements
 
-**Everything ROS2 needs**
+**Ubuntu**
 
 Install OUTSIDE the venv for a less confusing experience
 
@@ -220,16 +220,19 @@ libasound2-plugins \
 then use *--system-site-packages* to build your venv. 
 
 **Generic Python libraries**
+
+From here, proceed INSIDE the venv
+
 ```
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir --default-timeout=1000 \
-    # Older NumPy required for some PyTorch components
-    numpy==1.24.1  \
-    pyaudio \
-    pyttsx3 \
-    sounddevice \
-    piper-tts \
-    astunparse
+pip install --no-cache-dir --upgrade pip && \
+pip install --no-cache-dir --default-timeout=1000 \
+# Older NumPy required for some PyTorch components
+numpy==1.24.1  \
+pyaudio \
+pyttsx3 \
+sounddevice \
+piper-tts \
+astunparse
 ```
 
 **Astunparse**
