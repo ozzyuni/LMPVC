@@ -26,23 +26,33 @@ import ast
 import astunparse
 import inspect
 import json
+import os
 import time
 from pathlib import Path
 
 from lmpvc_codegen.codegen_cache import CodeGenCache
 
-config_path = Path(__file__).with_name('codegen_config.json')
-config = {}
-with open(config_path, 'r') as config_file:
-    config = json.load(config_file)
+try:
+    from ament_index_python.packages import get_package_share_directory
+
+    codegen_config_path = os.path.join(
+        get_package_share_directory('lmpvc_codegen'),
+        'codegen_config.json'
+    )
+except:
+    codegen_config_path = Path(__file__).with_name('codegen_config.json')
+
+codegen_config = {}
+with open(codegen_config_path, 'r') as config_file:
+    codegen_config = json.load(config_file)
 
 # Importing the correct file based on configuration
-if config['model'] == 'bitsandbytes' or config['model'] == 'gptq':
+if codegen_config['model'] == 'bitsandbytes' or codegen_config['model'] == 'gptq':
     from lmpvc_codegen.starcoder2_local import Model
-elif config['model'] == 'gguf':
+elif codegen_config['model'] == 'gguf':
     from lmpvc_codegen.starcoder2_gguf import Model
 else:
-    if config['model'] != 'inference_api':
+    if codegen_config['model'] != 'inference_api':
         print("Invalid parameter 'model', defaulting to inference_api!")
     from lmpvc_codegen.starcoder2_inference_api import Model
 
@@ -135,7 +145,16 @@ class CodeGen(object):
     def __init__(self):
             super().__init__()
 
-            config_path = Path(__file__).with_name('codegen_config.json')
+            try:
+                from ament_index_python.packages import get_package_share_directory
+
+                config_path = os.path.join(
+                    get_package_share_directory('lmpvc_codegen'),
+                    'codegen_config.json'
+                )
+            except:
+                config_path = Path(__file__).with_name('codegen_config.json')
+
             config = {}
             with open(config_path, 'r') as config_file:
                 config = json.load(config_file)

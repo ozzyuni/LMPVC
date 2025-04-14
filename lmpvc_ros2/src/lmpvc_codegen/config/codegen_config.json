@@ -1,0 +1,24 @@
+{
+    "model": "gguf",
+    "inference_api": {
+        "hf_url": "bigcode/starcoder2-15b",
+        "hf_token": "<your_token_here>"
+    },
+    "bitsandbytes":{
+        "hf_url": "bigcode/starcoder2-15b",
+        "quantization": "4bit"
+    },
+    "gptq":{
+        "hf_url":"TechxGenus/starcoder2-15b-GPTQ"
+    },
+    "gguf":{
+        "hf_url": "mradermacher/starcoder2-15b-i1-GGUF",
+        "filename": "starcoder2-15b.i1-IQ4_XS.gguf",
+        "offline": false,
+        "context_size": 2048
+    },
+    "cache":{
+        "enabled": false,
+        "filename": null
+    }
+}

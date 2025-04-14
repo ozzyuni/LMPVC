@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import pyaudio
 import pickle
 import json
@@ -8,9 +9,16 @@ import wave
 import time
 from pathlib import Path
 
-import lmpvc_listener.wav2vec
-import lmpvc_listener.whisper
-config_path = Path(__file__).with_name('listener_config.json')
+try:
+    from ament_index_python.packages import get_package_share_directory
+
+    config_path = os.path.join(
+        get_package_share_directory('lmpvc_listener'),
+        'listener_config.json'
+    )
+except:
+    config_path = Path(__file__).with_name('listener_config.json')
+
 config = {}
 
 with open(config_path, 'r') as config_file:
@@ -42,7 +50,7 @@ class Listener:
         return rms * 1000
 
     def __init__(self):
-        config_path = Path(__file__).with_name('listener_config.json')
+        #config_path = Path(__file__).with_name('listener_config.json')
         config = {}
 
         with open(config_path, 'r') as config_file:

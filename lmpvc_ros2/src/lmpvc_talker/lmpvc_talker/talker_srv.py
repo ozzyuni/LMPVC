@@ -1,20 +1,31 @@
 #!/usr/bin/env python
 import rclpy
 import json
+import os
 from rclpy.node import Node
 from pathlib import Path
 
 import lmpvc_interfaces.srv
 
-config_path = Path(__file__).with_name('talker_config.json')
-config = {}
-with open(config_path, 'r') as config_file:
-    config = json.load(config_file)
+talker_config_path = ""
+try:
+    from ament_index_python.packages import get_package_share_directory
 
-if config['engine'] == 'simple':
+    talker_config_path = os.path.join(
+        get_package_share_directory('lmpvc_talker'),
+        'talker_config.json'
+    )
+except:
+    talker_config_path = Path(__file__).with_name('talker_config.json')
+
+talker_config = {}
+with open(talker_config_path, 'r') as config_file:
+    talker_config = json.load(config_file)
+
+if talker_config['engine'] == 'simple':
     from lmpvc_talker.simple_tts import Talker
 
-elif config['engine'] == 'piper':
+elif talker_config['engine'] == 'piper':
     from lmpvc_talker.piper_tts import Talker
 
 class TalkerService(Node):
