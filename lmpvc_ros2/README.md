@@ -41,6 +41,7 @@ Code generation:
 
 ```
 ros2 run lmpvc_codegen codegen
+```
 
 Low level controller:
 
