@@ -26,9 +26,18 @@ class Model:
             config = json.load(config_file)['gguf']
 
         hf_path = config['hf_url'].split('/')
-        local_dir = Path(__file__).resolve().parent / 'models' / hf_path[-2] / hf_path[-1] 
+        print(hf_path)
+        hf_home = os.environ.get("HF_HOME", None)
+
+        if hf_home is None:
+            hf_home = os.path.join(os.environ.get("HOME", ""), "models")
+
+        local_dir = Path(os.path.join(hf_home, 'llms', hf_path[-2], hf_path[-1]))
+        print(local_dir) 
         local_dir.mkdir(parents=True, exist_ok=True)
+        print(local_dir) 
         local_file = local_dir / config['filename']
+        print(local_file) 
 
         if config['offline'] == True:
             # The llama-cpp-python implementation of from_pretrained does not behave
