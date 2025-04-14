@@ -24,6 +24,10 @@ These go to `models/voices/`, check the PiperTTS GitHub to download different on
 **Build and source the workspace:**
 
 ```
+source /opt/ros/humble/setup.bash
+```
+
+```
 colcon build
 ```
 
@@ -33,22 +37,40 @@ source install/setup.bash
 
 **Start the modules required for the system to run:**
 
+Code generation:
+
 ```
 ros2 run lmpvc_codegen codegen
+
+Low level controller:
+
+```
 ros2 run lmpvc_controller controller
+```
+
+Text-To-Speech:
+
+```
 ros2 run lmpvc_talker talker
 ```
 
 **Depending on which functionality you plan to use, enable some or all of the other modules:**
 
+Speech-To-Text if not in text mode:
+
 ```
 ros2 run lmpvc_listener listener
+```
+
+Object detection:
+
+```
 ros2 run lmpvc_detector detector
 ```
 
 The provided Detector node attempts to contact a corresponding Detector node in the lmpvc_ros1 workspace. Users will most likely want to substitute their own implementation directly in ROS2.
 
-Finally, launch the core application:
+**Finally, launch the core application:**
 
 ```
 ros2 run lmpvc_core core
@@ -59,6 +81,7 @@ ros2 run lmpvc_core core
 ```
 ros2 run lmpvc_core codegen_test
 ```
+
 These can run without the core application.
 
 ## Configuration
@@ -269,3 +292,5 @@ pip install flash-attn --no-build-isolation
 pip install optimum[onnxruntime-gpu] \
 git+https://github.com/PanQiWei/AutoGPTQ
 ```
+
+Once everything is set up, source your venv and proceed with the instructions above.
