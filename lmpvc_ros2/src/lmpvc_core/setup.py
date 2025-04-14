@@ -52,7 +52,7 @@ setup(
             'controller_test = lmpvc_core.controller_cli:main',
             'detector_test = lmpvc_core.detector_cli:main',
             'talker_test = lmpvc_core.talker_cli:main',
-            'voice_control = lmpvc_core.main:main',
+            'core = lmpvc_core.core_node:main',
         ],
     },
 )

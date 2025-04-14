@@ -17,7 +17,7 @@ class ListenerActionClient:
         self.cli = ActionClient(self.node, Listen, 'listen_action', callback_group=self.group)
         self.done = threading.Event()
         self.transcript = ""
-        self.node.get_logger().info("Client ready!")
+        self.node.get_logger().info("[Listener] Client ready!")
     
     def listen(self, timeout = 30.0):
         """Listens to audio for 'timeout' seconds and attempts to transcribe any detected speech.
@@ -41,12 +41,12 @@ class ListenerActionClient:
         # Check that the goal has been accepted by the ActionServer
         goal_handle = future.result()
         if not goal_handle.accepted:
-            self.node.get_logger().info('Goal rejected :(')
+            self.node.get_logger().info('[Listener] Goal rejected :(')
             self.transcript = ""
             self.done.set()
             return
 
-        self.node.get_logger().info('Goal accepted :)')
+        self.node.get_logger().info('[Listener] Goal accepted :)')
 
         self._get_result_future = goal_handle.get_result_async()
         self._get_result_future.add_done_callback(self.get_result_callback)
@@ -58,7 +58,7 @@ class ListenerActionClient:
     
     def feedback_cb(self, feedback_msg):
         feedback = feedback_msg.feedback
-        self.node.get_logger().info('Listener: {0}'.format(feedback.state))
+        self.node.get_logger().info('[Listener] Feedback: {0}'.format(feedback.state))
 
 
 def main():
@@ -72,7 +72,7 @@ def main():
     et.start()
 
     result = listener.listen(timeout=5.0)
-    print("Result:\n")
+    print("[Listener] Result:\n")
     print(result)
 
     executor.shutdown()

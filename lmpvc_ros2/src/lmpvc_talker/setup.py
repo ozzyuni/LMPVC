@@ -21,7 +21,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'service = lmpvc_talker.talker_srv:main'
+            'talker = lmpvc_talker.talker_srv:main'
         ],
     },
 )

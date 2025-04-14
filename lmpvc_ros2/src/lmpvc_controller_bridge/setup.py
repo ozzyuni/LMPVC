@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'service = lmpvc_controller.controller_srv:main',
+            'controller = lmpvc_controller.controller_srv:main',
         ],
     },
 )

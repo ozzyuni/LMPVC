@@ -21,9 +21,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'server = lmpvc_listener.listener_srv:main',
+            'listener = lmpvc_listener.listener_srv:main',
             'test = lmpvc_listener.listener:main',
-            'transcriber_service = lmpvc_listener.transcriber_srv:main'
+            'transcriber = lmpvc_listener.transcriber_srv:main'
         ],
     },
 )

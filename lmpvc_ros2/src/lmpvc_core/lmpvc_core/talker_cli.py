@@ -14,18 +14,18 @@ class TalkerClient:
         self.group = MutuallyExclusiveCallbackGroup()
         self.cli = self.node.create_client(Talker, 'talker', callback_group=self.group)
         self.req = Talker.Request()
-        self.node.get_logger().info("Client ready!")
+        self.node.get_logger().info("[Talker] Client ready!")
     
     def say(self, utterance: str):
         self.req.utterance = utterance
 
         while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info("Service not available, trying again...")
+            self.node.get_logger().info("[Talker] Service not available, trying again...")
 
         result = self.cli.call(self.req)
 
         if not result.success:
-            self.node.get_logger().info("Something went wrong, check talker!")
+            self.node.get_logger().info("[Talker] Something went wrong, check talker!")
 
 def main():
     rclpy.init()

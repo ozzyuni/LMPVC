@@ -21,8 +21,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'service = lmpvc_codegen.codegen_srv:main',
-            'cache = lmpvc_codegen.codegen_cache:main',
+            'codegen = lmpvc_codegen.codegen_srv:main',
         ],
     },
 )

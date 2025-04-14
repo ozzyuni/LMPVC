@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'service = lmpvc_detector.detector_srv:main',
+            'detector = lmpvc_detector.detector_srv:main',
         ],
     },
 )

@@ -21,7 +21,7 @@ find_package(lmpvc_gripper REQUIRED)
 find_package(pluginlib REQUIRED)
 
 include_directories(include)
-add_executable(lmpvc_controller src/lmpvc_controller.cpp)
+add_executable(controller src/lmpvc_controller.cpp)
 add_library(moveit_controller STATIC src/moveit_controller.cpp)
 add_library(moveit_services STATIC src/moveit_services.cpp)
 add_library(limit_cartesian_speed STATIC src/limit_cartesian_speed.cpp)
@@ -50,10 +50,10 @@ ament_target_dependencies(
   rclcpp
 )
 
-target_link_libraries(lmpvc_controller moveit_controller moveit_services limit_cartesian_speed)
+target_link_libraries(controller moveit_controller moveit_services limit_cartesian_speed)
 
 ament_target_dependencies(
-  lmpvc_controller
+  controller
   geometry_msgs
   moveit_ros_planning_interface
   rclcpp
@@ -69,7 +69,7 @@ install(TARGETS
   RUNTIME DESTINATION bin)
 
 install(TARGETS
-  lmpvc_controller
+  controller
   DESTINATION lib/${PROJECT_NAME})
 
 # Install launch files.

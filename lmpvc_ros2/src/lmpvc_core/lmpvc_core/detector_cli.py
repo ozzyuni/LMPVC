@@ -14,13 +14,13 @@ class DetectorClient:
         self.group = MutuallyExclusiveCallbackGroup()
         self.cli = self.node.create_client(Detector, 'detector', callback_group=self.group)
         self.req = Detector.Request()
-        self.node.get_logger().info("Client ready!")
+        self.node.get_logger().info("[Detector] Client ready!")
     
     def find(self, target: str):
         self.req.target = target
 
         while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info("Service not available, trying again...")
+            self.node.get_logger().info("[Detector] Service not available, trying again...")
 
         result = self.cli.call(self.req)
 

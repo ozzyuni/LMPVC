@@ -23,7 +23,7 @@ class CodeGenClient:
         self.group = MutuallyExclusiveCallbackGroup()
         self.cli = self.node.create_client(CodeGen, 'code_gen', callback_group=self.group)
         self.req = CodeGen.Request()
-        self.node.get_logger().info("Client ready!")
+        self.node.get_logger().info("[CodeGen] Client ready!")
     
     def generate_inference(self, prompt: str, preamble = "", policies=""):
         """Service to call the LLM. Cut down but compatible client version of the
@@ -34,14 +34,14 @@ class CodeGenClient:
         self.req.policies = policies
 
         while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info("Service not available, trying again...")
+            self.node.get_logger().info("[CodeGen] Service not available, trying again...")
 
-        self.node.get_logger().info("Sending request...")
+        self.node.get_logger().info("[CodeGen] Sending request...")
         start = time.time()
         result = self.cli.call(self.req)
         end = time.time()
 
-        self.node.get_logger().info("Response received in " + str(end - start) + " seconds!")
+        self.node.get_logger().info("[CodeGen] Response received in " + str(end - start) + " seconds!")
         return result.result
 
 

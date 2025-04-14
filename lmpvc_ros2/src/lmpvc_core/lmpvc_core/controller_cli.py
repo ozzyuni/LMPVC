@@ -24,13 +24,13 @@ class ControllerClient:
         self._set_speed_cli = self._node.create_client(ControllerSetSpeed, 'controller_set_speed', callback_group=self._group)
         self._stop_cli = self._node.create_client(ControllerStop, 'controller_stop', callback_group=self._group)
 
-        self._node.get_logger().info("Client ready!")
+        self._node.get_logger().info("[Controller] Client ready!")
     
     def execute_plan(self):
         req = ControllerExec.Request()
 
         while not self._exec_cli.wait_for_service(timeout_sec=1.0):
-            self._node.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
 
         result = self._exec_cli.call(req)
         
@@ -40,7 +40,7 @@ class ControllerClient:
         req = ControllerGetPose.Request()
 
         while not self._get_pose_cli.wait_for_service(timeout_sec=1.0):
-            self._node.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
         
         result = self._get_pose_cli.call(req)
 
@@ -51,7 +51,7 @@ class ControllerClient:
         req.waypoints = waypoints
 
         while not self._plan_cli.wait_for_service(timeout_sec=1.0):
-            self._node.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
         
         result = self._plan_cli.call(req)
 
@@ -62,7 +62,7 @@ class ControllerClient:
         req.speed = speed
 
         while not self._set_speed_cli.wait_for_service(timeout_sec=1.0):
-            self._node.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
         
         result = self._set_speed_cli.call(req)
 
@@ -72,7 +72,7 @@ class ControllerClient:
         req = ControllerStop.Request()
 
         while not self._stop_cli.wait_for_service(timeout_sec=1.0):
-            self._node.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
         
         result = self._stop_cli.call(req)
 
@@ -82,7 +82,7 @@ class ControllerClient:
         req = ControllerCloseHand.Request()
 
         while not self._close_hand_cli.wait_for_service(timeout_sec=1.0):
-            self._node.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
         
         result = self._close_hand_cli.call(req)
 
@@ -92,7 +92,7 @@ class ControllerClient:
         req = ControllerOpenHand.Request()
 
         while not self._open_hand_cli.wait_for_service(timeout_sec=1.0):
-            self._node.get_logger().info("Service not available, trying again...")
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
         
         result = self._open_hand_cli.call(req)
 
