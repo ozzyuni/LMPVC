@@ -5,9 +5,9 @@ This ROS2 workspace contains all it's core functionality.
 
 ## ROS 2 Requirements
 
-To use lmpvc_controller with Franka FR3, an up to date version of franka_description is required: https://github.com/frankaemika/franka_description
+To use lmpvc_controller with Franka FR3, an up to date version of franka_description is required: https://github.com/frankaemika/franka_description. Versions of fr3_moveit_config and franka_msgs are provided with the package to avoid a dependency on a full franka_ros installation.
 
-Versions of fr3_moveit_config and franka_msgs are provided with the package to avoid a dependency on a full franka_ros installation.
+URDF and SRDF information is currently assumed to be published by a RobotDescription and MoveGroup nodes launched by the actual hardware or simulation configuration, kinematics.yaml must unfortunately be loaded directly. To make your MoveGroup node publish the SRDF, pass a parameter: https://moveit.picknik.ai/humble/doc/examples/urdf_srdf/urdf_srdf_tutorial.html#string-topic-specification
 
 ## Instructions
 

@@ -4,7 +4,8 @@ from launch_ros.actions import Node
 from moveit_configs_utils import MoveItConfigsBuilder
 
 from launch.actions import (
-    DeclareLaunchArgument
+    DeclareLaunchArgument,
+    ExecuteProcess,
 )
 
 from launch.substitutions import (
@@ -17,6 +18,16 @@ from launch_ros.parameter_descriptions import ParameterValue
 import os
 import yaml
 
+def build_cmd(params, prefix = ""):
+    cmd = []
+    for name, value in params.items():
+        if isinstance(value, dict):
+            cmd += build_cmd(value, prefix = prefix + name + '.')
+        else:
+            cmd.append('-p')    
+            cmd.append(prefix + name + ':=' + str(value))
+    
+    return cmd
 
 def load_yaml(package_name, file_path):
     package_path = get_package_share_directory(package_name)
@@ -34,17 +45,16 @@ def generate_launch_description():
         'fr3_moveit_config', 'config/kinematics.yaml'
     )
 
-    # RCM MoveIt wrapper node
-    lmpvc_controller = Node(
-        name="lmpvc_controller",
-        package="lmpvc_controller",
-        executable="controller",
-        output="screen",
-        parameters=[
-            kinematics_yaml,
-            {'use_sim_time': True},
-            {'planning_group_name': 'fr3_manipulator'}
-        ],
+    # Converting to the cmd fornat required by ExecuteProcess
+    kinematics_params = build_cmd(kinematics_yaml)
+
+    # Starting with ExecuteProcess instead of Node to avoid having multiple nodes with the same name
+    lmpvc_process = ExecuteProcess(
+        cmd=['ros2', 'run', 'lmpvc_controller', 'controller', '--ros-args',
+             '-p', 'use_sim_time:=True',
+             '-p', 'planning_group_name:="fr3_manipulator"'
+            ] + kinematics_params,
+        output='screen'
     )
 
-    return LaunchDescription([lmpvc_controller])
+    return LaunchDescription([lmpvc_process])

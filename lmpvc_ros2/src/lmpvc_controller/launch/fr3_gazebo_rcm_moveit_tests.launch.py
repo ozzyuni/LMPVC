@@ -4,7 +4,8 @@ from launch_ros.actions import Node
 from moveit_configs_utils import MoveItConfigsBuilder
 
 from launch.actions import (
-    DeclareLaunchArgument
+    DeclareLaunchArgument,
+    ExecuteProcess,
 )
 
 from launch.substitutions import (
@@ -17,6 +18,17 @@ from launch_ros.parameter_descriptions import ParameterValue
 import os
 import yaml
 
+
+def build_cmd(params, prefix = ""):
+    cmd = []
+    for name, value in params.items():
+        if isinstance(value, dict):
+            cmd += build_cmd(value, prefix = prefix + name + '.')
+        else:
+            cmd.append('-p')    
+            cmd.append(prefix + name + ':=' + str(value))
+    
+    return cmd
 
 def load_yaml(package_name, file_path):
     package_path = get_package_share_directory(package_name)
@@ -31,32 +43,21 @@ def load_yaml(package_name, file_path):
 
 def generate_launch_description():
 
-    franka_semantic_xacro_file = os.path.join(
-        get_package_share_directory('fr3_moveit_config'),
-        'srdf',
-        'fr3_arm.srdf.xacro'
+    kinematics_yaml = load_yaml(
+        'fr3_moveit_config', 'config/kinematics.yaml'
     )
 
-    robot_description_semantic_config = Command(
-        [FindExecutable(name='xacro'), ' ',
-         franka_semantic_xacro_file, ' hand:=true']
+    # Converting to the cmd fornat required by ExecuteProcess
+    kinematics_params = build_cmd(kinematics_yaml)
+
+    # Starting with ExecuteProcess instead of Node to avoid having multiple nodes with the same name
+    lmpvc_process = ExecuteProcess(
+        cmd=['ros2', 'run', 'lmpvc_controller', 'controller', '--ros-args',
+             '-p', 'use_sim_time:=True',
+             '-p', 'planning_group_name:="fr3_manipulator"',
+             '-p', 'tests_enabled:=True'
+            ] + kinematics_params,
+        output='screen'
     )
 
-    robot_description_semantic = {'robot_description_semantic': ParameterValue(
-        robot_description_semantic_config, value_type=str)}
-
-    # RCM MoveIt wrapper node
-    lmpvc_controller = Node(
-        name="lmpvc_controller",
-        package="lmpvc_controller",
-        executable="controller",
-        output="screen",
-        parameters=[
-            robot_description_semantic,
-            {'use_sim_time': True},
-            {'planning_group_name': 'fr3_manipulator'},
-            {'tests_enabled': True}
-        ],
-    )
-
-    return LaunchDescription([lmpvc_controller])
+    return LaunchDescription([lmpvc_process])
