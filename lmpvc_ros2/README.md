@@ -3,6 +3,12 @@
 Language Model Program Voice Control (LMPVC) is a voice control framework for robotics, powered by Large Language Models (LLMs).
 This ROS2 workspace contains all it's core functionality.
 
+## ROS 2 Requirements
+
+To use lmpvc_controller with Franka FR3, an up to date version of franka_description is required: https://github.com/frankaemika/franka_description
+
+Versions of fr3_moveit_config and franka_msgs are provided with the package to avoid a dependency on a full franka_ros installation.
+
 ## Instructions
 
 Usage after setting up with one of the procedures further down:

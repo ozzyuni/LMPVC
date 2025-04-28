@@ -70,6 +70,8 @@ RUN pip install --no-cache-dir \
 
 RUN rosdep init
 
+RUN apt-get update && apt-get install -y tzdata
+
 # Workspace setup
 RUN mkdir -p /lmpvc_ros2_ws/src
 
@@ -82,8 +84,10 @@ RUN chmod 777 /lmpvc_ros2_ws
 
 RUN adduser --disabled-password lmpvc_ros2
 
-USER lmpvc_ros2
-
 WORKDIR /lmpvc_ros2_ws
 
 RUN rosdep update && rosdep install --from-paths src -y --ignore-src --rosdistro humble
+
+USER lmpvc_ros2
+
+WORKDIR /lmpvc_ros2_ws

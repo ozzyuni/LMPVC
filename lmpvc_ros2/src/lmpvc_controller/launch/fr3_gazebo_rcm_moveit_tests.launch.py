@@ -32,7 +32,7 @@ def load_yaml(package_name, file_path):
 def generate_launch_description():
 
     franka_semantic_xacro_file = os.path.join(
-        get_package_share_directory('franka_fr3_moveit_config'),
+        get_package_share_directory('fr3_moveit_config'),
         'srdf',
         'fr3_arm.srdf.xacro'
     )
@@ -49,7 +49,7 @@ def generate_launch_description():
     lmpvc_controller = Node(
         name="lmpvc_controller",
         package="lmpvc_controller",
-        executable="lmpvc_controller",
+        executable="controller",
         output="screen",
         parameters=[
             robot_description_semantic,

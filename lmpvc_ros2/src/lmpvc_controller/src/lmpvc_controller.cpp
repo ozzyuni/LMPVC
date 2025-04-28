@@ -64,13 +64,13 @@ int main(int argc, char ** argv)
   RCLCPP_INFO(node->get_logger(), "LMPVC Controller starting");
 
   // Executor to spin the node
-  rclcpp::executors::SingleThreadedExecutor executor;
+  rclcpp::executors::MultiThreadedExecutor executor;
   executor.add_node(node);
   std::thread([&executor]() { executor.spin(); }).detach();
   
   // Initialize the MoveIt controller, move group configurable by parameter
   std::string planning_group_name;
-  node->declare_parameter("planning_group_name", "panda_arm");
+  node->declare_parameter("planning_group_name", "fr3_manipulator");
   node->get_parameter("planning_group_name", planning_group_name);
 
   RCLCPP_INFO(node->get_logger(), "Using Move Group: %s", planning_group_name.c_str());
@@ -96,8 +96,14 @@ int main(int argc, char ** argv)
     rclcpp::shutdown();
   }
 
-  gripper->init(node);
-  gripper->init_default_services();
+  bool gripper_enabled;
+  node->declare_parameter("gripper_enabled", false);
+  node->get_parameter("gripper_enabled", gripper_enabled);
+  
+  if(gripper_enabled){
+    gripper->init(node);
+    gripper->init_default_services();
+  }
 
   // Optional test, configurable by parameter
   bool tests_enabled = false;
