@@ -52,6 +52,7 @@ def generate_launch_description():
     lmpvc_process = ExecuteProcess(
         cmd=['ros2', 'run', 'lmpvc_controller', 'controller', '--ros-args',
              '-p', 'use_sim_time:=True',
+             '-p', 'gripper_enabled:=True',
              '-p', 'planning_group_name:="fr3_manipulator"'
             ] + kinematics_params,
         output='screen'

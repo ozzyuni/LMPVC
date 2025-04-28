@@ -83,26 +83,27 @@ int main(int argc, char ** argv)
   MoveitServices services(node, controller);
 
   // Trying to load a gripper control plugin, configrable by parameter
+  pluginlib::ClassLoader<lmpvc_gripper::BasicGripper> gripper_loader("lmpvc_gripper", "lmpvc_gripper::BasicGripper");
   std::string gripper_plugin;
   std::shared_ptr<lmpvc_gripper::BasicGripper> gripper;
-
-  node->declare_parameter("gripper_plugin", "lmpvc_gripper_franka_plugins::FrankaHand");
-  node->get_parameter("gripper_plugin", gripper_plugin);
-  pluginlib::ClassLoader<lmpvc_gripper::BasicGripper> gripper_loader("lmpvc_gripper", "lmpvc_gripper::BasicGripper");
-
-  try{
-    gripper = gripper_loader.createSharedInstance(gripper_plugin);
-  }
-  catch(pluginlib::PluginlibException& ex){
-    RCLCPP_ERROR(node->get_logger(), "Gripper plugin failed to load. Error: %s\n", ex.what());
-    rclcpp::shutdown();
-  }
 
   bool gripper_enabled;
   node->declare_parameter("gripper_enabled", false);
   node->get_parameter("gripper_enabled", gripper_enabled);
   
   if(gripper_enabled){
+
+    node->declare_parameter("gripper_plugin", "lmpvc_gripper_dummy_plugins::DummyGripper");
+    node->get_parameter("gripper_plugin", gripper_plugin);
+
+    try{
+      gripper = gripper_loader.createSharedInstance(gripper_plugin);
+    }
+    catch(pluginlib::PluginlibException& ex){
+      RCLCPP_ERROR(node->get_logger(), "Gripper plugin failed to load. Error: %s\n", ex.what());
+      rclcpp::shutdown();
+    }
+
     gripper->init(node);
     gripper->init_default_services();
   }
@@ -127,6 +128,9 @@ int main(int argc, char ** argv)
 
   // Shutdown ROS
   rclcpp::shutdown();
+
+  
+  gripper.reset();
 
   return 0;
 }

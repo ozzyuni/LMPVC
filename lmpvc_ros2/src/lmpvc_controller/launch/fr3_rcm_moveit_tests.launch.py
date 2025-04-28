@@ -53,8 +53,8 @@ def generate_launch_description():
     # Starting with ExecuteProcess instead of Node to avoid having multiple nodes with the same name
     lmpvc_process = ExecuteProcess(
         cmd=['ros2', 'run', 'lmpvc_controller', 'controller', '--ros-args',
-             '-p', 'use_sim_time:=True',
              '-p', 'gripper_enabled:=True',
+             '-p', 'gripper_plugin:="lmpvc_gripper_franka_plugins::FrankaHand"'
              '-p', 'planning_group_name:="fr3_manipulator"',
              '-p', 'tests_enabled:=True'
             ] + kinematics_params,
