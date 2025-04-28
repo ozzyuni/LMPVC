@@ -5,8 +5,8 @@
 
 using namespace std::chrono_literals;
 
-MoveitController::MoveitController(std::shared_ptr<rclcpp::Node>& node, std::string group_name)
-: move_group_(node, group_name)
+MoveitController::MoveitController(std::shared_ptr<rclcpp::Node>& node, std::shared_ptr<rclcpp::Node>& move_group_node, std::string group_name)
+: move_group_(move_group_node, group_name)
 {
     node_ = node;
     group_name_ = group_name;

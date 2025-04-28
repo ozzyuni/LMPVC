@@ -60,12 +60,14 @@ int main(int argc, char ** argv)
   rclcpp::NodeOptions node_options;
 
   std::shared_ptr<rclcpp::Node> node = std::make_shared<rclcpp::Node>(node_name, node_options);
+  std::shared_ptr<rclcpp::Node> move_group_node = std::make_shared<rclcpp::Node>("move_group", node_options);
 
   RCLCPP_INFO(node->get_logger(), "LMPVC Controller starting");
 
   // Executor to spin the node
   rclcpp::executors::MultiThreadedExecutor executor;
   executor.add_node(node);
+  executor.add_node(move_group_node);
   std::thread([&executor]() { executor.spin(); }).detach();
   
   // Initialize the MoveIt controller, move group configurable by parameter
@@ -75,7 +77,7 @@ int main(int argc, char ** argv)
 
   RCLCPP_INFO(node->get_logger(), "Using Move Group: %s", planning_group_name.c_str());
 
-  std::shared_ptr<MoveitController> controller = std::make_shared<MoveitController>(node, planning_group_name);
+  std::shared_ptr<MoveitController> controller = std::make_shared<MoveitController>(node, move_group_node, planning_group_name);
 
   // Start services
   MoveitServices services(node, controller);

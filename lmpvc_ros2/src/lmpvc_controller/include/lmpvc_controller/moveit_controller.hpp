@@ -26,7 +26,7 @@ class MoveitController {
          * to use a group which actually exists and works. Currently, the default end
          * effector is used.
          */
-        MoveitController(std::shared_ptr<rclcpp::Node>& node, std::string group_name);
+        MoveitController(std::shared_ptr<rclcpp::Node>& node, std::shared_ptr<rclcpp::Node>& move_group_node, std::string group_name);
 
         /*
          * Params:
