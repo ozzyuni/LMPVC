@@ -8,6 +8,7 @@
 #include "franka_msgs/action/homing.hpp"
 #include "franka_msgs/action/move.hpp"
 #include "lmpvc_gripper/gripper_base.hpp"
+#include "std_srvs/srv/trigger.hpp"
 
 namespace lmpvc_gripper_franka_plugins
 {
@@ -31,6 +32,8 @@ namespace lmpvc_gripper_franka_plugins
       bool set_force(double force) override;
 
     protected:
+      bool stop();
+
       void init_cli();
 
       void homing_response_callback(const HomingGoalHandle::SharedPtr & goal_handle);
@@ -48,6 +51,8 @@ namespace lmpvc_gripper_franka_plugins
         const std::shared_ptr<const Move::Feedback> feedback);
       void move_result_callback(const MoveGoalHandle::WrappedResult & result);
       
+      rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr stop_client_;
+
       rclcpp_action::Client<Homing>::SendGoalOptions homing_options_;
       rclcpp_action::Client<Homing>::SharedPtr homing_client_;
       std::promise<bool> homing_ready_;

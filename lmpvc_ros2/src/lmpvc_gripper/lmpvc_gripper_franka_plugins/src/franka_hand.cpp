@@ -47,6 +47,11 @@ namespace lmpvc_gripper_franka_plugins
   bool FrankaHand::open(){
     auto logger = node_->get_logger();
 
+    if(!stop()){
+      RCLCPP_ERROR(logger, "Franka stop service call failed");
+      return false;
+    }
+
     if (!move_client_->wait_for_action_server()) {
       RCLCPP_ERROR(logger, "Franka move server not available after waiting");
       return false;
@@ -76,6 +81,11 @@ namespace lmpvc_gripper_franka_plugins
 
   bool FrankaHand::close(){
     auto logger = node_->get_logger();
+
+    if(!stop()){
+      RCLCPP_ERROR(logger, "Franka stop service call failed");
+      return false;
+    }
 
     if (!grasp_client_->wait_for_action_server()) {
       RCLCPP_ERROR(logger, "Franka grasp server not available after waiting");
@@ -109,12 +119,57 @@ namespace lmpvc_gripper_franka_plugins
   bool FrankaHand::set_force(double force){
     auto logger = node_->get_logger();
     force_ = force;
-    RCLCPP_INFO(logger, "Dummy Force Change!");
+    RCLCPP_INFO(logger, "New force (%f) will be used on future grasps!", force_);
     return true;
+  }
+
+  bool FrankaHand::stop(){
+    auto logger = node_->get_logger();
+
+    while (!stop_client_->wait_for_service(1s)) {
+      if (!rclcpp::ok()) {
+        RCLCPP_ERROR(logger, "Interrupted while waiting for the Stop service. Exiting.");
+        return false;
+      }
+      RCLCPP_INFO(logger, "Stop service not available, waiting again...");
+    }
+
+    bool success = false;
+    std::future_status status;
+    auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
+    auto result = stop_client_->async_send_request(request);
+
+    switch (status = result.wait_for(5s); status){
+      case std::future_status::deferred:
+        RCLCPP_INFO(node_->get_logger(), "Did not receive a response from Stop service");
+        success = false;
+        break;
+
+      case std::future_status::timeout:
+        success = false;
+        RCLCPP_INFO(node_->get_logger(), "Did not receive a response from Stop service");
+        break;
+
+      case std::future_status::ready:
+        success = result.get()->success;
+        if(success){
+          RCLCPP_INFO_STREAM(node_->get_logger(), "Stop call successful, message:" << result.get()->message);
+        }
+        else{
+          RCLCPP_INFO_STREAM(node_->get_logger(), "Stop call failed, message:" <<  result.get()->message);
+        }
+        break;
+    }
+  
+    return success;
   }
 
   void FrankaHand::init_cli(){
     using namespace std::placeholders;
+
+    // Stop service
+    this->stop_client_ =
+    this->node_->create_client<std_srvs::srv::Trigger>("/fr3_gripper/stop");
 
     // Homing action
     this->homing_client_ = rclcpp_action::create_client<Homing>(

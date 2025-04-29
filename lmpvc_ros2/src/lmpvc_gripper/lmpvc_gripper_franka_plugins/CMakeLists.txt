@@ -13,6 +13,7 @@ find_package(pluginlib REQUIRED)
 find_package(lmpvc_gripper REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
+find_package(std_srvs REQUIRED)
 
 # Generate plugins
 pluginlib_export_plugin_description_file(lmpvc_gripper plugins.xml)
@@ -32,6 +33,7 @@ ament_target_dependencies(
   rclcpp_action
   pluginlib
   lmpvc_gripper
+  std_srvs
 )
 
 install(
