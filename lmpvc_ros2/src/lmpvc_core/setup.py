@@ -22,6 +22,7 @@ def policy_files():
     for policy, src_path in index.items():
         src_paths.append(dir + '/' + src_path)
 
+    # Install policy files
     data_files.append(('share/' + package_name + '/policies/src', src_paths))
 
     return data_files
@@ -36,6 +37,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name, ['config/core_config.json']),
+        ('share/' + package_name, ['config/demo_config.json']),
         ('share/' + package_name, ['config/preamble.py']),
     ] + policy_files(),
     install_requires=['setuptools'],

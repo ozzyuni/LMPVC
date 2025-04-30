@@ -1,0 +1,8 @@
+{
+  "model_path": "/lmpvc_ros2_ws/models/voices/en_GB-northern_english_male-medium.onnx",
+  "commands": [
+    "say hello",
+    "move a little up",
+    "move a little down"
+  ]
+}

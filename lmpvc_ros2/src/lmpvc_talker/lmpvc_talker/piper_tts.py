@@ -7,7 +7,7 @@ from piper.voice import PiperVoice
 from pathlib import Path
 
 class Talker:
-    def __init__(self):
+    def __init__(self, model_path=None):
         talker_config_path = ""
         try:
             from ament_index_python.packages import get_package_share_directory
@@ -19,11 +19,17 @@ class Talker:
         except:
             talker_config_path = Path(__file__).with_name('talker_config.json')
 
-        modelpath = ""
-        with open(talker_config_path, 'r') as config_file:
-            modelpath = json.load(config_file)['piper']['model']
         
-        self.model = PiperVoice.load(modelpath)
+        model_file = ""
+        
+        if model_path is not None:
+            with open(talker_config_path, 'r') as config_file:
+                model_file = model_path
+        else:
+            with open(talker_config_path, 'r') as config_file:
+                model_file = json.load(config_file)['piper']['model']
+        
+        self.model = PiperVoice.load(model_file)
     
     def say(self, utterance):
         try:
