@@ -12,9 +12,7 @@ import os
 from pathlib import Path
 
 from lmpvc_core.policy_bank import PolicyBank
-from lmpvc_core.codegen_cli import CodeGenClient as CodeGen
-from lmpvc_core.robot import RobotAPI as Robot
-from lmpvc_core.listener_cli import ListenerActionClient as Listener
+from lmpvc_core.demo_handler import DemoHandler
 
 def empty_fn(*args, **kwargs):
     """Dummy function used to replace unsafe function calls"""
@@ -111,11 +109,14 @@ class ExecThread(threading.Thread):
                 self.stopped = True
 
 class VoiceControl:
-    """This is the main control loop of the entire LMPVC suite"""
+    """This is the main control loop of the entire LMPVC suite, demo version"""
 
     def __init__(self, codegen, robot, listener):
 
         try:
+            # Demo version
+            self.demo = DemoHandler()
+
             self.model = codegen
             self.robot = robot
             self.listener = listener
@@ -335,11 +336,19 @@ class VoiceControl:
                         raise self._exec_thread.e
 
                 if self.text_only:
-                    command = input("\nInstruction: ")
+                    if self.demo.interactive:
+                        input("[INPUT] Press Enter to proceed proceed to next command")
+
+                    print("\n [DEMO] Write command: ", end ="")
+                    command = self.demo.simulate_text_command()
+                    print(command)
                 else:
-                    input("\nPress any key to begin listening")
-                    command = self.listener.listen()
-                    print("\nInstruction:", command)
+                    if self.demo.interactive:
+                        input("[INPUT] Press Enter to proceed to next command")
+
+                    print("\n [DEMO] Listening for command...")
+                    command = self.demo.simulate_voice_command()
+                    print("\nCommand:", command)
                 
                 command = command.strip()
 

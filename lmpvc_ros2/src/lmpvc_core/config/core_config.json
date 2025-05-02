@@ -31,9 +31,9 @@
         ]
     },
     "voice_control": {
-        "text_only": true,
+        "text_only": false,
         "preamble_file": "preamble.txt",
-        "manual_review": false,
+        "manual_review": true,
         "context_lenght": 1
     }
 }

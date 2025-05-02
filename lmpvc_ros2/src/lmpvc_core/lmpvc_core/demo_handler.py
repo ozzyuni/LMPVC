@@ -28,6 +28,7 @@ class DemoHandler:
     self.cmd_index = 0
     self.cmds = config['commands']
     self.voice = Talker(model_path=config['model_path'])
+    self.interactive = config['interactive']
 
   def simulate_voice_command(self):
     cmd = self.cmds[self.cmd_index]
