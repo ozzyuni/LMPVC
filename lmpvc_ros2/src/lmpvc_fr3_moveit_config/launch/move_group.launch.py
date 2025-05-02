@@ -80,7 +80,7 @@ def generate_launch_description():
         robot_description_command, value_type=str)}
 
     franka_semantic_xacro_file = os.path.join(
-        get_package_share_directory('fr3_moveit_config'),
+        get_package_share_directory('franka_fr3_moveit_config'),
         'srdf', 'fr3_arm.srdf.xacro'
     )
 
@@ -91,10 +91,11 @@ def generate_launch_description():
 
     # Use ParameterValue here as well if needed
     robot_description_semantic = {'robot_description_semantic': ParameterValue(
-        robot_description_semantic_command, value_type=str)}
+        robot_description_semantic_command, value_type=str),
+        'publish_robot_description_semantic': True,} # Added parameter to publish srdf
 
     kinematics_yaml = load_yaml(
-        'fr3_moveit_config', 'config/kinematics.yaml')
+        'lmpvc_fr3_moveit_config', 'config/kinematics.yaml') # Using modified kinematics.yaml to fix the fr3_manipulator group (hopefully Franka fixes this in the future)
 
     run_move_group_node = Node(
         package='moveit_ros_move_group',

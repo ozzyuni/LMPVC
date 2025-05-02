@@ -82,7 +82,7 @@ def generate_launch_description():
         robot_description_config, value_type=str)}
 
     franka_semantic_xacro_file = os.path.join(
-        get_package_share_directory('fr3_moveit_config'),
+        get_package_share_directory('franka_fr3_moveit_config'),
         'srdf',
         'fr3_arm.srdf.xacro'
     )
@@ -93,11 +93,11 @@ def generate_launch_description():
     )
 
     robot_description_semantic = {'robot_description_semantic': ParameterValue(
-        robot_description_semantic_config, value_type=str)}
+        robot_description_semantic_config, value_type=str),
+        'publish_robot_description_semantic': True,} # Added parameter to publish srdf
 
     kinematics_yaml = load_yaml(
-        'fr3_moveit_config', 'config/kinematics.yaml'
-    )
+        'lmpvc_fr3_moveit_config', 'config/kinematics.yaml') # Using modified kinematics.yaml to fix the fr3_manipulator group (hopefully Franka fixes this in the future)
 
     # Planning Functionality
     ompl_planning_pipeline_config = {
@@ -113,13 +113,13 @@ def generate_launch_description():
         }
     }
     ompl_planning_yaml = load_yaml(
-        'fr3_moveit_config', 'config/ompl_planning.yaml'
+        'franka_fr3_moveit_config', 'config/ompl_planning.yaml'
     )
     ompl_planning_pipeline_config['move_group'].update(ompl_planning_yaml)
 
     # Trajectory Execution Functionality
     moveit_simple_controllers_yaml = load_yaml(
-        'fr3_moveit_config', 'config/fr3_controllers.yaml'
+        'franka_fr3_moveit_config', 'config/fr3_controllers.yaml'
     )
     moveit_controllers = {
         'moveit_simple_controller_manager': moveit_simple_controllers_yaml,
@@ -159,7 +159,7 @@ def generate_launch_description():
 
     # RViz
     rviz_base = os.path.join(get_package_share_directory(
-        'fr3_moveit_config'), 'rviz')
+        'franka_fr3_moveit_config'), 'rviz')
     rviz_full_config = os.path.join(rviz_base, 'moveit.rviz')
 
     rviz_node = Node(
@@ -186,7 +186,7 @@ def generate_launch_description():
     )
 
     ros2_controllers_path = os.path.join(
-        get_package_share_directory('fr3_moveit_config'),
+        get_package_share_directory('franka_fr3_moveit_config'),
         'config',
         'fr3_ros_controllers.yaml',
     )

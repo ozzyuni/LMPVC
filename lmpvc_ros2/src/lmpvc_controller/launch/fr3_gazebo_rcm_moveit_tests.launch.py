@@ -44,7 +44,7 @@ def load_yaml(package_name, file_path):
 def generate_launch_description():
 
     kinematics_yaml = load_yaml(
-        'fr3_moveit_config', 'config/kinematics.yaml'
+        'lmpvc_fr3_moveit_config', 'config/kinematics.yaml'
     )
 
     # Converting to the cmd fornat required by ExecuteProcess

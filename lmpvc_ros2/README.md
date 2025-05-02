@@ -3,11 +3,11 @@
 Language Model Program Voice Control (LMPVC) is a voice control framework for robotics, powered by Large Language Models (LLMs).
 This ROS2 workspace contains all it's core functionality.
 
-## ROS 2 Requirements
+## Franka FR3 Requirements
 
-To use lmpvc_controller with Franka FR3, an up to date version of franka_description is required: https://github.com/frankaemika/franka_description. Versions of fr3_moveit_config and franka_msgs are provided with the package to avoid a dependency on a full franka_ros installation.
+To use lmpvc_controller with Franka FR3, an up to date version of franka_description is required: https://github.com/frankaemika/franka_description. Versions of lmpvc_fr3_moveit_config and franka_msgs are provided with the package to avoid a dependency on a full franka_ros2 installation when built as a Docker image, in which case franka_ros2 would either be installed on the host machine or in a separate docker container. Currently, included docker scripts are configured to use host networking to facilitate either option.
 
-URDF and SRDF information is currently assumed to be published by a RobotDescription and MoveGroup nodes launched by the actual hardware or simulation configuration, kinematics.yaml must unfortunately be loaded directly. To make your MoveGroup node publish the SRDF, pass a parameter: https://moveit.picknik.ai/humble/doc/examples/urdf_srdf/urdf_srdf_tutorial.html#string-topic-specification
+URDF and SRDF information is currently assumed to be published by a RobotDescription and MoveGroup nodes launched by the actual hardware or simulation configuration, kinematics.yaml must unfortunately be loaded directly. To make your MoveGroup node publish the SRDF, pass a parameter: https://moveit.picknik.ai/humble/doc/examples/urdf_srdf/urdf_srdf_tutorial.html#string-topic-specification. An example moveit.launch.py with our setup is provided in lmpvc_fr3_moveit_config, but note that this launch file will only work with a full installation of franka_ros2.
 
 ## Instructions
 
@@ -51,9 +51,13 @@ ros2 run lmpvc_codegen codegen
 
 Low level controller:
 
+A launch file should be created to match your system, unless parameters are passed manually.
+
 ```
-ros2 run lmpvc_controller controller
+ros2 run lmpvc_controller controller --ros-args -p planning_group:=... <other_parameters>
 ```
+
+Refer to the existing fr3 launch files for relevant parameters.
 
 Text-To-Speech:
 

@@ -42,7 +42,7 @@ def load_yaml(package_name, file_path):
 
 def generate_launch_description():
     kinematics_yaml = load_yaml(
-        'fr3_moveit_config', 'config/kinematics.yaml'
+        'lmpvc_fr3_moveit_config', 'config/kinematics.yaml'
     )
 
     # Converting to the cmd fornat required by ExecuteProcess
@@ -52,7 +52,7 @@ def generate_launch_description():
     lmpvc_process = ExecuteProcess(
         cmd=['ros2', 'run', 'lmpvc_controller', 'controller', '--ros-args',
              '-p', 'gripper_enabled:=True',
-             '-p', 'gripper_plugin:="lmpvc_gripper_franka_plugins::FrankaHand"'
+             '-p', 'gripper_plugin:="lmpvc_gripper_franka_plugins::FrankaHand"',
              '-p', 'planning_group_name:="fr3_manipulator"'
             ] + kinematics_params,
         output='screen'
