@@ -39,6 +39,8 @@ setup(
         ('share/' + package_name, ['config/core_config.json']),
         ('share/' + package_name, ['config/demo_config.json']),
         ('share/' + package_name, ['config/preamble.py']),
+        ('share/' + package_name + '/launch', ['launch/demo.launch.py']),
+        ( 'share/' + package_name + '/launch', ['launch/demo_gpu.launch.py']),
     ] + policy_files(),
     install_requires=['setuptools'],
     zip_safe=True,
