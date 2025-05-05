@@ -30,8 +30,6 @@ import os
 import time
 from pathlib import Path
 
-from lmpvc_codegen.codegen_cache import CodeGenCache
-
 try:
     from ament_index_python.packages import get_package_share_directory
 
@@ -51,11 +49,17 @@ if codegen_config['model'] == 'bitsandbytes' or codegen_config['model'] == 'gptq
     from lmpvc_codegen.starcoder2_local import Model
 elif codegen_config['model'] == 'gguf':
     from lmpvc_codegen.starcoder2_gguf import Model
+elif codegen_config['model'] == 'demo':
+    from lmpvc_codegen.demo_model import Model
 else:
     if codegen_config['model'] != 'inference_api':
         print("Invalid parameter 'model', defaulting to inference_api!")
     from lmpvc_codegen.starcoder2_inference_api import Model
 
+if codegen_config['cache']['demo']:
+    from lmpvc_codegen.codegen_demo_cache import CodeGenCache
+else:
+    from lmpvc_codegen.codegen_cache import CodeGenCache
 
 class FunctionFinder(ast.NodeVisitor):
     """Finds function calls and assignments in an AST node."""
