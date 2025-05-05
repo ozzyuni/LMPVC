@@ -32,7 +32,7 @@ void MoveitServices::execute_cb(const std::shared_ptr<lmpvc_interfaces::srv::Con
     // Unused parameter
     (void)request;
 
-    response->success = controller_->move(false);
+    response->success = controller_->move(true);
 
     RCLCPP_INFO(node_->get_logger(), "Request served: Stop");
 }
