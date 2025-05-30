@@ -33,6 +33,7 @@ namespace lmpvc_gripper_franka_plugins
 
     protected:
       bool stop();
+      bool homing();
 
       void init_cli();
 
@@ -55,15 +56,12 @@ namespace lmpvc_gripper_franka_plugins
 
       rclcpp_action::Client<Homing>::SendGoalOptions homing_options_;
       rclcpp_action::Client<Homing>::SharedPtr homing_client_;
-      std::promise<bool> homing_ready_;
 
       rclcpp_action::Client<Grasp>::SendGoalOptions grasp_options_;
       rclcpp_action::Client<Grasp>::SharedPtr grasp_client_;
-      std::promise<bool> grasp_ready_;
-
+      
       rclcpp_action::Client<Move>::SendGoalOptions move_options_;
       rclcpp_action::Client<Move>::SharedPtr move_client_;
-      std::promise<bool> move_ready_;
 
       double force_;
       double max_width_;
