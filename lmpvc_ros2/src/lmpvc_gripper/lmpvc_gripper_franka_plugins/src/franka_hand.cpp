@@ -13,7 +13,7 @@ namespace lmpvc_gripper_franka_plugins
 
     // Setup
     this->node_ = node;
-    this->force_ = 0;
+    this->force_ = 5.0;
     this->max_width_ = 0;
 
     auto logger = node_->get_logger();
@@ -21,22 +21,7 @@ namespace lmpvc_gripper_franka_plugins
     init_cli();
 
     // Homing procedure
-    if (!homing_client_->wait_for_action_server()) {
-      RCLCPP_ERROR(logger, "Franka homing server not available after waiting");
-      rclcpp::shutdown();
-    }
-
-    this->homing_ready_ = std::promise<bool>();
-    auto future = homing_ready_.get_future(); 
-
-    auto homing_msg = Homing::Goal();
-    homing_client_->async_send_goal(homing_msg, this->homing_options_);
-
-    if(future.wait_for(30s) == std::future_status::timeout) { // Action callbacks set the result using homing_ready_
-      RCLCPP_ERROR(logger, "No response from homing withing 30s");
-      rclcpp::shutdown();
-    }
-    else if(!future.get()) {
+    if(!homing()) { // Action callbacks set the result using homing_ready_
       RCLCPP_ERROR(logger, "Homing failed");
       rclcpp::shutdown();
     }
@@ -44,56 +29,61 @@ namespace lmpvc_gripper_franka_plugins
     RCLCPP_INFO(logger, "Franka Hand Plugin Initialized");
   }
 
-  bool FrankaHand::open(){
+  bool FrankaHand::stop(){
+    std::string msg = "Unknown";
     auto logger = node_->get_logger();
 
-    if(!stop()){
-      RCLCPP_ERROR(logger, "Franka stop service call failed");
-      return false;
+    while (!stop_client_->wait_for_service(1s)) {
+      if (!rclcpp::ok()) {
+        msg = "Interrupted while waiting for the Stop service. Exiting.";
+        RCLCPP_ERROR_STREAM(logger, "Interrupted while waiting for the Stop service. Exiting.");
+        return false;
+      }
+      RCLCPP_INFO_STREAM(logger, "Stop service not available, waiting again...");
     }
 
-    if (!move_client_->wait_for_action_server()) {
-      RCLCPP_ERROR(logger, "Franka move server not available after waiting");
-      return false;
+    bool success = false;
+    std::future_status status;
+    auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
+    auto result_future = stop_client_->async_send_request(request);
+
+    switch (status = result_future.wait_for(5s); status){
+      case std::future_status::deferred:
+        msg = "Did not receive a response from Stop service";
+        RCLCPP_INFO_STREAM(node_->get_logger(), msg);
+        success = false;
+        break;
+
+      case std::future_status::timeout:
+        msg = "Did not receive a response from Stop service";
+        RCLCPP_INFO_STREAM(node_->get_logger(), msg);
+        success = false;
+        break;
+
+      case std::future_status::ready:
+        auto result = result_future.get();
+        success = result->success;
+        if(success){
+          msg = "Stop call successful, message:";
+          RCLCPP_INFO_STREAM(node_->get_logger(), msg << result->message);
+        }
+        else{
+          msg = "Stop call failed, message:";
+          RCLCPP_INFO_STREAM(node_->get_logger(), msg << result->message);
+        }
+        break;
     }
-
-    move_ready_ = std::promise<bool>();
-    auto future = move_ready_.get_future(); 
-
-    auto move_msg = Move::Goal();
-    move_msg.width = 0.98*max_width_; // Leaving a bit of margin to avoid errors
-    move_msg.speed = speed_;
-
-    move_client_->async_send_goal(move_msg, move_options_);
-
-    if(future.wait_for(30s) == std::future_status::timeout) { // Action callbacks set the result using grasp_ready_
-      RCLCPP_ERROR(logger, "No response from move within 30s");
-      return false;
-    }
-    else if(!future.get()) {
-      RCLCPP_ERROR(logger, "Move failed");
-      return false;
-    }
-
-    RCLCPP_INFO(logger, "Move completed");
-    return true;
+  
+    return success;
   }
 
   bool FrankaHand::close(){
     auto logger = node_->get_logger();
 
     if(!stop()){
-      RCLCPP_ERROR(logger, "Franka stop service call failed");
+      RCLCPP_ERROR_STREAM(logger, "Franka stop service call failed");
       return false;
     }
-
-    if (!grasp_client_->wait_for_action_server()) {
-      RCLCPP_ERROR(logger, "Franka grasp server not available after waiting");
-      return false;
-    }
-
-    grasp_ready_ = std::promise<bool>();
-    auto future = grasp_ready_.get_future(); 
 
     auto grasp_msg = Grasp::Goal();
     grasp_msg.width = 0;
@@ -101,66 +91,194 @@ namespace lmpvc_gripper_franka_plugins
     grasp_msg.speed = speed_;
     grasp_msg.force = force_;
 
-    grasp_client_->async_send_goal(grasp_msg, grasp_options_);
-
-    if(future.wait_for(30s) == std::future_status::timeout) { // Action callbacks set the result using grasp_ready_
-      RCLCPP_ERROR(logger, "No response from grasp within 30s");
-      return false;
-    }
-    else if(!future.get()) {
-      RCLCPP_ERROR(logger, "Grasp failed");
-      return false;
-    }
-
-    RCLCPP_INFO(logger, "Grasp completed");
-    return true;
-  }
-
-  bool FrankaHand::set_force(double force){
-    auto logger = node_->get_logger();
-    force_ = force;
-    RCLCPP_INFO(logger, "New force (%f) will be used on future grasps!", force_);
-    return true;
-  }
-
-  bool FrankaHand::stop(){
-    auto logger = node_->get_logger();
-
-    while (!stop_client_->wait_for_service(1s)) {
-      if (!rclcpp::ok()) {
-        RCLCPP_ERROR(logger, "Interrupted while waiting for the Stop service. Exiting.");
-        return false;
-      }
-      RCLCPP_INFO(logger, "Stop service not available, waiting again...");
-    }
+    auto goal_handle_future = grasp_client_->async_send_goal(grasp_msg, grasp_options_);
 
     bool success = false;
-    std::future_status status;
-    auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
-    auto result = stop_client_->async_send_request(request);
 
-    switch (status = result.wait_for(5s); status){
-      case std::future_status::deferred:
-        RCLCPP_INFO(node_->get_logger(), "Did not receive a response from Stop service");
-        success = false;
-        break;
+    // Wait for goal to be accepted
+    for(int i=0; i<10; i++){
+      RCLCPP_INFO(logger, "Waiting for response from /fr3_gripper/grasp...");
 
-      case std::future_status::timeout:
-        success = false;
-        RCLCPP_INFO(node_->get_logger(), "Did not receive a response from Stop service");
-        break;
-
-      case std::future_status::ready:
-        success = result.get()->success;
-        if(success){
-          RCLCPP_INFO_STREAM(node_->get_logger(), "Stop call successful, message:" << result.get()->message);
+      if(goal_handle_future.wait_for(1s) == std::future_status::timeout) {
+        if (!rclcpp::ok()) {
+            RCLCPP_ERROR(logger, "Interrupted while waiting for /fr3_gripper/grasp. Exiting.");
+            return success;
         }
-        else{
-          RCLCPP_INFO_STREAM(node_->get_logger(), "Stop call failed, message:" <<  result.get()->message);
+        else if (i>8){
+            RCLCPP_ERROR(logger, "Timed out while waiting for /fr3_gripper/grasp. Exiting.");
+            return success;
         }
+      }
+      else {
         break;
+      }
     }
+
+    auto result_future = grasp_client_->async_get_result(goal_handle_future.get());
   
+    // Wait for result
+    for(int i=0; i<10; i++){
+      if(result_future.wait_for(1s) == std::future_status::timeout) {
+        if (!rclcpp::ok()) {
+            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /fr3_gripper/grasp. Exiting.");
+            return success;
+        }
+        else if (i>8){
+            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /fr3_gripper/grasp. Exiting.");
+            return success;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    auto result = result_future.get();
+
+    if(result.code == rclcpp_action::ResultCode::SUCCEEDED) {
+      success = result.result->success;
+
+      if(result.result->success) {
+        RCLCPP_INFO_STREAM(logger, "Moving succesful!");
+      }
+      else {
+        RCLCPP_ERROR_STREAM(logger, "Moving failed: " << result.result->error);
+      }
+    }
+
+    return success;
+  }
+
+
+  bool FrankaHand::open(){
+    auto logger = node_->get_logger();
+
+    if(!stop()){
+      RCLCPP_ERROR_STREAM(logger, "Franka stop service call failed");
+      return false;
+    }
+
+    auto move_msg = Move::Goal();
+    move_msg.width = 0.98*max_width_; // Leaving a bit of margin to avoid errors
+    move_msg.speed = speed_;
+
+    auto goal_handle_future = move_client_->async_send_goal(move_msg, move_options_);
+
+    bool success = false;
+
+    // Wait for goal to be accepted
+    for(int i=0; i<10; i++){
+      RCLCPP_INFO(logger, "Waiting for response from /fr3_gripper/move...");
+
+      if(goal_handle_future.wait_for(1s) == std::future_status::timeout) {
+        if (!rclcpp::ok()) {
+            RCLCPP_ERROR(logger, "Interrupted while waiting for /fr3_gripper/move. Exiting.");
+            return success;
+        }
+        else if (i>8){
+            RCLCPP_ERROR(logger, "Timed out while waiting for /fr3_gripper/move. Exiting.");
+            return success;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    auto result_future = move_client_->async_get_result(goal_handle_future.get());
+  
+    // Wait for result
+    for(int i=0; i<10; i++){
+      if(result_future.wait_for(1s) == std::future_status::timeout) {
+        if (!rclcpp::ok()) {
+            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /fr3_gripper/move. Exiting.");
+            return success;
+        }
+        else if (i>8){
+            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /fr3_gripper/move. Exiting.");
+            return success;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    auto result = result_future.get();
+
+    if(result.code == rclcpp_action::ResultCode::SUCCEEDED) {
+      success = result.result->success;
+
+      if(result.result->success) {
+        RCLCPP_INFO_STREAM(logger, "Moving succesful!");
+      }
+      else {
+        RCLCPP_ERROR_STREAM(logger, "Moving failed: " << result.result->error);
+      }
+    }
+
+    return success;
+  }
+
+
+  bool FrankaHand::homing(){
+    auto logger = node_->get_logger();
+
+    auto homing_msg = Homing::Goal();
+    auto goal_handle_future = homing_client_->async_send_goal(homing_msg, this->homing_options_);
+
+    bool success = false;
+
+    // Wait for goal to be accepted
+    for(int i=0; i<10; i++){
+      RCLCPP_INFO(logger, "Waiting for response from /fr3_gripper/homing...");
+
+      if(goal_handle_future.wait_for(1s) == std::future_status::timeout) {
+        if (!rclcpp::ok()) {
+            RCLCPP_ERROR(logger, "Interrupted while waiting for /fr3_gripper/homing. Exiting.");
+            return success;
+        }
+        else if (i>8){
+            RCLCPP_ERROR(logger, "Timed out while waiting for /fr3_gripper/homing. Exiting.");
+            return success;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    auto result_future = homing_client_->async_get_result(goal_handle_future.get());
+  
+    // Wait for result
+    for(int i=0; i<10; i++){
+      if(result_future.wait_for(1s) == std::future_status::timeout) {
+        if (!rclcpp::ok()) {
+            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /fr3_gripper/homing. Exiting.");
+            return success;
+        }
+        else if (i>8){
+            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /fr3_gripper/homing. Exiting.");
+            return success;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    auto result = result_future.get();
+
+    if(result.code == rclcpp_action::ResultCode::SUCCEEDED) {
+      success = result.result->success;
+
+      if(result.result->success) {
+        RCLCPP_INFO_STREAM(logger, "Homing succesful!");
+      }
+      else {
+        RCLCPP_ERROR_STREAM(logger, "Homing failed: " << result.result->error);
+      }
+    }
     return success;
   }
 
@@ -214,13 +332,13 @@ namespace lmpvc_gripper_franka_plugins
       std::bind(&FrankaHand::move_result_callback, this, _1);
   }
 
+
   void FrankaHand::homing_response_callback(const HomingGoalHandle::SharedPtr & goal_handle){
     auto logger = node_->get_logger();
     if (!goal_handle) {
-      RCLCPP_ERROR(logger, "Homing goal was rejected by Franka Hand");
-      homing_ready_.set_value(false);
+      RCLCPP_ERROR_STREAM(logger, "Homing goal was rejected by Franka Hand");
     } else {
-      RCLCPP_INFO(logger, "Homing goal accepted by Franka Hand, waiting for result");
+      RCLCPP_INFO_STREAM(logger, "Homing goal accepted by Franka Hand, waiting for result");
     }
   }
   
@@ -231,43 +349,29 @@ namespace lmpvc_gripper_franka_plugins
   
   void FrankaHand::homing_result_callback(const HomingGoalHandle::WrappedResult & result){
     auto logger = node_->get_logger();
-    bool action_completed = false;
 
     switch (result.code) {
       case rclcpp_action::ResultCode::SUCCEEDED:
-        action_completed = true;
         break;
       case rclcpp_action::ResultCode::ABORTED:
-        RCLCPP_ERROR(logger, "Goal was aborted");
+        RCLCPP_ERROR_STREAM(logger, "Goal was aborted");
         break;
       case rclcpp_action::ResultCode::CANCELED:
-        RCLCPP_ERROR(logger, "Goal was canceled");
+        RCLCPP_ERROR_STREAM(logger, "Goal was canceled");
         break;
       default:
-        RCLCPP_ERROR(logger, "Unknown result code");
+        RCLCPP_ERROR_STREAM(logger, "Unknown result code");
         break;
     }
 
-    if(!action_completed) {
-      homing_ready_.set_value(false);
-    }
-    else if(result.result->success) {
-      RCLCPP_INFO(logger, "Homing succesful!");
-      homing_ready_.set_value(true);
-    }
-    else {
-      RCLCPP_ERROR(logger, "Homing failed: %s", result.result->error.c_str());
-      homing_ready_.set_value(false);
-    }
   }
    
   void FrankaHand::grasp_response_callback(const GraspGoalHandle::SharedPtr & goal_handle){
     auto logger = node_->get_logger();
     if (!goal_handle) {
-      RCLCPP_ERROR(logger, "Grasp goal was rejected by Franka Hand");
-      grasp_ready_.set_value(false);
+      RCLCPP_ERROR_STREAM(logger, "Grasp goal was rejected by Franka Hand");
     } else {
-      RCLCPP_INFO(logger, "Grasp goal accepted by Franka Hand, waiting for result");
+      RCLCPP_INFO_STREAM(logger, "Grasp goal accepted by Franka Hand, waiting for result");
     }
   }
       
@@ -278,43 +382,29 @@ namespace lmpvc_gripper_franka_plugins
 
   void FrankaHand::grasp_result_callback(const GraspGoalHandle::WrappedResult & result){
     auto logger = node_->get_logger();
-    bool action_completed = false;
 
     switch (result.code) {
       case rclcpp_action::ResultCode::SUCCEEDED:
-        action_completed = true;
         break;
       case rclcpp_action::ResultCode::ABORTED:
-        RCLCPP_ERROR(logger, "Goal was aborted");
+        RCLCPP_ERROR_STREAM(logger, "Goal was aborted");
         break;
       case rclcpp_action::ResultCode::CANCELED:
-        RCLCPP_ERROR(logger, "Goal was canceled");
+        RCLCPP_ERROR_STREAM(logger, "Goal was canceled");
         break;
       default:
-        RCLCPP_ERROR(logger, "Unknown result code");
+        RCLCPP_ERROR_STREAM(logger, "Unknown result code");
         break;
     }
 
-    if(!action_completed) {
-      grasp_ready_.set_value(false);
-    }
-    else if(result.result->success) {
-      RCLCPP_INFO(logger, "Grasp succesful!");
-      grasp_ready_.set_value(true);
-    }
-    else {
-      RCLCPP_ERROR(logger, "Grasp failed: %s", result.result->error.c_str());
-      grasp_ready_.set_value(false);
-    }
   }
 
   void FrankaHand::move_response_callback(const MoveGoalHandle::SharedPtr & goal_handle){
     auto logger = node_->get_logger();
     if (!goal_handle) {
-      RCLCPP_ERROR(logger, "Move goal was rejected by Franka Hand");
-      move_ready_.set_value(false);
+      RCLCPP_ERROR_STREAM(logger, "Move goal was rejected by Franka Hand");
     } else {
-      RCLCPP_INFO(logger, "Move goal accepted by Franka Hand, waiting for result");
+      RCLCPP_INFO_STREAM(logger, "Move goal accepted by Franka Hand, waiting for result");
     }
   }
 
@@ -325,34 +415,21 @@ namespace lmpvc_gripper_franka_plugins
 
   void FrankaHand::move_result_callback(const MoveGoalHandle::WrappedResult & result){
     auto logger = node_->get_logger();
-    bool action_completed = false;
 
     switch (result.code) {
       case rclcpp_action::ResultCode::SUCCEEDED:
-        action_completed = true;
         break;
       case rclcpp_action::ResultCode::ABORTED:
-        RCLCPP_ERROR(logger, "Goal was aborted");
+        RCLCPP_ERROR_STREAM(logger, "Goal was aborted");
         break;
       case rclcpp_action::ResultCode::CANCELED:
-        RCLCPP_ERROR(logger, "Goal was canceled");
+        RCLCPP_ERROR_STREAM(logger, "Goal was canceled");
         break;
       default:
-        RCLCPP_ERROR(logger, "Unknown result code");
+        RCLCPP_ERROR_STREAM(logger, "Unknown result code");
         break;
     }
 
-    if(!action_completed) {
-      move_ready_.set_value(false);
-    }
-    else if(result.result->success) {
-      RCLCPP_INFO(logger, "Homing succesful!");
-      move_ready_.set_value(true);
-    }
-    else {
-      RCLCPP_ERROR(logger, "Homing failed: %s", result.result->error.c_str());
-      move_ready_.set_value(false);
-    }
   }
 
 }
