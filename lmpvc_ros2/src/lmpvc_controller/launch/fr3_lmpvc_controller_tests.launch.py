@@ -18,16 +18,6 @@ from launch_ros.parameter_descriptions import ParameterValue
 import os
 import yaml
 
-def build_cmd(params, prefix = ""):
-    cmd = []
-    for name, value in params.items():
-        if isinstance(value, dict):
-            cmd += build_cmd(value, prefix = prefix + name + '.')
-        else:
-            cmd.append('-p')    
-            cmd.append(prefix + name + ':=' + str(value))
-    
-    return cmd
 
 def load_yaml(package_name, file_path):
     package_path = get_package_share_directory(package_name)
@@ -41,21 +31,25 @@ def load_yaml(package_name, file_path):
 
 
 def generate_launch_description():
+
     kinematics_yaml = load_yaml(
         'lmpvc_fr3_moveit_config', 'config/kinematics.yaml'
     )
 
-    # Converting to the cmd fornat required by ExecuteProcess
-    kinematics_params = build_cmd(kinematics_yaml)
-
-    # Starting with ExecuteProcess instead of Node to avoid having multiple nodes with the same name
-    lmpvc_process = ExecuteProcess(
-        cmd=['ros2', 'run', 'lmpvc_controller', 'controller', '--ros-args',
-             '-p', 'gripper_enabled:=True',
-             '-p', 'gripper_plugin:="lmpvc_gripper_franka_plugins::FrankaHand"',
-             '-p', 'planning_group_name:="fr3_manipulator"'
-            ] + kinematics_params,
-        output='screen'
+    # RCM MoveIt wrapper node
+    lmpvc_controller = Node(
+        package="lmpvc_controller",
+        executable="controller",
+        output="screen",
+        parameters=[
+            kinematics_yaml,
+            {
+            'planning_group_name': 'fr3_manipulator',
+            'gripper_enabled': True,
+            'gripper_plugin': "rcm_gripper_franka_plugins::FrankaHand",
+            'tests_enabled': True
+            }
+        ],
     )
 
-    return LaunchDescription([lmpvc_process])
+    return LaunchDescription([lmpvc_controller])
