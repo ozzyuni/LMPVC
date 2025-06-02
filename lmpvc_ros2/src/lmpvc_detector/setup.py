@@ -10,6 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/config', ['config/test_objects.json']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -21,6 +22,7 @@ setup(
     entry_points={
         'console_scripts': [
             'detector = lmpvc_detector.detector_srv:main',
+            'pose_recorder = lmpvc_detector.pose_recorder:main'
         ],
     },
 )

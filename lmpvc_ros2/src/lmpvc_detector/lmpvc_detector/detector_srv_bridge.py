@@ -1,40 +1,48 @@
 #!/usr/bin/env python
 import rclpy
+import argparse
 from rclpy.node import Node
 from lmpvc_interfaces.srv import Detector
-from lmpvc_detector.pose_recorder import PoseRecorder
-from geometry_msgs.msg import Pose
+
+import lmpvc_detector.detector_web_client
 
 class DetectorService(Node):
     
-    def __init__(self):
+    def __init__(self, ip='127.0.0.1'):
         super().__init__('detector_service')
-        self.pose_recorder = PoseRecorder(self)
-        self.predefined_poses = self.pose_recorder.load_from_file()
+        self.detector = lmpvc_detector.detector_web_client.DetectorWebClient(ip)
         self.srv = self.create_service(Detector, 'detector', self.detector_cb)
         self.get_logger().info("Service ready!")
     
     def detector_cb(self, request, response):
         self.get_logger().info("Incoming request, trying to find: " + request.target)
-        response.pose = Pose()
-        response.pickable = False
-        response.success = False
-        
-        item_data = self.predefined_poses.get(request.target)
 
-        if item_data is not None:
+        (pose, pickable, success) = self.detector.find(request.target)
+
+        if success:
             self.get_logger().info("Detection successful, returning results.")
-            response.pose = item_data['pose']
-            response.pickable = item_data['pickable']
-            response.success = True
         else:
             self.get_logger().info("Detection failed, returning results.")
+
+        response.pose = pose
+        response.pickable = pickable
+        response.success = success
 
         return response
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-ip', help="set ip address for the other end of the bridge (default = 127.0.0.1)")
+    args, unknown = parser.parse_known_args()
+
+    ip = args.ip
+    if ip is None:
+        ip = '127.0.0.1'
+        print("Using default IP.")
+    print("Connecting to", ip)
+
     rclpy.init()
-    detector_service = DetectorService()
+    detector_service = DetectorService(ip)
     rclpy.spin(detector_service)
     rclpy.shutdown()
 
