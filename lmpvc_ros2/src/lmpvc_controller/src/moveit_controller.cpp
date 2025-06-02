@@ -17,6 +17,8 @@ MoveitController::MoveitController(std::shared_ptr<rclcpp::Node>& node, std::sha
     // Maximum joint velocity multiplier, 0 -> default value
     move_group_.setMaxVelocityScalingFactor(0);
 
+    default_joint_values_ = get_joint_group_positions();
+
     // End effector can be specified manually if necessary
     //move_group_.setEndEffector("hand_tcp");
 }
@@ -73,6 +75,18 @@ bool MoveitController::plan_joint_goal(std::vector<double> joint_group_positions
 
     bool success = (move_group_.plan(plan_) == moveit::core::MoveItErrorCode::SUCCESS);
     RCLCPP_INFO(node_->get_logger(), "Planning to Joint Goal: %s", success ? "" : "FAILED");
+
+    return success;
+}
+
+bool MoveitController::reset_joints(){
+    bool success = false; 
+    
+    if(plan_joint_goal(default_joint_values_)){
+        success = move(true);
+    }
+    
+    RCLCPP_INFO(node_->get_logger(), "Returning joints to default values: %s", success ? "" : "FAILED");
 
     return success;
 }

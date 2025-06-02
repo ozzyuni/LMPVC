@@ -136,8 +136,8 @@ class CodeGenCache:
 
             # Simulate the time it takes for the llm to run by waiting 0.5 seconds for every 40 characters,
             # or a maximum of 5 seconds
-            wait_time = max( (len(code) / 40) * 0.5, 5 )
-            time.wait(wait_time)
+            wait_time = min( (len(code) / 40) * 0.5, 5 )
+            time.sleep(wait_time)
         
         return code
 

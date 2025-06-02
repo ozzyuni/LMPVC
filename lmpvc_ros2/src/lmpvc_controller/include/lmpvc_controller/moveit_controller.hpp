@@ -68,6 +68,8 @@ class MoveitController {
          */
         bool plan_joint_goal(std::vector<double> joint_group_positions, std::string plan_owner = "");
 
+        bool reset_joints();
+
         /*
          * Params: wait
          * Returns: success
@@ -126,6 +128,8 @@ class MoveitController {
         // Publisher and subscriber for MoveIt Servo twist commands
         rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr twist_pub_;
         rclcpp::Subscription<geometry_msgs::msg::TwistStamped>::SharedPtr twist_sub_;
+
+        std::vector<double> default_joint_values_;
 };
 
 #endif

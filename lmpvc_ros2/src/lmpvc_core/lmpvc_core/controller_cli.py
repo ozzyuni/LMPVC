@@ -8,6 +8,7 @@ from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import MutuallyExclusiveCallbackGroup, ReentrantCallbackGroup
 from rclpy.node import Node
 from lmpvc_interfaces.srv import ControllerExec, ControllerGetPose, ControllerPlan, ControllerSetSpeed, ControllerStop, ControllerCloseHand, ControllerOpenHand
+from std_srvs.srv import Trigger
 
 class ControllerClient:
     """ROS2 client node implementing services to call the functionality of lmpvc_controller."""
@@ -23,6 +24,7 @@ class ControllerClient:
         self._plan_cli = self._node.create_client(ControllerPlan, 'controller_plan', callback_group=self._group)
         self._set_speed_cli = self._node.create_client(ControllerSetSpeed, 'controller_set_speed', callback_group=self._group)
         self._stop_cli = self._node.create_client(ControllerStop, 'controller_stop', callback_group=self._group)
+        self._joint_reset_cli = self._node.create_client(Trigger, 'controller_reset_joints', callback_group=self._group)
 
         self._node.get_logger().info("[Controller] Client ready!")
     
@@ -98,6 +100,16 @@ class ControllerClient:
 
         return result.success
     
+    def reset_joints(self):
+        req = Trigger.Request()
+
+        while not self._joint_reset_cli.wait_for_service(timeout_sec=1.0):
+            self._node.get_logger().info("[Controller] Service not available, trying again...")
+        
+        result = self._joint_reset_cli.call(req)
+
+        return result.success
+    
     def init_pose(self):
         pose = geometry_msgs.msg.Pose()
         return pose
@@ -112,6 +124,9 @@ def main():
     executor.add_node(node)
     et = threading.Thread(target=executor.spin)
     et.start()
+
+    input("Press ENTER to reset joints")
+    controller.reset_joints()
 
 
     input("Press any key to get pose")

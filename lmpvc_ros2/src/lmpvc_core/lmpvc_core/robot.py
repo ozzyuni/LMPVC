@@ -322,3 +322,8 @@ class RobotAPI:
         """Instruct controller to close gripper"""
         success = self.controller.close_hand()
         return success
+
+    def reset_joints(self):
+        """Instruct controller to return joints to initial positions"""
+        success = self.controller.reset_joints()
+        return success

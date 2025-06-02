@@ -10,7 +10,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
   
-  bringup_dir = get_package_share_directory('nav2_bringup')
+  bringup_dir = get_package_share_directory('lmpvc_controller')
   launch_dir = os.path.join(bringup_dir, 'launch/fr3_rcm_moveit.launch.py')
   
   return LaunchDescription([
@@ -18,11 +18,11 @@ def generate_launch_description():
     IncludeLaunchDescription(
     PythonLaunchDescriptionSource(launch_dir),
     ),
-    Node(
-      package='lmpvc_listener',
-      executable='listener',
-      name='listener'
-    ),
+    #Node(
+    #  package='lmpvc_listener',
+    #  executable='listener',
+    #  name='listener'
+    #),
 
     Node(
       package='lmpvc_talker',

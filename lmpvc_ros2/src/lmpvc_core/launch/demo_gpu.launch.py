@@ -13,10 +13,10 @@ def generate_launch_description():
       name='codegen'
     ),
 
-    Node(
-      package='lmpvc_listener',
-      executable='transcriber',
-      name='transcriber'
-    ),
+    #Node(
+    #  package='lmpvc_listener',
+    # executable='transcriber',
+    #  name='transcriber'
+    #),
     
   ])

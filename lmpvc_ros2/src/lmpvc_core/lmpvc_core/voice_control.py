@@ -2,6 +2,7 @@
 
 # This is the main module of the LMPVC suite
 
+import time
 import ast
 import astunparse
 import json
@@ -44,6 +45,7 @@ class ExecThread(threading.Thread):
         self.robot = robot
         self.policy_bank = policy_bank
         self.proceed = threading.Event()
+        self.done = threading.Event()
         self.lock = threading.Lock()
         self.queue = []
         self.reset = False
@@ -76,6 +78,7 @@ class ExecThread(threading.Thread):
         code_queue = []
         no_exceptions = True
         quit = False
+        self.done.set()
 
         try:
 
@@ -95,11 +98,15 @@ class ExecThread(threading.Thread):
                             no_exceptions = True
                 
                 # Execute from queue until an exception occurs
+                self.done.clear()
+
                 if len(code_queue) > 0 and no_exceptions:
                     if self.execute(code_queue[0]):
                         code_queue.pop(0)
                     else:
                         no_exceptions = False
+
+                self.done.set()
 
         except Exception as e:
 
@@ -107,6 +114,8 @@ class ExecThread(threading.Thread):
             with self.lock:
                 self.e = e
                 self.stopped = True
+
+            self.done.set()
 
 class VoiceControl:
     """This is the main control loop of the entire LMPVC suite, demo version"""
@@ -322,13 +331,22 @@ class VoiceControl:
         """The interface and main loop of the voice control module"""
 
         try:
-            self.robot.say("Voice Control activated!", wait=False)
+            self.robot.say("Voice Control activated!", wait=True)
             #self.robot.set_home()
             command = ''
             code = ''
+            home = self.robot.get_pose()
+            first_command = None
 
             # Start the UI
             while(True):
+                time.sleep(2)
+
+                # Block the execution thread and hard stop the robot
+                self._exec_thread.proceed.clear()
+                self.robot.stop(hard=True)
+
+                self._exec_thread.done.wait()
 
                 # Check for exceptions in the execution thread 
                 with self._exec_thread.lock:                      
@@ -346,19 +364,22 @@ class VoiceControl:
                     if self.demo.interactive:
                         input("[INPUT] Press Enter to proceed to next command")
 
-                    print("\n [DEMO] Listening for command...")
+                    print("\n[DEMO] Listening for command...")
                     command = self.demo.simulate_voice_command()
                     print("\nCommand:", command)
-                
+
                 command = command.strip()
 
                 if command == 'timeout':
                     print('Input timed out, restarting!')
                     continue
 
-                # Block the execution thread and hard stop the robot
-                self._exec_thread.proceed.clear()
-                self.robot.stop(hard=True)
+                # Handle the demo loop
+                if first_command is None:
+                    first_command = command
+                elif first_command == command:
+                    print("\n[DEMO] Restarted, returning to home...")
+                    self.robot.reset_joints()
 
                 # Manually intercept certain commands for fast response
                 if command == 'quit' or command == 'exit':

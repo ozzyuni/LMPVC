@@ -21,7 +21,10 @@ MoveitServices::MoveitServices(std::shared_ptr<rclcpp::Node>& node, std::shared_
                 std::bind(&MoveitServices::set_speed_cb, this, std::placeholders::_1, std::placeholders::_2));  
 
     stop_service_ = node_->create_service<lmpvc_interfaces::srv::ControllerStop>("controller_stop", 
-                std::bind(&MoveitServices::stop_cb, this, std::placeholders::_1, std::placeholders::_2));                
+                std::bind(&MoveitServices::stop_cb, this, std::placeholders::_1, std::placeholders::_2));
+    
+    joint_reset_service_ = node_->create_service<std_srvs::srv::Trigger>("controller_reset_joints", 
+        std::bind(&MoveitServices::joint_reset_cb, this, std::placeholders::_1, std::placeholders::_2));    
 
     RCLCPP_INFO(node_->get_logger(), "Services created!");
 }
@@ -32,7 +35,7 @@ void MoveitServices::execute_cb(const std::shared_ptr<lmpvc_interfaces::srv::Con
     // Unused parameter
     (void)request;
 
-    response->success = controller_->move(false);
+    response->success = controller_->move(true);
 
     RCLCPP_INFO(node_->get_logger(), "Request served: Stop");
 }
@@ -78,4 +81,17 @@ void MoveitServices::stop_cb(const std::shared_ptr<lmpvc_interfaces::srv::Contro
     response->success = true;
 
     RCLCPP_INFO(node_->get_logger(), "Request served: Stop");
+}
+
+void MoveitServices::joint_reset_cb(const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
+    std::shared_ptr<std_srvs::srv::Trigger::Response> response){
+
+    RCLCPP_INFO(node_->get_logger(), "Request received: Reset Joints");
+    // Unused parameter
+    (void)request;
+
+    response->success = controller_->reset_joints();
+
+    RCLCPP_INFO(node_->get_logger(), "Request served: Reset Joints");
+
 }

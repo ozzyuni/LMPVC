@@ -1,5 +1,5 @@
 {
-    "model": "gguf",
+    "model": "demo",
     "inference_api": {
         "hf_url": "bigcode/starcoder2-15b",
         "hf_token": "<your_token_here>"
@@ -18,8 +18,8 @@
         "context_size": 2048
     },
     "cache":{
-        "enabled": false,
-        "demo": false,
-        "filename": null
+        "enabled": true,
+        "demo": true,
+        "filename": "demo_cmds.bin"
     }
 }

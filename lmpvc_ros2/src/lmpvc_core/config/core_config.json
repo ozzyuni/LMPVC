@@ -33,7 +33,7 @@
     "voice_control": {
         "text_only": false,
         "preamble_file": "preamble.txt",
-        "manual_review": true,
+        "manual_review": false,
         "context_lenght": 1
     }
 }
