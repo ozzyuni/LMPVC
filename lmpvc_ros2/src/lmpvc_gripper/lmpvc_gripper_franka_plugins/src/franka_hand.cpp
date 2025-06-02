@@ -220,6 +220,10 @@ namespace lmpvc_gripper_franka_plugins
     return success;
   }
 
+  bool FrankaHand::set_force(double force){
+    force_ = force;
+    return true;
+  }
 
   bool FrankaHand::homing(){
     auto logger = node_->get_logger();
