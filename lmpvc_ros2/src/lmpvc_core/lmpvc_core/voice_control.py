@@ -336,7 +336,7 @@ class VoiceControl:
             command = ''
             code = ''
             home = self.robot.get_pose()
-            first_command = None
+            self.robot.reset_joints()
 
             # Start the UI
             while(True):
@@ -375,9 +375,7 @@ class VoiceControl:
                     continue
 
                 # Handle the demo loop
-                if first_command is None:
-                    first_command = command
-                elif first_command == command:
+                if command == "reset_demo":
                     print("\n[DEMO] Restarted, returning to home...")
                     self.robot.reset_joints()
 

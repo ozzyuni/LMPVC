@@ -32,7 +32,9 @@ class DemoHandler:
 
   def simulate_voice_command(self):
     cmd = self.cmds[self.cmd_index]
-    self.voice.say(cmd)
+    
+    if(cmd != "reset_demo"):
+      self.voice.say(cmd)
 
     self.cmd_index += 1
     self.cmd_index = self.cmd_index if self.cmd_index < len(self.cmds) else 0

@@ -17,7 +17,15 @@ MoveitController::MoveitController(std::shared_ptr<rclcpp::Node>& node, std::sha
     // Maximum joint velocity multiplier, 0 -> default value
     move_group_.setMaxVelocityScalingFactor(0);
 
-    default_joint_values_ = get_joint_group_positions();
+    default_joint_values_ = {
+                            0.0141198,
+                            -0.688377,
+                            -0.0150506,
+                            -2.50402,
+                            -0.0192199,
+                            1.81296,
+                            0.848094,
+                            };
 
     // End effector can be specified manually if necessary
     //move_group_.setEndEffector("hand_tcp");
