@@ -378,6 +378,7 @@ class VoiceControl:
                 if command == "reset_demo":
                     print("\n[DEMO] Restarted, returning to home...")
                     self.robot.reset_joints()
+                    continue
 
                 # Manually intercept certain commands for fast response
                 if command == 'quit' or command == 'exit':

@@ -7,6 +7,7 @@ sudo docker run -d -t --rm --runtime=nvidia --gpus all \
      --pid=host \
      --name lmpvc_ros2 \
      --volume "$PWD":/lmpvc_ros2_ws \
+     --volume /etc/localtime:/etc/localtime:ro \
      lmpvc_ros2_cuda
 
 echo "Attempting to start Pulseaudio TCP server..."
