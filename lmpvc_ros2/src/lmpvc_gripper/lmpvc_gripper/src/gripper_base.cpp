@@ -20,8 +20,9 @@ namespace lmpvc_gripper
     RCLCPP_INFO(logger, "Request received: Close Gripper!");
     
     response->success = set_force(request->force);
-    if(response->success) {
-      response->success = close();
+    if(response->success && rclcpp::ok()) {
+      std::thread{std::bind(&BasicGripper::close, this)}.detach();
+      response->success = true;
     }
     else {
       RCLCPP_WARN(logger, "Close gripper: Failed to set force!");
@@ -40,13 +41,15 @@ namespace lmpvc_gripper
     (void)request;
 
     auto logger = node_->get_logger();
-    RCLCPP_INFO(logger, "Request received: Open Gripper!");
-    response->success = open();
-    if(response->success) {
-      RCLCPP_INFO(logger, "Open gripper: Success!");
+    bool success = false;
+    RCLCPP_INFO_STREAM(logger, "Request received: Open gripper");
+    
+    if(rclcpp::ok()){
+      std::thread{std::bind(&BasicGripper::open, this)}.detach();
+      success = true;
     }
-    else {
-      RCLCPP_INFO(logger, "Open gripper: Failed!");
-    }
+    
+    response->success = success;
+    RCLCPP_INFO(logger, "Close gripper: %s", response->success ? "SUCCESS" : "FAILED");
   }
 } // namespace lmpvc_gripper
