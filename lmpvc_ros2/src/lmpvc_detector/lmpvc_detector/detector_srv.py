@@ -1,14 +1,18 @@
 #!/usr/bin/env python
 import rclpy
 from rclpy.node import Node
+from geometry_msgs.msg import Pose
+
 from lmpvc_interfaces.srv import Detector
 from lmpvc_detector.pose_recorder import PoseRecorder
-from geometry_msgs.msg import Pose
+from lmpvc_detector.simple_detection_manager import DetectionManager
+
 
 class DetectorService(Node):
     
     def __init__(self):
         super().__init__('detector_service')
+        self.detection_manager = DetectionManager(self)
         self.pose_recorder = PoseRecorder(self)
         self.predefined_poses = self.pose_recorder.load_from_file()
         self.srv = self.create_service(Detector, 'detector', self.detector_cb)
@@ -23,12 +27,20 @@ class DetectorService(Node):
         item_data = self.predefined_poses.get(request.target)
 
         if item_data is not None:
-            self.get_logger().info("Detection successful, returning results.")
+            self.get_logger().info("Pre-defined pose, returning results")
             response.pose = item_data['pose']
             response.pickable = item_data['pickable']
             response.success = True
         else:
-            self.get_logger().info("Detection failed, returning results.")
+            pose = self.detection_manager.get_detection(request.target)
+
+            if pose is not None:
+                self.get_logger().info("Detection successful, returning results")
+                response.pose = pose
+                response.pickable = True
+                response.success = True
+            else:    
+                self.get_logger().info("Detection failed, returning results")
 
         return response
 
