@@ -42,7 +42,7 @@ class DetectionManager:
             if msg.hypothesis.score >= self._threshold:
                 pose = msg.pose.pose
                 pose.position.z = 0.0185
-                self._detections[msg.hypothesis.class_id] = {'pose': pose, 'timestamp': self.node.get_clock().now().nanoseconds()}
+                self._detections[msg.hypothesis.class_id] = {'pose': pose, 'timestamp': self.node.get_clock().now().nanoseconds}
 
     def get_detection(self, id):
 
@@ -51,7 +51,7 @@ class DetectionManager:
                 data = self._detections.get(id)
                 
                 if data is not None:    
-                    if self.node.get_clock().now().nanoseconds() - data['timestamp'] < self._detection_timeout:
+                    if self.node.get_clock().now().nanoseconds - data['timestamp'] < self._detection_timeout:
                         self.node.get_logger().info("Valid detection found!")
                         pose = data['pose']
                     else:
