@@ -9,12 +9,12 @@ from vision_msgs.msg import ObjectHypothesisWithPose
 
 class DetectionManager:
     
-    def __init__(self, node, verbose=False):
+    def __init__(self, node, verbose=True):
         self.node = node
         self.verbose = verbose
 
-        self.declare_parameter('detection_topic', '/opendr/grasp_detected')
-        detection_topic = self.get_parameter('detection_topic')
+        self.node.declare_parameter('detection_topic', '/opendr/grasp_detected')
+        detection_topic = self.node.get_parameter('detection_topic').value
 
         self.detection_sub = self.node.create_subscription(
             ObjectHypothesisWithPose,
@@ -27,10 +27,10 @@ class DetectionManager:
         self._lock = threading.Lock() 
 
         self._detections = {}
-        self.declare_parameter('detection_threshold', 0.0)
-        self._threshold = float(self.get_parameter('detection_threshold'))
-        self.declare_parameter('detection_timeout', 3.0)
-        self._detection_timeout = float(self.get_parameter('detection_timeout')) * (10**9)
+        self.node.declare_parameter('detection_threshold', 0.0)
+        self._threshold = float(self.node.get_parameter('detection_threshold').value)
+        self.node.declare_parameter('detection_timeout', 3.0)
+        self._detection_timeout = float(self.node.get_parameter('detection_timeout').value) * (10**9)
 
         self.node.get_logger().info("Detection manager ready!")
 
