@@ -26,7 +26,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
     ros-humble-moveit \
     alsa-utils \
     pulseaudio-utils \
-    espeak \
+    espeak-ng \
     ffmpeg \
     libespeak1 \
     portaudio19-dev \
@@ -58,7 +58,7 @@ RUN pip install --no-cache-dir \
     --index-url https://download.pytorch.org/whl/cu124
     
 # Flash Attention
-RUN pip install flash-attn --no-cache-dir --no-build-isolation
+RUN pip install flash-attn==2.7.4.post1 --no-cache-dir --no-build-isolation
 
 # Hugging Face
 RUN pip install --no-cache-dir \

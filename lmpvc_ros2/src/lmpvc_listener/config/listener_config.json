@@ -14,7 +14,7 @@
         "input_language": "en",
         "translate": false,
         "format": true,
-        "quantization": null
+        "quantization": "4bit"
     },
     "remote":{
         

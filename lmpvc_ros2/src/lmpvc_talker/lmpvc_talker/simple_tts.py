@@ -7,7 +7,7 @@ class Talker:
         self.model = pyttsx3.init()
         
         try:
-            self.model.setProperty('voice', 'english+klatt')
+            self.model.setProperty('voice', 'en')
             self.model.setProperty('rate', 160)
         except:
             # this is just for platform compatibility, available settings may vary

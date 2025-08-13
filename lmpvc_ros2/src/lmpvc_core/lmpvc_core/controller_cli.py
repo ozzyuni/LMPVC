@@ -88,6 +88,8 @@ class ControllerClient:
         
         result = self._close_hand_cli.call(req)
 
+        time.sleep(1.5)
+
         return result.success
     
     def open_hand(self):
@@ -97,6 +99,8 @@ class ControllerClient:
             self._node.get_logger().info("[Controller] Service not available, trying again...")
         
         result = self._open_hand_cli.call(req)
+
+        time.sleep(1.5)
 
         return result.success
     
