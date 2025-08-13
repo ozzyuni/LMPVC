@@ -2,14 +2,12 @@
   "model_path": "/lmpvc_ros2_ws/models/voices/en_GB-northern_english_male-medium.onnx",
   "interactive": false,
   "commands": [
-    "move a little down", 
-    "move fifteen centimeters right",
-    "move a little up and then move twenty centimeters to the left",
+    "move a little up and then move ten centimeters to the left",
     "what tool do i use to tighten bolts to correct torque",
     "rotate 45 degrees clockwise",
     "45 degrees anti-clockwise",
     "draw a small circle",
-    "again but triple the radius",
+    "again but double the radius",
     "reset_demo"
   ]
 }

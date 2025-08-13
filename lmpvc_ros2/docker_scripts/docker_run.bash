@@ -5,7 +5,7 @@ sudo docker run -d -t --rm \
      --net=host \
      --ipc=host \
      --pid=host \
-     --name lmpvc_ros2 \
+     --name lmpvc_ros2_demo \
      --volume "$PWD":/lmpvc_ros2_ws \
      --volume /etc/localtime:/etc/localtime:ro \
      lmpvc_ros2_cpu

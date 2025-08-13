@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo docker stop lmpvc_ros2
+sudo docker stop lmpvc_ros2_demo
