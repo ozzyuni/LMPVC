@@ -19,9 +19,13 @@ class Talker:
         except:
             talker_config_path = Path(__file__).with_name('talker_config.json')
 
+        self.legacy = False
+
         modelpath = ""
         with open(talker_config_path, 'r') as config_file:
-            modelpath = json.load(config_file)['piper']['model']
+            config = json.load(config_file)
+            modelpath = config['piper']['model']
+            self.legacy = config['piper']['legacy']
         
         self.model = PiperVoice.load(modelpath)
     
@@ -30,9 +34,15 @@ class Talker:
             stream = sd.OutputStream(samplerate=self.model.config.sample_rate, channels=1, dtype='int16')
             stream.start()
 
-            for audio_bytes in self.model.synthesize_stream_raw(utterance):
-                int_data = np.frombuffer(audio_bytes, dtype=np.int16)
-                stream.write(int_data)
+            if self.legacy:
+                for audio_bytes in self.model.synthesize_stream_raw(utterance):
+                    int_data = np.frombuffer(audio_bytes, dtype=np.int16)
+                    stream.write(int_data)
+            
+            else:
+                for audio_bytes in self.model.synthesize(utterance):
+                    int_data = np.frombuffer(audio_bytes.audio_int16_bytes, dtype=np.int16)
+                    stream.write(int_data)
                 
             stream.stop()
             stream.close()
