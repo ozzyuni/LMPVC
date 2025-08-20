@@ -26,7 +26,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
     ros-humble-moveit \
     alsa-utils \
     pulseaudio-utils \
-    espeak \
+    espeak-ng \
     ffmpeg \
     libespeak1 \
     portaudio19-dev \
@@ -61,7 +61,8 @@ RUN pip install --no-cache-dir \
 RUN pip install --no-cache-dir \
     git+https://github.com/huggingface/transformers.git \
     accelerate \
-    bitsandbytes
+    bitsandbytes \
+    numpy==1.24.1
 
 # Llama Cpp
 RUN pip install --no-cache-dir \

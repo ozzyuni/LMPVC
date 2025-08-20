@@ -1,6 +1,7 @@
 {
     "engine": "piper",
     "piper": {
-        "model": "/lmpvc_ros2_ws/models/voices/en_GB-jenny_dioco-medium.onnx"
+        "model": "/lmpvc_ros2_ws/models/voices/en_GB-jenny_dioco-medium.onnx",
+        "legacy": false
     }
 }

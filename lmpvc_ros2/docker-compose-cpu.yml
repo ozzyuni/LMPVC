@@ -1,0 +1,23 @@
+services:
+  lmpvc_ros2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lmpvc_ros2_cpu
+    environment:
+      - PULSE_SERVER=tcp:127.0.0.1:5050
+    command: echo "Use 'docker compose run lmpvc_ros2 bash' to run the container"
+    network_mode: host
+    ipc: host
+    pid: host
+    restart: always
+    volumes:
+      - type: volume
+        source: lmpvc_build
+        target: /lmpvc_ros2_ws
+      - type: bind
+        source: ./src
+        target: /lmpvc_ros2_ws/src
+
+volumes:
+  lmpvc_build:
