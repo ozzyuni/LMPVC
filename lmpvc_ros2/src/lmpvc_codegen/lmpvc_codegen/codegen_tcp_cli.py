@@ -20,8 +20,7 @@ class CodeGenWebClient:
         
         # Used for most communication
         self.node = node
-        self.server = Server(5002, block_size=32768)
-        self.client = Client(ip, 5001, block_size=4096)
+        self.client = Client(ip, 5001)
     
     def log_info(self, msg):
         if self.node is not None:
@@ -39,10 +38,8 @@ class CodeGenWebClient:
         self.log_info("Web client: Requesting inference")
         # Send instruction
         msg = pickle.dumps({'prompt': prompt, 'preamble': preamble, 'policies': policies})
-        self.client.send(msg)
+        (resp, success) = self.client.send(msg, timeout=True, timeout_in_seconds=15)
 
-        (resp, success) = self.server.receive(timeout=True, timeout_in_seconds=15)
-            
         if success:
             self.log_info("Response received")
             return resp.decode('utf-8')
