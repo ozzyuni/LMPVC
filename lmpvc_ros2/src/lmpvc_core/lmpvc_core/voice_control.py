@@ -337,7 +337,7 @@ class VoiceControl:
                 if self.text_only:
                     command = input("\nInstruction: ")
                 else:
-                    input("\nPress any key to begin listening")
+                    input("\nPress ENTER to begin listening")
                     command = self.listener.listen()
                     print("\nInstruction:", command)
                 
