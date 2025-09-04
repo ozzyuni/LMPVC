@@ -7,7 +7,7 @@ services:
     runtime: nvidia
     environment:
       - PULSE_SERVER=tcp:127.0.0.1:5050
-    command: echo "Use 'docker compose run lmpvc_ros2 bash' to run the container"
+    command: /lmpvc_ros2_ws/src/setup_scripts/lmpvc_modules.bash
     network_mode: host
     ipc: host
     pid: host
