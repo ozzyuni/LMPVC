@@ -37,6 +37,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name, ['config/core_config.json']),
         ('share/' + package_name, ['config/preamble.py']),
+        ('share/' + package_name + '/launch', ['launch/modules.launch.py']),
     ] + policy_files(),
     install_requires=['setuptools'],
     zip_safe=True,

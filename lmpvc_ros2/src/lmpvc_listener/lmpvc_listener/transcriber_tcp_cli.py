@@ -2,8 +2,12 @@
 import pickle
 import copy
 import argparse
+import threading
 import geometry_msgs.msg
 from pathlib import Path
+import rclpy
+from rclpy.node import Node
+from rclpy.executors import MultiThreadedExecutor
 from lmpvc_codegen.comms import Server, Client
 
 class TranscriberWebClient:
@@ -55,7 +59,16 @@ def main():
     except IndexError:
         print("No valid -ip argument detected, using default.")
 
-    bridge = TranscriberWebClient(ip=ip)
+    rclpy.init()
+    executor = MultiThreadedExecutor()
+    node = Node('transcriber_client')
+
+    bridge = TranscriberWebClient(node=node, ip=ip)
+
+    executor.add_node(node)
+    et = threading.Thread(target=executor.spin)
+    et.start()
+
     bridge.log_info("Connecting to " + ip)
 
     listener = Listener()
@@ -86,6 +99,10 @@ def main():
         bridge.log_error("No audio data to transcribe")
 
     bridge.log_info("[TRANSCRIPT]: " + transcript)
+
+    executor.shutdown()
+    node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
     main()

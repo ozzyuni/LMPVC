@@ -1,9 +1,14 @@
 #!/usr/bin/env python
+import os
 import pickle
 import copy
 import argparse
+import threading
 import geometry_msgs.msg
 from pathlib import Path
+import rclpy
+from rclpy.node import Node
+from rclpy.executors import MultiThreadedExecutor
 from lmpvc_codegen.comms import Server, Client
 
 class CodeGenWebClient:
@@ -15,16 +20,16 @@ class CodeGenWebClient:
         
         # Used for most communication
         self.node = node
-        self.server = Server(5002)
-        self.client = Client(ip, 5001)
+        self.server = Server(5002, block_size=32768)
+        self.client = Client(ip, 5001, block_size=4096)
     
-    def log_info(msg):
+    def log_info(self, msg):
         if self.node is not None:
             self.node.get_logger().info(msg)
         else:
             print("INFO: " + msg)
 
-    def log_error(msg):
+    def log_error(self, msg):
         if self.node is not None:
             self.node.get_logger().error(msg)
         else:
@@ -47,13 +52,26 @@ class CodeGenWebClient:
 
 
 def main():
-    ip = '127.0.0.1'
-    try:
-        ip = sys.argv[sys.argv.index('-ip') + 1]
-    except IndexError:
-        print("No valid -ip argument detected, using default.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-ip', help="set ip address for the other end of the bridge (default = 127.0.0.1)")
+    args = parser.parse_args()
 
-    bridge = CodeGenWebClient(ip=ip)
+    ip = args.ip
+    if ip is None:
+        ip = '127.0.0.1'
+        print("Using default IP.")
+    print("Connecting to", ip)
+
+    rclpy.init()
+    executor = MultiThreadedExecutor()
+    node = Node('codegen_client')
+
+    bridge = CodeGenWebClient(node=node, ip=ip)
+
+    executor.add_node(node)
+    et = threading.Thread(target=executor.spin)
+    et.start()
+
     bridge.log_info("Connecting to " + ip)
 
     prompt = input("Prompt: ")
@@ -77,6 +95,10 @@ def main():
     code = bridge.generate_inference(prompt, preamble)
 
     bridge.log_info("[CODE]:\n" + code)
+
+    executor.shutdown()
+    node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
