@@ -36,6 +36,7 @@ class MoveitServices {
         rclcpp::Service<lmpvc_interfaces::srv::ControllerPlan>::SharedPtr plan_cartesian_service_;
         rclcpp::Service<lmpvc_interfaces::srv::ControllerSetSpeed>::SharedPtr set_speed_service_;
         rclcpp::Service<lmpvc_interfaces::srv::ControllerStop>::SharedPtr stop_service_;
+        rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr joint_reset_service_;
 
         void execute_cb(const std::shared_ptr<lmpvc_interfaces::srv::ControllerExec::Request> request,
                         std::shared_ptr<lmpvc_interfaces::srv::ControllerExec::Response> response);
@@ -51,6 +52,8 @@ class MoveitServices {
 
         void stop_cb(const std::shared_ptr<lmpvc_interfaces::srv::ControllerStop::Request> request,
                         std::shared_ptr<lmpvc_interfaces::srv::ControllerStop::Response> response);
+        void joint_reset_cb(const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
+            std::shared_ptr<std_srvs::srv::Trigger::Response> response);
 
 };
 
