@@ -22,6 +22,8 @@ setup(
     entry_points={
         'console_scripts': [
             'codegen = lmpvc_codegen.codegen_srv:main',
+            'codegen_tcp_srv = lmpvc_codegen.codegen_tcp_srv:main',
+            'codegen_tcp_cli = lmpvc_codegen.codegen_tcp_cli:main'
         ],
     },
 )

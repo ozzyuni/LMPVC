@@ -9,6 +9,7 @@ import rclpy
 from rclpy.node import Node
 from rclpy.executors import MultiThreadedExecutor
 from lmpvc_codegen.comms import Server, Client
+from lmpvc_listener.listener import Listener
 
 class TranscriberWebClient:
     """Provides access to Whisper over a tcp connection. Mostly useful for prototyping with a 
@@ -19,28 +20,25 @@ class TranscriberWebClient:
         
         # Used for most communication
         self.node = node
-        self.server = Server(5004)
         self.client = Client(ip, 5003)
     
-    def log_info(msg):
+    def log_info(self, msg):
         if self.node is not None:
             self.node.get_logger().info(msg)
         else:
             print("INFO: " + msg)
 
-    def log_error(msg):
+    def log_error(self, msg):
         if self.node is not None:
             self.node.get_logger().error(msg)
         else:
             print("ERROR: " + msg)
     
-    def transcribe(data):
+    def transcribe(self, data):
         self.log_info("Web client: Requesting inference")
         # Send instruction
         msg = pickle.dumps(data)
-        self.client.send(msg)
-
-        (resp, success) = self.server.receive(timeout=True, timeout_in_seconds=10)
+        (resp, success) = self.client.send(msg)
             
         if success:
             self.log_info("Response received")
@@ -53,11 +51,15 @@ class TranscriberWebClient:
 def main():
     from lmpvc_listener.listener import Listener
 
-    ip = '127.0.0.1'
-    try:
-        ip = sys.argv[sys.argv.index('-ip') + 1]
-    except IndexError:
-        print("No valid -ip argument detected, using default.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-ip', help="set ip address for the other end of the bridge (default = 127.0.0.1)")
+    args = parser.parse_args()
+
+    ip = args.ip
+    if ip is None:
+        ip = '127.0.0.1'
+        print("Using default IP.")
+    print("Connecting to", ip)
 
     rclpy.init()
     executor = MultiThreadedExecutor()
@@ -73,7 +75,7 @@ def main():
 
     listener = Listener()
 
-    self.stream.start_stream()
+    listener.stream.start_stream()
 
     data = None
 
@@ -88,7 +90,7 @@ def main():
     else:
         bridge.log_error("Did not detect speech")
 
-    self.stream.stop_stream()
+    listener.stream.stop_stream()
     
     transcript = ""
 

@@ -23,7 +23,9 @@ setup(
         'console_scripts': [
             'listener = lmpvc_listener.listener_srv:main',
             'test = lmpvc_listener.listener:main',
-            'transcriber = lmpvc_listener.transcriber_srv:main'
+            'transcriber = lmpvc_listener.transcriber_srv:main',
+            'transcriber_tcp_srv = lmpvc_listener.transcriber_tcp_srv:main',
+            'transcriber_tcp_cli = lmpvc_listener.transcriber_tcp_cli:main'
         ],
     },
 )
