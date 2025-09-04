@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import sys
 import pickle
-from rclpy.node import Node
 import lmpvc_codegen.codegen import CodeGen
+from pathlib import Path
 from lmpvc_codegen.comms import Server, Client
 
-class CodeGenWebServer:
+class TranscriberWebServer:
     """Provides access to CodeGen over a tcp connection. Mostly useful for prototyping with a 
     remote GPU machine. NOT SECURE, so use e.g. SSH tunneling for access outside LAN.
     """
@@ -16,9 +16,9 @@ class CodeGenWebServer:
         """
         # Used for most communication
         self.node = node
-        self.server = Server(5001)
-        self.client = Client(ip, 5002)
-        self.codegen = CodeGen()
+        self.server = Server(5003)
+        self.client = Client(ip, 5004)
+        self.asr = lmpvc_listener.whisper.SpeechRecognition()
     
     def log_info(msg):
         if self.node is not None:
@@ -41,12 +41,19 @@ class CodeGenWebServer:
                 (resp, success) = self.server.receive(timeout=True, timeout_in_seconds=3)
             
                 if success:
+                    self.log_info("Received request to transcribe")
                     msg = pickle.loads(resp)
                 
-                    self.log_info("\nMessage received, generating inference...")
-                    result = self.codegen.generate_inference(msg['prompt'], msg['preamble'], msg['policies'], log=True)
-                    self.log_info("Sending response")
-                    self.client.send(result.encode('utf-8'))
+                    filename = Path(__file__).with_name('temp.wav')
+
+                    with open(filename, 'wb') as audiofile:
+                        audiofile.write(b''.join(msg))
+                    
+                    transcript = self.asr.generate_transcript(str(filename))
+                    self.log_info("Finished transcribing: " + transcript)
+                    filename.unlink()
+
+                    self.client.send(transcript.encode('utf-8'))
 
         except KeyboardInterrupt:
             self.log_error("Keyboard interrupt")
@@ -54,7 +61,7 @@ class CodeGenWebServer:
 def main():
     rclpy.init()
 
-    node = Node('codegen_web_server')
+    node = Node('transcriber_web_server')
 
     ip = '127.0.0.1'
     try:
@@ -62,10 +69,9 @@ def main():
     except IndexError:
         print("No valid -ip argument detected, using default.")
 
-    bridge = CodeGenWebServer(node=node, ip=ip)
-
     rclpy.spin(node)
 
+    bridge = TrascriberWebServer(node=node, ip=ip)
     bridge.log_info("Connecting to " + ip)
     bridge.run()
 
