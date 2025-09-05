@@ -15,20 +15,29 @@ class TranscriberWebServer:
     remote GPU machine. NOT SECURE, so use e.g. SSH tunneling for access outside LAN.
     """
 
-    def __init__(self, node=None, ip = '127.0.0.1'):
+    def __init__(self, node=None, ip = '127.0.0.1', logging=False):
         """Networking provided by comms.py, ports and server ip (to whcih client connects)
         can be changed here
         """
         # Used for most communication
         self.node = node
-        self.server = Server(5003)
+        self.server = Server(5003, logging=logging, logger_function=self.log_debug)
         self.asr = SpeechRecognition()
+
+        if logging and node is not None:
+            node.get_logger().set_level(rclpy.logging.LoggingSeverity.DEBUG)
     
     def log_info(self, msg):
         if self.node is not None:
             self.node.get_logger().info(msg)
         else:
             print("INFO: " + msg)
+
+    def log_debug(self, msg):
+        if self.node is not None:
+            self.node.get_logger().debug(msg)
+        else:
+            print("DEBUG: " + msg)
 
     def log_error(self, msg):
         if self.node is not None:
