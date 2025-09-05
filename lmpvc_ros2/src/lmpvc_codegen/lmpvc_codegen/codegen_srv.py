@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 import sys
+import os
+import json
+from pathlib import Path
 import rclpy
 from rclpy.node import Node
 
 import lmpvc_interfaces.srv
-import lmpvc_codegen.codegen
 
 class CodeGenService(Node):
     """
@@ -14,7 +16,29 @@ class CodeGenService(Node):
     
     def __init__(self):
         super().__init__('code_gen_service')
-        self.codegen = lmpvc_codegen.codegen.CodeGen()
+
+        try:
+            from ament_index_python.packages import get_package_share_directory
+
+            codegen_config_path = os.path.join(
+                get_package_share_directory('lmpvc_codegen'),
+                'codegen_config.json'
+            )
+        except:
+            codegen_config_path = Path(__file__).with_name('codegen_config.json')
+
+        codegen_config = {}
+        with open(codegen_config_path, 'r') as config_file:
+            codegen_config = json.load(config_file)
+
+        # Importing the correct file based on configuration
+        if codegen_config['model'] == 'tcp':
+            import lmpvc_codegen.codegen_tcp_cli
+            self.codegen = lmpvc_codegen.codegen_tcp_cli.CodeGenWebClient(self)
+        else:
+            import lmpvc_codegen.codegen
+            self.codegen = lmpvc_codegen.codegen.CodeGen()
+
         self.srv = self.create_service(lmpvc_interfaces.srv.CodeGen, 'code_gen', self.code_gen_cb)
         self.get_logger().info("Service ready!")
     

@@ -23,6 +23,13 @@ class ListenerActionServer(Node):
         self.transcriber_req = ListenerTranscribe.Request()
 
         self._listener = Listener()
+
+        self._tcp_client = None
+
+        if self._listener.asr_engine == 'tcp':
+            import lmpvc_listener.transcriber_tcp_cli
+            self._tcp_client = lmpvc_listener.transcriber_tcp_cli.TranscriberWebClient(self)
+
         self._action_server = ActionServer(
             self,
             Listen,
@@ -42,12 +49,23 @@ class ListenerActionServer(Node):
         data = [data[i:i+1] for i in range(0, len(data))]
         self.transcriber_req.recording = data
 
-        while not self.transcriber_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("Transcription service not available, trying again...")
+        if self._listener.asr_engine == 'remote':
 
-        # Call service to generate a transcript
-        result = self.transcriber_cli.call(self.transcriber_req)
-        return result.transcript
+            while not self.transcriber_cli.wait_for_service(timeout_sec=1.0):
+                self.get_logger().info("Transcription service not available, trying again...")
+
+            # Call service to generate a transcript
+            result = self.transcriber_cli.call(self.transcriber_req)
+            return result.transcript
+        
+        elif self._listener.asr_engine == 'tcp':
+            transcript = self._tcp_client.transcribe(data)
+            return transcript
+
+        else:
+            self.get_logger().error("Invalid asr_engine type for remote operation")
+            return ""
+
 
     def listen_cb(self, goal_handle):
         """A ROS2 enabled reimplementation of Listener.listen()"""

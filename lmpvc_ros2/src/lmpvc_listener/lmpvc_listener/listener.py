@@ -28,7 +28,7 @@ if config['asr_engine'] == 'wav2vec':
     from lmpvc_listener.wav2vec import SpeechRecognition
 elif config['asr_engine'] =='whisper':
     from lmpvc_listener.whisper import SpeechRecognition
-elif config['asr_engine'] !='remote':
+elif config['asr_engine'] !='remote' and config['asr_engine'] !='tcp':
     print("Invalid parameter 'asr_engine', defaulting to wav2vec!")
     from lmpvc_listener.wav2vec import SpeechRecognition
 
@@ -56,6 +56,7 @@ class Listener:
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)
         
+        self.asr_engine = config['asr_engine']
         self.rms_threshold = config['rms_threshold']
         self.timeout_length = config['timeout_length']
         self.buffer_size = config['buffer_size']
@@ -64,7 +65,7 @@ class Listener:
         self._channels = 1
         self._rate = 16000
         
-        if config['asr_engine'] !='remote':
+        if config['asr_engine'] !='remote' and config['asr_engine'] !='tcp':
             self.asr = SpeechRecognition()
         else:
             self.asr = None

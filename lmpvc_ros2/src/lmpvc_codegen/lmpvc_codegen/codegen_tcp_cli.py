@@ -34,10 +34,15 @@ class CodeGenWebClient:
         else:
             print("ERROR: " + msg)
     
-    def generate_inference(self, prompt, preamble='', policies=''):
+    def generate_inference(self, prompt, preamble='', policies='', log=False):
         self.log_info("Web client: Requesting inference")
         # Send instruction
-        msg = pickle.dumps({'prompt': prompt, 'preamble': preamble, 'policies': policies})
+        msg = pickle.dumps({
+            'prompt': prompt,
+            'preamble': preamble,
+            'policies': policies,
+            'log': log
+        })
         (resp, success) = self.client.send(msg, timeout=True, timeout_in_seconds=15)
 
         if success:
