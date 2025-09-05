@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 import sys
 import pickle
-import lmpvc_codegen.codegen import CodeGen
+import argparse
+import threading
+from lmpvc_listener.whisper import SpeechRecognition
 from pathlib import Path
 from lmpvc_codegen.comms import Server, Client
+import rclpy
+from rclpy.executors import SingleThreadedExecutor
+from rclpy.node import Node
 
 class TranscriberWebServer:
     """Provides access to CodeGen over a tcp connection. Mostly useful for prototyping with a 
@@ -17,16 +22,15 @@ class TranscriberWebServer:
         # Used for most communication
         self.node = node
         self.server = Server(5003)
-        self.client = Client(ip, 5004)
-        self.asr = lmpvc_listener.whisper.SpeechRecognition()
+        self.asr = SpeechRecognition()
     
-    def log_info(msg):
+    def log_info(self, msg):
         if self.node is not None:
             self.node.get_logger().info(msg)
         else:
             print("INFO: " + msg)
 
-    def log_error(msg):
+    def log_error(self, msg):
         if self.node is not None:
             self.node.get_logger().error(msg)
         else:
@@ -53,7 +57,7 @@ class TranscriberWebServer:
                     self.log_info("Finished transcribing: " + transcript)
                     filename.unlink()
 
-                    self.client.send(transcript.encode('utf-8'))
+                    self.server.respond(transcript.encode('utf-8'))
 
         except KeyboardInterrupt:
             self.log_error("Keyboard interrupt")
@@ -63,15 +67,21 @@ def main():
 
     node = Node('transcriber_web_server')
 
-    ip = '127.0.0.1'
-    try:
-        ip = sys.argv[sys.argv.index('-ip') + 1]
-    except IndexError:
-        print("No valid -ip argument detected, using default.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-ip', help="set ip address for the other end of the bridge (default = 127.0.0.1)")
+    args, unknown = parser.parse_known_args()
 
-    rclpy.spin(node)
+    ip = args.ip
+    if ip is None:
+        ip = '127.0.0.1'
+        print("Using default IP.")
+    print("Connecting to", ip)
 
-    bridge = TrascriberWebServer(node=node, ip=ip)
+    executor = SingleThreadedExecutor()
+    executor.add_node(node)
+    et = threading.Thread(target=executor.spin)
+
+    bridge = TranscriberWebServer(node=node, ip=ip)
     bridge.log_info("Connecting to " + ip)
     bridge.run()
 

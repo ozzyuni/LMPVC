@@ -59,7 +59,7 @@ RUN pip install --no-cache-dir \
 
 # Hugging Face
 RUN pip install --no-cache-dir \
-    git+https://github.com/huggingface/transformers.git \
+    transformers \
     accelerate \
     bitsandbytes \
     numpy==1.24.1

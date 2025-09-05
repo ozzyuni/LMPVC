@@ -62,7 +62,7 @@ RUN pip install flash-attn==2.7.4.post1 --no-cache-dir --no-build-isolation
 
 # Hugging Face
 RUN pip install --no-cache-dir \
-    git+https://github.com/huggingface/transformers.git \
+    transformers \
     accelerate \
     bitsandbytes \
     # Older numpy again, because it refuses to stay installed for some bloody reason

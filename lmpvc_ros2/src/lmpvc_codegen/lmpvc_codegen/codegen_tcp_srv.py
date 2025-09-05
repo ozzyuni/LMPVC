@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 import sys
 import pickle
+import rclpy
+import threading
+import argparse
 from rclpy.node import Node
-import lmpvc_codegen.codegen import CodeGen
+from rclpy.executors import SingleThreadedExecutor
+from lmpvc_codegen.codegen import CodeGen
 from lmpvc_codegen.comms import Server, Client
 
 class CodeGenWebServer:
@@ -17,16 +21,15 @@ class CodeGenWebServer:
         # Used for most communication
         self.node = node
         self.server = Server(5001)
-        self.client = Client(ip, 5002)
         self.codegen = CodeGen()
     
-    def log_info(msg):
+    def log_info(self, msg):
         if self.node is not None:
             self.node.get_logger().info(msg)
         else:
             print("INFO: " + msg)
 
-    def log_error(msg):
+    def log_error(self, msg):
         if self.node is not None:
             self.node.get_logger().error(msg)
         else:
@@ -46,7 +49,7 @@ class CodeGenWebServer:
                     self.log_info("\nMessage received, generating inference...")
                     result = self.codegen.generate_inference(msg['prompt'], msg['preamble'], msg['policies'], log=True)
                     self.log_info("Sending response")
-                    self.client.send(result.encode('utf-8'))
+                    self.server.respond(result.encode('utf-8'))
 
         except KeyboardInterrupt:
             self.log_error("Keyboard interrupt")
@@ -56,15 +59,21 @@ def main():
 
     node = Node('codegen_web_server')
 
-    ip = '127.0.0.1'
-    try:
-        ip = sys.argv[sys.argv.index('-ip') + 1]
-    except IndexError:
-        print("No valid -ip argument detected, using default.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-ip', help="set ip address for the other end of the bridge (default = 127.0.0.1)")
+    args, unknown = parser.parse_known_args()
+
+    ip = args.ip
+    if ip is None:
+        ip = '127.0.0.1'
+        print("Using default IP.")
+    print("Connecting to", ip)
 
     bridge = CodeGenWebServer(node=node, ip=ip)
 
-    rclpy.spin(node)
+    executor = SingleThreadedExecutor()
+    executor.add_node(node)
+    et = threading.Thread(target=executor.spin)
 
     bridge.log_info("Connecting to " + ip)
     bridge.run()
