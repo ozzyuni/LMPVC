@@ -97,15 +97,15 @@ namespace lmpvc_gripper_franka_plugins
 
     // Wait for goal to be accepted
     for(int i=0; i<10; i++){
-      RCLCPP_INFO(logger, "Waiting for response from /fr3_gripper/grasp...");
+      RCLCPP_INFO(logger, "Waiting for response from /franka_gripper/grasp...");
 
       if(goal_handle_future.wait_for(1s) == std::future_status::timeout) {
         if (!rclcpp::ok()) {
-            RCLCPP_ERROR(logger, "Interrupted while waiting for /fr3_gripper/grasp. Exiting.");
+            RCLCPP_ERROR(logger, "Interrupted while waiting for /franka_gripper/grasp. Exiting.");
             return success;
         }
         else if (i>8){
-            RCLCPP_ERROR(logger, "Timed out while waiting for /fr3_gripper/grasp. Exiting.");
+            RCLCPP_ERROR(logger, "Timed out while waiting for /franka_gripper/grasp. Exiting.");
             return success;
         }
       }
@@ -120,11 +120,11 @@ namespace lmpvc_gripper_franka_plugins
     for(int i=0; i<10; i++){
       if(result_future.wait_for(1s) == std::future_status::timeout) {
         if (!rclcpp::ok()) {
-            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /fr3_gripper/grasp. Exiting.");
+            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /franka_gripper/grasp. Exiting.");
             return success;
         }
         else if (i>8){
-            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /fr3_gripper/grasp. Exiting.");
+            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /franka_gripper/grasp. Exiting.");
             return success;
         }
       }
@@ -168,15 +168,15 @@ namespace lmpvc_gripper_franka_plugins
 
     // Wait for goal to be accepted
     for(int i=0; i<10; i++){
-      RCLCPP_INFO(logger, "Waiting for response from /fr3_gripper/move...");
+      RCLCPP_INFO(logger, "Waiting for response from /franka_gripper/move...");
 
       if(goal_handle_future.wait_for(1s) == std::future_status::timeout) {
         if (!rclcpp::ok()) {
-            RCLCPP_ERROR(logger, "Interrupted while waiting for /fr3_gripper/move. Exiting.");
+            RCLCPP_ERROR(logger, "Interrupted while waiting for /franka_gripper/move. Exiting.");
             return success;
         }
         else if (i>8){
-            RCLCPP_ERROR(logger, "Timed out while waiting for /fr3_gripper/move. Exiting.");
+            RCLCPP_ERROR(logger, "Timed out while waiting for /franka_gripper/move. Exiting.");
             return success;
         }
       }
@@ -191,11 +191,11 @@ namespace lmpvc_gripper_franka_plugins
     for(int i=0; i<10; i++){
       if(result_future.wait_for(1s) == std::future_status::timeout) {
         if (!rclcpp::ok()) {
-            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /fr3_gripper/move. Exiting.");
+            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /franka_gripper/move. Exiting.");
             return success;
         }
         else if (i>8){
-            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /fr3_gripper/move. Exiting.");
+            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /franka_gripper/move. Exiting.");
             return success;
         }
       }
@@ -235,15 +235,15 @@ namespace lmpvc_gripper_franka_plugins
 
     // Wait for goal to be accepted
     for(int i=0; i<10; i++){
-      RCLCPP_INFO(logger, "Waiting for response from /fr3_gripper/homing...");
+      RCLCPP_INFO(logger, "Waiting for response from /franka_gripper/homing...");
 
       if(goal_handle_future.wait_for(1s) == std::future_status::timeout) {
         if (!rclcpp::ok()) {
-            RCLCPP_ERROR(logger, "Interrupted while waiting for /fr3_gripper/homing. Exiting.");
+            RCLCPP_ERROR(logger, "Interrupted while waiting for /franka_gripper/homing. Exiting.");
             return success;
         }
         else if (i>8){
-            RCLCPP_ERROR(logger, "Timed out while waiting for /fr3_gripper/homing. Exiting.");
+            RCLCPP_ERROR(logger, "Timed out while waiting for /franka_gripper/homing. Exiting.");
             return success;
         }
       }
@@ -258,11 +258,11 @@ namespace lmpvc_gripper_franka_plugins
     for(int i=0; i<10; i++){
       if(result_future.wait_for(1s) == std::future_status::timeout) {
         if (!rclcpp::ok()) {
-            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /fr3_gripper/homing. Exiting.");
+            RCLCPP_ERROR(logger, "Interrupted while waiting to get a result from /franka_gripper/homing. Exiting.");
             return success;
         }
         else if (i>8){
-            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /fr3_gripper/homing. Exiting.");
+            RCLCPP_ERROR(logger, "Timed out while waiting to get a result from /franka_gripper/homing. Exiting.");
             return success;
         }
       }
@@ -291,12 +291,12 @@ namespace lmpvc_gripper_franka_plugins
 
     // Stop service
     this->stop_client_ =
-    this->node_->create_client<std_srvs::srv::Trigger>("/fr3_gripper/stop");
+    this->node_->create_client<std_srvs::srv::Trigger>("/franka_gripper/stop");
 
     // Homing action
     this->homing_client_ = rclcpp_action::create_client<Homing>(
       this->node_,
-      "/fr3_gripper/homing");
+      "/franka_gripper/homing");
     
     this->homing_options_ = rclcpp_action::Client<Homing>::SendGoalOptions();
     
@@ -310,7 +310,7 @@ namespace lmpvc_gripper_franka_plugins
     // Grasp action
     this->grasp_client_ = rclcpp_action::create_client<Grasp>(
       this->node_,
-      "/fr3_gripper/grasp");
+      "/franka_gripper/grasp");
     
     this->grasp_options_ = rclcpp_action::Client<Grasp>::SendGoalOptions();
     
@@ -324,7 +324,7 @@ namespace lmpvc_gripper_franka_plugins
     // Move action
     this->move_client_ = rclcpp_action::create_client<Move>(
       this->node_,
-      "/fr3_gripper/move");
+      "/franka_gripper/move");
     
     this->move_options_ = rclcpp_action::Client<Move>::SendGoalOptions();
     
