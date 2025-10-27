@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.1-devel-ubuntu22.04
 
 # ROS2 Humble and a few audio requirements
 
@@ -55,14 +55,15 @@ RUN pip install --no-cache-dir \
     torch \
     torchvision \
     torchaudio \
-    --index-url https://download.pytorch.org/whl/cu124
+    --index-url https://download.pytorch.org/whl/cu128
     
 # Flash Attention
-RUN pip install flash-attn==2.7.4.post1 --no-cache-dir --no-build-isolation
+RUN pip install ninja --no-cache-dir && \
+    MAX_JOBS=16 pip install flash-attn==2.7.4.post1 --no-cache-dir --no-build-isolation
 
 # Hugging Face
 RUN pip install --no-cache-dir \
-    transformers \
+    transformers==4.40.2\
     accelerate \
     bitsandbytes \
     # Older numpy again, because it refuses to stay installed for some bloody reason

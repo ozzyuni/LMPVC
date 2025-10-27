@@ -6,6 +6,6 @@ wget https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/norther
 wget https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/jenny_dioco/medium/en_GB-jenny_dioco-medium.onnx -P ${PWD}/models/voices/
 wget https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/jenny_dioco/medium/en_GB-jenny_dioco-medium.onnx.json -P ${PWD}/models/voices/
 
-. /franka_ros2/install/setup.bash && colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release --symlink-install
+. /franka_ros2_ws/install/setup.bash && colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release --symlink-install
 
 cp ${PWD}/src/setup_scripts/lmpvc_ws.bash ${PWD}/lmpvc_ws.bash
