@@ -1,6 +1,9 @@
-# LMPVC Release Repository - IEEE Roman version (WIP)
-
+# LMPVC Release Repository - IEEE Roman version
 Language Model Program Voice Control (LMPVC) is a voice control framework for robotics, powered by Large Language Models (LLMs). More READMEs detailing the repository may be found within the subfolders.
+
+Paper: [IEEE International Workshop on Robot and Human Communication (ROMAN)](https://ieeexplore.ieee.org/document/11217706)
+
+Preprint: [arXiv](https://arxiv.org/abs/2506.22028)
 
 ## Experiments
 
