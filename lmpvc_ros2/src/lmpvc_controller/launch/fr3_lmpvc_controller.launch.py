@@ -31,7 +31,7 @@ def load_yaml(package_name, file_path):
 
 def generate_launch_description():
     kinematics_yaml = load_yaml(
-        'lmpvc_fr3_moveit_config', 'config/kinematics.yaml'
+        'franka_fr3_moveit_config', 'config/kinematics.yaml'
     )
 
     lmpvc_controller = Node(
@@ -41,7 +41,7 @@ def generate_launch_description():
         parameters=[
             kinematics_yaml,
             {
-            'planning_group_name': 'fr3_manipulator',
+            'planning_group_name': 'fr3_arm',
             'gripper_enabled': True,
             'gripper_plugin': "lmpvc_gripper_franka_plugins::FrankaHand"
             }
